@@ -1,0 +1,52 @@
+\documentclass[11pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[french]{babel}
+\usetheme{Frankfurt}
+
+\usepackage{geometry}
+\usepackage{keyval, listings}
+\lstloadlanguages{[Ansi]C++, Java}
+
+
+\usepackage{amsfonts, amstext, array, boxedminipage, %
+	ifthen, fancybox, multirow, fancyhdr, pgf, tikz%
+}
+%epsfig, psfrag, , %pstricks,pst-plot,pst-math,pst-infixplot}
+
+%\usepackage{xypic}
+
+\usepackage{caption}
+\usepackage{hyperref}
+
+\usepackage{wrapfig}
+\usepackage{subfig}
+
+\definecolor{gray}{rgb}{0.95,0.95,0.95}
+% Mise au point de l'environnement pour le code
+\lstnewenvironment{code}
+{\lstset{language=[Ansi]C++,basicstyle=\normalsize\tt,%
+		keywordstyle=\ttfamily\bfseries\underbar,%
+		commentstyle=\normalsize, extendedchars=true, fontadjust=true, columns = flexible, flexiblecolumns=true,
+		linewidth=.975\linewidth, backgroundcolor=\color{gray}, frame=tlrb, xleftmargin=1cm}
+	}%, framexleftmargin=5mm,frame=box}}
+{}
+
+\begin{document}
+	\author{Hakim Ferrier-Belhaouari}
+	\title{M1 INFO IHM - Introduction à Unity}
+	%\subtitle{}
+	%\logo{}
+	%\institute{}
+	%\date{}
+	%\subject{}
+	%\setbeamercovered{transparent}
+	%\setbeamertemplate{navigation symbols}{}
+	\begin{frame}[plain]
+		\maketitle
+	\end{frame}
+
+	
+\input{rawCours1.tex}
+\end{document}

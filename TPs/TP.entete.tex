@@ -1,0 +1,148 @@
+\documentclass[french,a4paper,10pt,twoside]{article}
+
+\setlength{\parindent}{10pt}
+\setlength{\parskip}{1.5mm}
+\usepackage{geometry}
+\geometry{margin=1.25cm}
+\addtolength{\textheight}{-1.5cm}
+\setlength{\headheight}{32pt}
+
+\usepackage{keyval, listings}
+\lstloadlanguages{[Ansi]C++, Java}
+
+\usepackage{amsfonts, amstext, array, boxedminipage, %
+  ifthen, fancybox, multirow, fancyhdr, pgf, tikz%
+}
+%epsfig, psfrag, , %pstricks,pst-plot,pst-math,pst-infixplot}
+
+%\usepackage{xypic}
+
+\usepackage[francais]{babel}
+\selectlanguage{french}
+
+\newtheorem{Proposition}{Proposition}
+
+%%%% Gestion des lettres accentu\'ees ...
+%\usepackage[utf8]{inputenc}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{caption}
+\usepackage{hyperref}
+
+\usepackage{wrapfig}
+\usepackage{subfig}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Ja}{\vspace{5mm}}
+\newcommand{\Jb}{\vspace{2.5mm}}
+\newcommand{\Jc}{\vspace{1mm}}
+
+
+\newcounter{Presentation}
+\newcommand{\Presentation}[1]{\refstepcounter{Presentation}%
+	\ \vspace{3mm} \\ \hspace{-0.8cm}%
+	{\bf Présentation \thePresentation : #1} \vspace{-10mm} \\ %
+	\subparagraph*{}%
+}
+
+\newcounter{Exercice}
+\newcommand{\Exercice}[1]{\refstepcounter{Exercice}%
+  \ \vspace{3mm} \\ \hspace{-0.8cm}%
+  {\bf Exercice \theExercice : #1} \vspace{-10mm} \\ %
+  \subparagraph*{}%
+}
+
+\newcounter{Definition}
+\newcommand{\Definition}[2]{\stepcounter{Definition}%
+{\flushright\hspace{.05\linewidth}\begin{minipage}{.95\linewidth}%
+{\bf Définition \theDefinition \ : #1}\ --%
+\ #2 \end{minipage}\vspace{3mm}}}
+
+\newcounter{Exemple}
+\newcommand{\Exemple}[1]{\stepcounter{Exemple}%
+{\flushright\hspace{.05\linewidth}\begin{minipage}{.95\linewidth}%
+%\ \vspace{-.5mm} \\ \hspace{-0.8cm}%
+{\bf Exemple \theExemple : } \\%
+%}
+\ #1 \end{minipage}\vspace{3mm}}}
+
+\definecolor{gray}{rgb}{0.95,0.95,0.95}
+% Mise au point de l'environnement pour le code
+\lstnewenvironment{Code}
+ {\lstset{language=[Ansi]C++,basicstyle=\large\tt,keywordstyle=\ttfamily\bfseries\underbar,%
+  commentstyle=\normalsize, extendedchars=true, fontadjust=true, flexiblecolumns=true, showtabs=true, 
+  linewidth=.975\linewidth,xleftmargin=1cm, framexleftmargin=5mm,frame=shadowbox}}
+ {}
+\lstnewenvironment{code}
+ {\lstset{language=[Ansi]C++,basicstyle=\normalsize\tt,keywordstyle=\ttfamily\bfseries\underbar,%
+  commentstyle=\normalsize, extendedchars=true, fontadjust=true, columns = flexible, flexiblecolumns=true,
+  linewidth=.975\linewidth, backgroundcolor=\color{gray}, frame=tlrb, xleftmargin=1cm}}%, framexleftmargin=5mm,frame=box}}
+ {}
+ 
+
+\lstnewenvironment{ccode}
+ {\lstset{language=C,basicstyle=\normalsize\tt,keywordstyle=\ttfamily\bfseries\underbar,%
+  commentstyle=\normalsize, extendedchars=true, fontadjust=true, columns = flexible, flexiblecolumns=true,
+  linewidth=.975\linewidth, backgroundcolor=\color{gray}, frame=tlrb, xleftmargin=1cm}}%, framexleftmargin=5mm,frame=box}}
+ {}
+
+\lstnewenvironment{bashcode}
+ {\lstset{language=bash,basicstyle=\normalsize\tt,keywordstyle=\ttfamily\bfseries\underbar,%
+  commentstyle=\normalsize, extendedchars=true, fontadjust=true, columns = flexible, flexiblecolumns=true,
+  linewidth=.975\linewidth, backgroundcolor=\color{gray}, frame=tlrb, xleftmargin=1cm}}%, framexleftmargin=5mm,frame=box}}
+ {}
+
+\lstnewenvironment{javacode}
+ {\lstset{language=Java,basicstyle=\normalsize\tt,keywordstyle=\ttfamily\bfseries\underbar,%
+  commentstyle=\normalsize, extendedchars=true, fontadjust=true, columns = flexible, flexiblecolumns=true,
+  linewidth=.975\linewidth, backgroundcolor=\color{gray}, frame=tlrb, xleftmargin=1cm}}%, framexleftmargin=5mm,frame=box}}
+ {}
+
+\lstnewenvironment{phpcode}
+ {\lstset{language=PHP,basicstyle=\normalsize\tt,keywordstyle=\ttfamily\bfseries\underbar,%
+  commentstyle=\normalsize, extendedchars=true, fontadjust=true, columns = flexible, flexiblecolumns=true,
+  linewidth=.975\linewidth, backgroundcolor=\color{gray}, frame=tlrb, xleftmargin=1cm}}%, framexleftmargin=5mm,frame=box}}
+ {}
+
+\lstnewenvironment{sharpcode}
+ {\lstset{language=Java,basicstyle=\normalsize\tt,keywordstyle=\ttfamily\bfseries\underbar,%
+  commentstyle=\normalsize, extendedchars=true, fontadjust=true, columns = flexible, flexiblecolumns=true,
+  linewidth=.975\linewidth, backgroundcolor=\color{gray}, frame=tlrb, xleftmargin=1cm}}%, framexleftmargin=5mm,frame=box}}
+ {}
+
+\def\Cours{Conception Orient\'ee Objets}
+\def\Annee{2020-2021}
+
+\pagestyle{fancy}
+\lhead[%
+  \vspace{6mm}%
+  \textbf{\small Master Informatique -- Universit\'e de Poitiers}
+]{%
+  \vspace{6mm}%
+  \textbf{\small Master Informatique -- \Cours}
+}
+\chead{}
+\rhead[%
+  \textbf{\small \Cours -- Ann\'ee \Annee}%
+]{%
+  \textbf{\small Universit\'e de Poitiers -- Ann\'ee \Annee}%
+}
+\cfoot{-- \thepage{} --}
+
+
+\title{\bfseries Master Informatique -- S1\\
+\vspace{1cm}\ \\
+{\Huge \Cours}}
+\author{Hakim Ferrier-Belhaouari}
+
+\newcommand{\makeSujet}[2]{%
+  \noindent\vspace{-14mm}
+  \begin{center}
+    \Cours \\
+    TP #1 -- {\em #2}%
+  \end{center}%
+  \vspace{-6mm}\rule[-2mm]{\linewidth}{.5pt}\vspace{7.5pt}%
+}
+
+

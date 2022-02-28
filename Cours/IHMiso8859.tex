@@ -1,0 +1,209 @@
+% for PRINT MODE, uncomment this line !
+%\def\isPrintVersion{\@empty}
+
+\ifx\isPrintVersion\undefined
+  \documentclass[t]{beamer}
+\else
+  \documentclass[t,handout]{beamer}
+\fi
+
+% Beamer Model definition (from CambridgeUS)
+\mode<presentation>
+\useinnertheme[shadow=true]{rounded}
+\useoutertheme{infolines}
+
+\ifx\isPrintVersion\undefined
+  \definecolor{darkred}{rgb}{0.8,0,0}
+%  \definecolor{themecolor}{rgb}{0.7,0.4,0} % OR
+  \definecolor{themecolor}{rgb}{0,.4,0.8} % Bluishgreen
+  \definecolor{blue}{rgb}{0.3,0.3,1}
+  \definecolor{lightred}{rgb}{1,0.3,0.3}
+  \definecolor{colorbg}{rgb}{0.9,0.9,0.9}
+  \definecolor{verydarkyellow}{rgb}{0.5,0.3,0}
+  \definecolor{darkgreen}{rgb}{0,.7,0}
+  \definecolor{highlightcolor}{rgb}{.8,0,.3}
+\else
+  \definecolor{darkred}{rgb}{1,0,0}
+  \definecolor{themecolor}{rgb}{0,0,0}
+  \definecolor{blue}{rgb}{0,0,1}
+  \definecolor{lightred}{rgb}{1,0,0}
+  \definecolor{colorbg}{rgb}{1,1,1}
+  \definecolor{verydarkyellow}{rgb}{0,0,0}
+  \definecolor{darkgreen}{rgb}{0,0,0}
+  \definecolor{highlightcolor}{rgb}{0,0,0}
+\fi
+
+\newcommand{\onlyPDF}[1]{%
+ \ifx\isPrintVersion\undefined{\color{highlightcolor}#1}%
+ \else{\color{bg}#1\color{fg}}\fi%
+}
+\newcommand{\onlyPDFc}[2]{%
+ \ifx\isPrintVersion\undefined{\color{#1}#2}%
+ \else{\color{bg}#2\color{fg}}\fi%
+}
+\newcommand{\PDF}[1]{%
+ \ifx\isPrintVersion\undefined #1%
+ \else\relax\fi%
+}
+
+
+\ifx\isPrintVersion\undefined
+  \setbeamercolor{background canvas}{bg=gray!10!white}
+  \setbeamercolor{section in toc}{fg=themecolor,bg=white}
+  \setbeamercolor{alerted text}{fg=darkred}
+  \setbeamercolor*{palette primary}{fg=themecolor!60!black,bg=gray!30!white}
+  \setbeamercolor*{palette secondary}{fg=themecolor!70!black,bg=gray!20!white}
+  \setbeamercolor*{palette tertiary}{fg=gray!10!white,bg=themecolor!80!black}
+  \setbeamercolor*{palette quaternary}{fg=themecolor,bg=gray!15!white}
+  \setbeamercolor*{sidebar}{fg=themecolor,bg=gray!15!white}
+  \setbeamercolor*{palette sidebar primary}{fg=themecolor!10!black}
+  \setbeamercolor*{palette sidebar secondary}{fg=white}
+  \setbeamercolor*{palette sidebar tertiary}{fg=themecolor!50!black}
+  \setbeamercolor*{palette sidebar quaternary}{fg=gray!20!white}
+  \setbeamercolor{titlelike}{parent=palette primary,fg=themecolor}
+%  \setbeamercolor{frametitle}{bg=gray!20!white}
+  \setbeamercolor{frametitle}{bg=themecolor!80!black,fg=gray!20!white}
+  \setbeamercolor{frametitle right}{bg=gray!60!white}
+  \setbeamercolor*{separation line}{}
+  \setbeamercolor*{fine separation line}{}
+  \setbeamerfont{block title}{size={}}
+  \setbeamercolor{titlelike}{parent=structure,bg=white}
+  \setbeamercolor{block title}{use=normal text,fg=themecolor!80!black,bg=gray!20!white}
+  \setbeamercolor{block title alerted}{use=alerted text,fg=white,bg=alerted text.fg!80!black}
+  \setbeamercolor{block title example}{use=example text,fg=white,bg=example text.fg!80!bg}
+  \setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!20!white}
+  \setbeamercolor{block body alerted}{parent=normal text,use=block title alerted,bg=block title alerted.bg!10!bg}
+  \setbeamercolor{block body example}{parent=normal text,use=block title example,bg=block title example.bg!10!bg}
+\else
+  \setbeamercolor{section in toc}{fg=black,bg=white}
+  \setbeamercolor{alerted text}{fg=black}
+  \setbeamercolor*{palette primary}{fg=black,bg=gray!30!white}
+  \setbeamercolor*{palette secondary}{fg=black,bg=gray!15!white}
+  \setbeamercolor*{palette tertiary}{fg=black,bg=gray!80!white}
+  \setbeamercolor*{palette quaternary}{fg=black,bg=gray!5!white}
+  \setbeamercolor*{sidebar}{fg=black,bg=gray!15!white}
+  \setbeamercolor*{palette sidebar primary}{fg=black}
+  \setbeamercolor*{palette sidebar secondary}{fg=black}
+  \setbeamercolor*{palette sidebar tertiary}{fg=black}
+  \setbeamercolor*{palette sidebar quaternary}{fg=black}
+  \setbeamercolor{titlelike}{parent=palette primary,fg=black}
+  \setbeamercolor{frametitle}{bg=gray!15!white}
+  \setbeamercolor{frametitle right}{bg=gray!60!white}
+  \setbeamercolor*{separation line}{}
+  \setbeamercolor*{fine separation line}{}
+  \setbeamerfont{block title}{size={}}
+  \setbeamercolor{titlelike}{parent=structure,bg=white}
+  \setbeamercolor{block title}{use=normal text,fg=black,bg=black!20!white}
+  \setbeamercolor{block title alerted}{use=alerted text,fg=white,bg=black!80!white}
+  \setbeamercolor{block title example}{use=example text,fg=white,bg=black!80!white}
+  \setbeamercolor{block body}{parent=normal text,use=block title,bg=white}
+  \setbeamercolor{block body alerted}{parent=normal text,use=block title alerted,bg=white}
+  \setbeamercolor{block body example}{parent=normal text,use=block title example,bg=white}
+\fi
+
+\mode<all>
+%\setbeamercolor{block title alerted}{parent=normal text,bg=red!40!white}
+%\usecolortheme{rose}
+%\usecolortheme{crane}
+%\usecolortheme{orchid}
+%\setbeamercolor{block title}{fg=craneblue,bg=craneorange!90}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+%\usepackage{beamerprosper}
+%\usepackage{amsfonts, amstext, array, boxedminipage, epsfig, psfrag,
+%fancybox, multirow, fancyhdr, ifthen,
+%pstricks,pst-plot,pst-math,pst-infixplot, pst-node,hyperref,color} 
+\usepackage{pgf,tikz}
+\usepackage{colortbl}
+\usepackage{multirow}
+\usepackage{listings}
+
+\definecolor{lightred}{RGB}{255,80,80}
+\definecolor{lightblue}{RGB}{128,128,255}
+\definecolor{lightgreen}{RGB}{80,255,80}
+\definecolor{darkred}{RGB}{192,0,0}
+\definecolor{darkgreen}{RGB}{0,128,0}
+\definecolor{darkblue}{RGB}{0,0,128}
+\definecolor{craneorange}{RGB}{0,255,128}
+
+\newcolumntype{r}{>{\columncolor{red!50}}c}
+\newcolumntype{g}{>{\columncolor{green!50}}c}
+\newcolumntype{b}{>{\columncolor{blue!50}}c}
+
+\title[COO -- Cours \CoursNumber]%
+{Conception Orientée Objets\\
+Master IT, $1\up{ière}$ année}
+\author{Hakim Ferrier-Belhaouari}
+\institute[XLIM/SIC]{hakim.ferrier.belhaouari@univ-poitiers.fr\\ XLIM/SIC/IG, CNRS, Département d'informatique\\ Université de Poitiers}
+\date[Master IT -- 2013/2014]{Année 2013/2014}
+
+\setbeamertemplate{frametitle}{\vskip-.5ex% 
+\begin{beamercolorbox}[wd=\paperwidth,ht=2.35ex,dp=.75ex]{frametitle}% 
+\hskip1.75ex\insertframetitle% 
+\end{beamercolorbox}% 
+\vskip-.6\baselineskip%
+}% 
+
+\usenavigationsymbolstemplate{}
+\newcommand{\ie}{\textit{i.e. }}
+
+%% change color for blocks
+\newenvironment{myDef}{%
+  \setbeamercolor{block title}{fg=craneblue,bg=craneorange!90}\begin{definition}}%
+  {\end{definition}}
+
+\newenvironment{redBlock}{%
+  \setbeamercolor{block title}{fg=craneblue,bg=red!70}\begin{block}}%
+  {\end{block}}
+
+\newenvironment{greBlock}{%
+  \setbeamercolor{block title}{fg=craneblue,bg=green!70}\begin{block}}%
+  {\end{block}}
+
+\newenvironment{yelBlock}{%
+  \setbeamercolor{block title}{fg=craneblue,bg=craneorange!90}\begin{block}}%
+  {\end{block}}
+
+\AtBeginSection[] % Do nothing for \section*
+{
+  \begin{frame}%<beamer>
+    \frametitle{Cours \CoursNumber{} -- \secname}
+    \vskip\baselineskip
+    \tableofcontents[sectionstyle=hide/hide,subsectionstyle=show/show/hide]
+  \end{frame}
+}
+
+\newcounter{saveenumi}
+
+\begin{document}
+\ifx\isPrintVersion\undefined
+  \lstset{language=C++,
+          basicstyle=\tiny,
+          keywordstyle=\color{blue}\bfseries\underbar,
+          commentstyle=\itshape\color{highlightcolor},
+          morecomment=[l][\itshape\color{highlightcolor!65!black}]{///}}
+\AtBeginSubsection[] % Do nothing for \subsection* 
+{
+  \begin{frame}<beamer>
+    \frametitle{Plan} 
+    \vskip\baselineskip
+    \tableofcontents[sectionstyle=hide,currentsubsection]
+  \end{frame}
+  \addtocounter{framenumber}{-1}
+}
+\else
+  \lstset{language=C++,
+          basicstyle=\tiny,
+          keywordstyle=\bfseries\underbar,
+          commentstyle=\itshape\color{bg},
+          morecomment=[l][\itshape]{///}}
+\fi
+\mode<presentation>
+
+\begin{frame}
+ \titlepage
+\end{frame}
+
+%\begin{frame}
+%  \tableofcontents[hideallsubsections,pausesections]
+%\end{frame}
