@@ -233,7 +233,13 @@ La mécanique céleste mise en place jusqu'à présent est vraiment catastrophiq
 Pour pouvoir animer votre comète vous allez devoir lui fournir une équation qui va traduire sa trajectoire pour cela je vous propose de vous inspirez du lien suivant \url{https://fr.wikipedia.org/wiki/Trajectoire_d%27une_com%C3%A8te}
 ou d'utiliser l'équation d'un cercle autour du soleil par exemple.
 
+\section{Toujours plus loin}
 
+Si vous avez tout fini, nous pouvons complexifier les traitements en regardant la documentation:
+\begin{itemize}
+	\item En utilisant la fonction \texttt{LookAt} dans la classe \texttt{Transform}, ajoutez pour chaque interface un bouton \texttt{'Center View'} qui centre la vue de la caméra principale vers l'astre associé.
+	\item Modifier votre traitement précédent pour que la caméra tourne doucement vers sa position finale pour éviter de perdre l'utilisateur ou lui donner des nausées. Pour cela, nous utiliserons une interpolation linéaire pour entre le point de vue de départ et le point de vue d'arrivé avec une vitesse constante.
+\end{itemize}
 
 
 \end{document}
