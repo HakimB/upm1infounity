@@ -138,7 +138,7 @@
 	
 
 
-\title{\vspace*{-1cm}Réalisation d'une application de conversion de température.}
+\title{\vspace*{-1cm}Réalisation d'un système solaire}
 \author{\vspace*{-1.5cm}Interface Homme-Machine: Android
 \begin{ensnote}
 	(Version enseignant)
@@ -150,14 +150,14 @@
 
 Voici les objectifs de ce sujet:
 \begin{itemize}
-	\item Comprendre l'IDE \texttt{Android Studio}.
-	\item Créer une activité.
-	\item Connaître les widgets de base disponibles.
-	\item Maîtriser l'ajout de réactivité.
-	\item Récupérer les widgets par programmation.
-	\item Réaliser des calculs simples pour afficher les résultats.
-	\item Comprendre les mécaniques de traçage ("Logs") pour pister son application.
-	\item Ajouter des retours haptiques pour informer l'utilisateur.
+	\item Comprendre l'IDE \texttt{Unity}.
+	\item Création d'un projet.
+	\item Placez des objets dans l'environnement.
+	\item Comprendre la hiérarchie pour différencier transformation locale et globale.
+	\item Comprendre le canevas 2D.
+	\item Manipuler des widgets classiques.
+	\item Exploiter les événements pour ajouter des interactions.
+	\item Réalisation de scripts simple pour l'animation.
 \end{itemize}
 
 
@@ -173,259 +173,65 @@ Voici les objectifs de ce sujet:
 
 \section*{Description générale de l'application}
 
-Nous verrons les premiers éléments du développement sur Android au travers d'une application permettant de convertir des températures \textit{Celsius} en \textit{Fahrenheit} (et vice-versa) dans un premier temps, puis, dans un second temps, nous ajouterons les \textit{Kelvin}. Les aspects calculatoires ne nous intéressent pas et nous insistons sur la compréhension générale des composants graphiques (\texttt{widgets}) et leur manipulation pour obtenir une application fonctionnelle de ce point de vue. Nous attacherons aussi une importance non négligeable à l'ergonomie de l'application et à l'intuition de son fonctionnement avec les outils que nous présenterons tout au long des séances.
-
-
-\section{Création de votre projet sous \texttt{Android Studio}}
-
-La première étape est la création d'un projet. Nous supposons que vous avez installé \texttt{Android Studio} correctement et qu'au moins un SDK ($\geq 23$) est présent. \textcolor{blue}{[[Rédiger une procédure à part expliquant comment récupérer Android et gérer les SDK. Vérifier si on conserve la version 23 minimale.]]}
-
-Une fois l'IDE lancé, lancez la procédure de création d'un projet (menu \textit{File $\rightarrow$ New $\rightarrow$ New Project...}), vous devez obtenir la fenêtre suivante: 
-
-Cette fenêtre permet de choisir la première interface de votre application, ainsi que le code associé simplifiant des étapes redondantes. Pour nos premières séances, nous choisirons toujours l'onglet \textit{"Phone and Tablet"} et une "\textit{activité vide}" (\textit{"Empty Activity"}) afin de ne pas être perturbé et mieux comprendre les étapes de développement.
-Une fois ce choix réalisé, passez à l'étape suivante en bas de la boîte de dialogue, pour obtenir la fenêtre suivante:
-
-\begin{center}
-% 	\includegraphics[width=0.5\linewidth]{creat_project2}
-\end{center}
-
-Cette étape consiste à spécifier le paramétrage global de votre application en précisant:
+Dans ce TP, nous allons modéliser un système solaire qui n'est pas réaliste physiquement. Pour cela, vous devez réaliser en vous inspirant ce qui a été fait en cours en utilisant la hiérarchie, un système solaire composé des éléments suivants:
 \begin{itemize}
-	\item Le nom de votre projet (attention, certains caractère ne sont pas supportés en fonction de votre système de fichier en raison de la création d'un répertoire portant ce nom: il est conseillé d'utiliser des caractères non acentués, et aucun espace).
-	\item Le nom du paquet (au sens \texttt{Java}) où l'ensemble de vos classes seront affectées par défaut.
-	\item La localisation de votre projet sur votre disque dur (vous pouvez bien sûr modifier ce paramètre à votre gré).
-	\item Le langage de développement. Actuellement, Google soutient le langage \texttt{Kotlin} mais conserve encore la compatibilité avec \texttt{Java} (\textbf{contrainte du cours} et nous vous conseillons \texttt{Java}).
-	\item Le SDK minimal indique la version minimale d'Android où votre application pourra s'exécuter. \item \textcolor{blue}{[[Mettre à jour la phrase qui suit.]]} En 2020, le cours impose une version $\geq 23$. Vous pouvez adapter ce paramètre à votre configuration mais influence énormément de paramétrage interne aussi bien en terme de développement ou de sécurité. \textcolor{blue}{[[Pour simplifier le choix aux étudiants, et puisque tu demandes une version $\geq 23$, autant fixer la version à 23 pour tout le monde, non ? Cela diminue les chances d'avoir des questions plus tard relatives à des versions toutes différentes.]]}
-	\item \textcolor{blue}{[[Mentionner de NE PAS cocher le "Use loegacy android support libraries" ?]]}
+	\item Soleil qui est au centre de notre animation.
+	\item Deux planètes (disons Terre et Mars) qui tourne autour du soleil.
+	\item Des lunes pour chaque planète. Pour information, la Terre possède une lune et Mars possède 2 lunes (nommées Phobos et Deimos). 
 \end{itemize}
 
-A présent, vous pouvez terminer la création de votre projet. Félicitations!
-
-
-\section{Comprendre l'interface \texttt{Android Studio}}
-
-\subsection{Interface globale}
-
-L'interface \texttt{Android Studio} est complète (bien qu'elle soit un peu lourde pour certaines configurations) et fournit beaucoup de boutons qu'il faut connaître ou qui s'utilisent à des moments précis. L'objectif est de connaître les plus importants:
 
 \begin{center}
-% 	\includegraphics[width=0.7\linewidth]{ide_androidstudio1_details}
+	\includegraphics[width=0.7\linewidth]{rc/solarsystem_ez}
 \end{center}
 
-Commençons avec l'explorateur de projet qui regroupe l'ensemble des fichiers dans le projet en rouge sur la figure ci-dessus. Les fichiers sont multiples et cela inclut entre autres les fichiers de développement, les fichiers de configuration et/ou les fichiers générés. D'ailleurs, vérifiez que la mention pointée par la flèche rose indique bien le filtrage \texttt{Android} pour masquer les fichiers inutiles. La zone verte permet de configurer le projet et surtout l'environnement \texttt{Android} en terme de SDK disponible et de fonctionnalités spécifiques ; il permet aussi de créer et gérer l'ensemble de vos émulateurs. Vous verrez à l'usage d'autres éléments. Voici les fichiers principaux présents dans un projet:
-
-\begin{itemize}
-	\item \texttt{app}: représente la racine de votre application.
-	\item \texttt{manifests}: contient le fichier de configuration de votre application (\texttt{AndroidManifest.xml}). Ce fichier donne les permissions requises par votre application, l'ensemble des interfaces, \textit{etc}. Dans la mesure du possible, vous éviterez de modifier le fichier à la main.
-	\item \texttt{java}: contient l'ensemble des sources de votre projet. Par défaut, vous avez 3 paquets: le vôtre et deux de tests que nous ne verrons pas immédiatement. Ils servent à tester des applications.
-	\item \texttt{res}: est l'ensemble des ressources \texttt{XML} qui définissent le paramétrage des votre application, réparties en sous-répertoires: \texttt{drawable} contient les images, \texttt{layout} l'ensemble des interfaces, \texttt{mipmap} les ressources multi-résolution et \texttt{values} des ressources valuées. Ce répertoire est accessible par programmation en passant par la classe statique \textbf{\texttt{R}} qui est auto-générée et auto-synchronisée lors des constructions de votre application.
-	\item \texttt{Gradle script}: regroupe l'ensemble des scripts de reconstruction de votre projet et donc indirectement des informations sur la configuration des dépendances de votre projet. Il est très fortement conseillé de \textit{ne pas modifier ces fichiers} sauf indications contraire et avec parcimonie. 
-\end{itemize}
-
-\subsection{Concepteur d'interface}
-
-Intéressons-nous maintenant à la conception d'une interface graphique. Pour cela, cherchez dans l'explorateur de projet le fichier \texttt{activity\_main.xml} présent dans le répertoire \texttt{layout}, vous pouvez vous aider de la capture d'écran suivante:
-
-\begin{center}
-% 	\includegraphics[width=0.7\linewidth]{ide_androidstudio4}
-\end{center}
-
-Le concepteur d'interface manipule et interprète le fichier \texttt{XML} sous-jacent, ce qui explique que vous n'avez pas à modifier manuellement le fichier (sauf cas très très exceptionnel). Le concepteur est découpé en plusieurs bloc que nous pouvons réduire de la façon suivante:
-
-\begin{center}
-% 	\includegraphics[width=0.9\linewidth]{ide_concepteur_ihm_details}
-\end{center}
-
-Nous présentons rapidement les différents éléments et il est très important que vous les manipuliez au cours des séances afin d'acquérir le plus d'expérience et d'aisance dans le développement \texttt{Android}:
-\begin{itemize}
-	\item La zone rouge regroupe l'ensemble des contrôles graphiques (boutons, listes, cases à cocher, \ldots) mis à votre disposition pour réaliser vos interfaces; ils sont regroupés en catégories.
-	\item La zone orange fournit une visualisation des composants présents dans votre interface et leur ordre au sein du fichier \texttt{XML}. Elle affiche les dépendances pour jouer avec les conteneurs (c'est-à-dire les composants capables de contenir d'autres composants).
-	\item La zone bleue permet de configurer la prévisualisation de votre interface en modifiant la densité de pixels, la résolution, la version du SDK, le thème, la langue, \ldots
-	\item La zone verte fournit des outils pour faciliter le placement de certains composants graphiques.
-	\item La zone rose décrit l'ensemble des propriétés pour le contrôle sélectionné.
-	\item Le reste représente la zone de conception où vous pouvez placer les composants, prévisualiser l'interface, fixer des contraintes de placement\ldots Elle se sépare en deux: l'interface en couleur réelle et une version dite \texttt{blueprint} qui permet de faire ressortir les bordures des objets pour mieux apprécier le placement.
-\end{itemize}
-
-Vous vous habituerez très vite à manipuler cette fenêtre, qui est une partie très importante  de la conception d'une application.
-
-\section{Réalisation du convertisseur de température}
-
-\subsection{Conception de l'interface}
-
-En utilisant l'IDE, on vous demande de réaliser l'interface de notre convertisseur de température entre les \textit{Celsius} et les \textit{Fahrenheit} uniquement. Pour cela, vous allez placer les composants graphiques suivants:
-\begin{itemize}
-	\item \texttt{TextView} définit un texte devant s'afficher sans possibilité de modification par les utilisateurs. Il permet entre autres de servir d'étiquette pour expliquer un champ de saisie et de donner un résultat.
-	\item Les champs de saisie de valeur numérique (\texttt{Number} dans l'IDE) autorisent l'utilisateur à préciser une valeur (ici numérique). Vous utiliserez ce champ pour affecter la température en entrée.
-	\item \texttt{RadioButton} représente un bouton de sélection. Il doit s'intégrer un \texttt{RadioGroup} (ce dernier est qualifié de \textit{conteneur}), ce qui permet de choisir un \texttt{RadioButton} parmi l'ensemble contenu. Vous utiliserez ce contrôle pour choisir l'unité de votre saisie (à savoir \textit{Celsius} ou \textit{Fahrenheit}).
-	\item \texttt{Button} insère un bouton cliquable par l'utilisateur pour lancer un calcul, ici la conversion souhaitée.
-\end{itemize}
-
-Une fois que vous avez identifié tous ces contrôles dans le concepteur, il faut les placer dans votre interface. Premièrement, vous devez supprimer le texte \texttt{Hello World} ajouté par défaut par \texttt{Android Studio}. 
-%\textcolor{blue}{[[Solution : dans la zone "Attributes" de l'interface, repérer le groupe "Common Attributes" et modifier le champ "Text"]]}. 
-\textcolor{blue}{[[Si les étudiants font comme moi, ils vont voir un pictogramme d'avertissement comme quoi le texte dans la widget est "hard coded". Tu expliques ce type de problème à la fin de cette section, dans l'encadré en vert, mais peut-être faudrait-il y faire référence dès maintenant, ou bien écrire de ne pas s'inquiéter pour le moment et d'attendre les explications de l'encadré qui viennent plus tard.]]}
-
-\textcolor{red}{NB: ATTENTION pour Xavier: je me suis aperçu que dans mon jargon j'utilisais conteneur et layout indifféremment. Mais en Android il y a une légère différence entre les deux. Je ne sais pas si c'est utile de rentrer à ce détail, mais il faudra sans doute harmoniser le discours }\\
-\textcolor{blue}{[[J'ai bien lu la remarque. On peut essayer de conserver "layout" dès qu'on parle du conteneur spécifique pour la disposition des éléments et "conteneur" pour tous les autres types de regroupements de widgets.]]}
-
-Pour placer vos contrôles graphiques, vous devez comprendre la notion de conteneur graphique \textcolor{blue}{[["gestionnaire de disposition" ? plutôt que "conteneur graphique" ? C'est un peu lourd mais on évite le terme "conteneur" et dans la suite, on utilisera uniquement "layout"]]} (ou de \texttt{layout} en anglais). Ces composants servent à la mise en page automatique de votre interface. Il existe plusieurs types de conteneurs où chacun permet de placer les composants suivant une politique précise, nous pouvons citer notamment:
-\begin{itemize}
-	\item \texttt{LinearLayout}: place les composants les uns à la suite des autres (verticalement ou horizontalement).
-	\item \texttt{GridLayout}: place les composants dans une grille.
-	\item \texttt{ConstraintLayout}: donne des contraintes de positionnement des composants selon des points d'ancrage. Ce sont les 4 poignées autour du \texttt{TextView} que vous pouviez voir sur la figure présentant le détail du concepteur. C'est ce \texttt{layout} qui est recommandé par Google mais vous pouvez le changer selon vos besoins.
-\end{itemize}
-
-Le \texttt{ConstraintLayout} impose au développeur de mentionner au moins une contrainte verticale (les poignées haut ou bas) et au moins une contrainte horizontale (les poignées gauche et droite). Il est également important de comprendre l'ordre des connexions et la façon à laquelle vous exprimez les contraintes auront un impact visuel sur votre interface finale. En bref, il n'est pas simple de le maîtriser parfaitement il faudra souvent s'y reprendre à plusieurs fois pour arriver à un résultat satisfaisant. Aussi, il est conseillé dans un premier temps de ne pas vouloir faire quelque chose de "parfait" mais de se contenter du suffisant, avec l'expérience et la pratique vous pourrez mieux apprécier les difficultés (et pensez à appeler votre enseignant pour essayer de vous aider).
-
-Essayez de créer votre interface pour produire quelque chose de similaire à l'image de gauche ci-après, vous pouvez bien sûr varier le placement, ou votre style à votre gré. La figure à droite affiche les contraintes utilisées pour arriver à une interface satisfaisante:
-
-\begin{center}
-	\hfill
-% 	\includegraphics[width=0.45\linewidth]{UPConvTemp_V1_design}
-	\hfill
-% 	\includegraphics[width=0.45\linewidth]{UPConvTemp_V1_design_constraints}	
-	\hfill
-\end{center}
-
-Lorsque vous aurez terminé, vous devez manipuler les outils de prévisualisation pour visualiser les différences de comportement de votre interface, en particulier la rotation portrait/paysage pour apprécier le \texttt{ConstraintLayout} et toutes vos contraintes en action en rester dans la zone d'affichage. D'ailleur,s vos contraintes doivent permettre de conserver l'ensemble des contrôles dans la zone d'affichage sinon vous devez modifier vos contraintes. 
-
-\textcolor{red}{Pour Xavier: est-ce qu'on parle ici du layout landscape variant? Je pense qu'au vu de l'interface il est préférable que non.}\\
-\textcolor{blue}{[[D'accord avec toi, pas la peine d'en parler ici]]}
-\textcolor{blue}{[[Mise à jour 2021-09-13 : en fait, on demande à mettre en place la variante "Landscape" dès la première séance de TA. Donc soit on écrit quelques lignes à ce propos dans ce fichier, soit on en parle directement en TP. ]]}
-
-\begin{attention}
-	Dans la zone de hiérarchie, vous pouvez avoir des pictogrammes d'alertes ou d'erreurs qui sont évalués à chaque modification de votre interface. Il est important de les lire au moins une fois. Pour cela, vous devez cliquer sur l'un des pictogrammes et une zone de message apparaît avec le détail du pictogramme comme sur la figure ci-dessous. Notez que certains messages proposent un ou plusieurs boutons "\texttt{Fix}" qui peuvent résoudre le problème (ce qui n'empêche pas d'essayer de les résoudre par vous-même d'abord).
-	
-	\begin{center}
-% 		\includegraphics[width=0.7\linewidth]{UPConvTemp_V1_design_errors}
-	\end{center}
-
-	Lorsque l'on clique sur le bouton présent dans l'avertissement \textit{"Codé en dur"} (\textit{"Hardcoded text"}), l'outil suggère d'extraire la valeur textuelle.L'image ci-dessous illustre ce cas et propose d'écrire le texte de l'étiquette dans un fichier de ressource contenant toutes les chaînes  \texttt{strings.xml}. Il suffit alors de valider la boîte de dialogue et l'avertissement disparaît. Vous pouvez ensuite visualiser le contenu de \texttt{string.xml} pour repérer les modifications qu'il a reçues.
-	
-	Au fur et à mesure de votre apprentissage, ce sont très souvent les mêmes contraintes qui reviennent et vous pourrez les gérer très facilement et mécaniquement.
-	
-\begin{center}
-% 	\includegraphics[width=0.3\linewidth]{UPConvTemp_V1_design_errors_fix}
-\end{center}
-
-\end{attention}
-	
-
-\subsection{Préparer votre application à l'International}
-
-Si vous avez suivi l'interface de démonstration (selon la volonté de l'auteur), cette dernière est en anglais. Avec \texttt{Android Studio}, il est très facile d'adapter son application pour différentes langues et de laisser \texttt{Android} choisir la langue la plus adéquate en fonction du périphérique et de l'utilisateur (on parle alors de "\textit{locale}"). Dans la zone des outils de prévisualisation, trouvez le pictogramme indiquant la langue ("\texttt{Default (en-us)}") et cliquez dessus pour ouvrir l'éditeur de traduction.
-\begin{center}
-% 	\includegraphics[width=0.2\linewidth]{UPConvTemp_V1_design_langue}
-\end{center}
-
-Vous verrez l'ensemble des textes extraits (1 phrase par ligne) dans votre application. Vous pouvez utiliser la colonne "\texttt{Untranslatable}" pour indiquer les éléments n'ayant pas de traduction, comme le nom de l'application par exemple. Ensuite, cherchez le bouton en forme de planète qui permet d'ajouter une locale et choisissez le français. Attention, le système de locale permet de différencier la langue française et la langue française spécifique à un pays: vous pouvez donc tout à fait proposer une traduction française et une spécifique pour les Canadiens par exemple. 
-%\textcolor{blue}{[[Solution : sélectionner "French (fr) in France (FR)".]]} Une fois ajoutée, cliquez dans les cellules de la grille pour traduire le texte.
-
-Lorsque vous avez terminé, vous pouvez fermer la fenêtre et modifier les paramètres de la visualisation pour observer votre interface dans une autre langue. Attention, il est toujours très important de le faire au moins une fois, car les traductions changent les longueurs des textes, qui peuvent  sortir de la zone visible ou ne pas s'agencer correctement. Ces éléments font partie du test d'interface.
-
-%\begin{center}
-%	\includegraphics[width=0.7\linewidth]{UPConvTemp_V1_design_langue_fini}
-%\end{center}
-
-
-\begin{info}
-	Félicitations, vous avez fini votre première interface. Elle est visuelle seulement mais si vous avez bien réalisé toutes les étapes, vous pouvez exécuter votre application pour visualiser votre interface dans un émulateur ou sur un smartphone.
-\end{info}
-
-
-\subsection{Réalisation du code}
-
-Au vu des objectifs de l'application, il faut mettre en place le comportement suivant: lorsque l'utilisateur a saisi une température et fixé l'unité de cette température, il lui suffit de cliquer sur le bouton pour lancer le calcul de conversion et afficher le résultat. Pour cela, vous allez d'abord détecter les cliques sur le bouton pour lancer une fonction que vous définirez et qui réalisera la conversion. 
-
-\subsection{Préparation}
-
-Vous travaillerez dans le fichier source principal: \texttt{MainActivity.java}. Premièrement, créez un ensemble d'attributs à notre classe:
-
-% Complément : cliquer sur "Alt+Entrée" sur chaque ligne de déclaration pour ajouter les lignes d'imports des classes concernées.
-
-\begin{boxcode}
-	\begin{javasansbord}
-public static String TAG = "UPConvTemp"; // Identifiant pour les messages de log
-
-private EditText editInputTemp; // Boite de saisie de la température
-private RadioButton rbCelsius; // Bouton radio indiquant si la saisie est en Celsius
-private RadioButton rbFahrenheit; // Bouton radio indiquant si la saisie est en Fahrenheit
-private TextView dispResult; // Le TextView qui affichera le résultat
-	\end{javasansbord}
-\end{boxcode}
-
-Vous avez vu que l'interface graphique est un fichier \texttt{XML} alors que vous développez dans un langage de programmation. En IHM, on dit qu'\texttt{Android} "gonfle" (\textit{inflate}) l'interface. Donc, pour récupérer l'objet \texttt{Java} de nos composants, le SDK fournit une fonction nommée \texttt{findViewById} qui permet de chercher l'objet \texttt{Java} à partir de l'identifiant déterminé dans le concepteur du composant (chercher la propriété \texttt{ID}). La récupération des objets se fait lorsque l'interface à fini de "gonfler",  donc \textbf{à la fin de la fonction \texttt{OnCreate}}. Vous devez donc, pour chaque attribut de composant graphique vu précédemment, récupérer l'objet\texttt{Java} associé en vous inspirant de la ligne ci-dessous qui récupère la boîte de saisie à partir de son identifiant (bien évidemment, vous aurez sans doute un autre nom comme identifiant):
-\begin{boxcode}
-	\begin{javasansbord}
-editInputTemp = findViewById(R.id.editInputTemp);
-	\end{javasansbord}
-\end{boxcode}
-
-\subsection{Retour haptique}
-
-L'émergence des téléphones et leur spécificité en termes de puissance, taille d'écran, résolution, quantité de capteurs embarqués \ldots, induit de l'ingénierie pour communiquer une information à l'utilisateur autre qu'un message long à lire. Parmi les retours haptiques très répandus, nous pouvons citer des sons de notifications précis (pensez à la réception d'un SMS que nous reconnaissons sans même regardez notre téléphone) ou les mécanismes de vibration qui peuvent différer selon la situation ou pour confirmer un mouvement. Voici deux mécaniques très simples en \texttt{Android} que vous pouvez/devez utiliser tout au long de votre carrière.
-
-Le code de la fonction ci-dessous exploite la vibration d'un téléphone que vous pouvez bien sûr, reprendre en l'état ou adapter à votre guise.
-La vibration nécessite une permission (regardez bien les messages d'avertissement, l'IDE vous proposera d'ajouter la bonne permission).
-
-% Compléments :
-% Le code ci-dessous doit faire partie de la classe MainActivity.
-% Un pictogramme rouge apparaît pour la fonction v.vibrate() pour signaler l'absence de permission.
-
-\begin{boxcode}
-	\begin{javasansbord}
-public void vibrate(long duration_ms) {
-	Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-	if(duration_ms < 1)
-		duration_ms = 1;
-	if(v != null && v.hasVibrator()) {
-		// Attention changement comportement avec API >= 26 (cf doc)
-		if(Build.VERSION.SDK_INT >= 26) {
-			v.vibrate(VibrationEffect.createOneShot(duration_ms,
-					VibrationEffect.DEFAULT_AMPLITUDE));
-		}
-		else {
-			v.vibrate(duration_ms);
-		}
-	}
-	// sinon il n'y a pas de mécanisme de vibration
-}
-	\end{javasansbord}
-\end{boxcode}
-
-Une autre façon de communiquer une information éphémère à l'utilisateur est d'afficher un petit message très court à lire appelé un \texttt{toast} en Android. Le code suivant illustre une fonction permettant d'utiliser un \texttt{toast}:
-
-% Compléments :
-% Le code ci-dessous doit faire partie de la classe MainActivity.
-\begin{boxcode}
-	\begin{javasansbord}
-public void toast(String msg) {
-	Toast.makeText(this, msg,Toast.LENGTH_SHORT).show();
-}
-	\end{javasansbord}
-\end{boxcode}
-
-Vous avez deux types de retour que vous pouvez utiliser comme vous le souhaitez dans vos projets. Attention cependant aux abus, qui peuvent perturber la compréhension des utilisateurs d'une part et surtout, prenez soin de vous fixer des conventions claires dans votre démarche. Par exemple, deux vibrations avec des durées de vibration trop similaires rendant la compréhension ambiguë.
-
-\subsection{Fonction de conversion}
-
-Écrivez la fonction de conversion nommée \lstinline|public void action_convert(android.view.View v)|. Cette fonction suppose que l'ensemble des attributs sont correctement connectés et vous devez réaliser le code décrit dans les étapes suivantes:
+L'objectif ici est de réalisez des manipulations d'Unity, vous pouvez/devez expérimenter les points suivants:
 \begin{enumerate}
-	\item Extraire et convertir la valeur saisie par l'utilisateur (cette valeur est textuelle).
-	\item Identifier l'unité choisie en regardant quel bouton radio est coché.
-	\item Réaliser la formule adéquate de conversion.
-	\item Formater le résultat pour afficher la valeur convertie et l'unité cible (par exemple on demande à afficher \texttt{$32^\circ$C}).
-	\item Si une erreur survient, vous devez afficher un message de log cohérent et faire un retour d'erreur succinct à l'utilisateur.
+	\item Utilisez la forme primitive Capsule pour Deimos.
+	\item Utilisez un maillage produit avec vos mains sous Blender ou via un objet quelconque trouvé sur l'Internet pour remplacer Phobos.
+	\item Mettez une texture sur les objets (pas forcément celle des planètes, mais ce que vous voulez).
+	\item Modifiez la skybox de votre caméra (plusieurs possibilités, mais utilisez bien la documentation et vos intuitions pour le faire, sans chercher en premier lieu une solution sur le net).
+	\item Placez les objets de manière hiérarchique pour obtenir les transformations de leur parent.
 \end{enumerate}
 
-Quelques informations supplémentaires pour vous aider à réaliser le code demandé:
+
+
+
+\section{Premier script pour animer tout ça}
+
+Je vous propose de réaliser le fameux script JeTourne.cs du cours, qui se contente d'appeler la rotation autour du soleil. Chercher dans la documentation Unity, le rôle de la fonction \texttt{FixedUpdate}. Modifiez votre programme pour l'utiliser en conséquence comme dans le cours. Nous ferons en particulier les variables suivantes sans les liées à des boutons ou autre widget:
 \begin{itemize}
-	\item Pour retrouver la liste des attributs/méthodes des composants graphiques, vous avez une référence très complète sur le site: \url{https://developer.android.com/reference/packages}
-	\item La conversion \textit{Celsius} en \textit{Fahrenheit} est: $F = (C * 9/5) + 32$
-	\item La conversion \textit{Fahrenheit} en \textit{Celsius} est: $C = (F - 32) * 5/9$
-	\item Vous devez lier le clique sur le bouton de cette fonction depuis le concepteur d'interface en sélectionnant le bouton et en cherchant la propriété \texttt{OnClick}. Si en dépliant la liste, vous ne voyez pas la fonction de conversion, cela signifie que vous n'avez pas respecté sa signature.
+	\item Mettez dans votre script une variable booléenne qui détermine si l'objet en question tourne ou non
+	\item Mettez la vitesse de rotation de votre objet en guise de paramètre.
+	\item Surcharger les fonctions intéressantes du cycle de vie de votre objet pour en faire un affichage dans la console. 
 \end{itemize}
 
-Vous pouvez lancer l'application et vérifier qu'elle fonctionne comme prévu. Félicitations à vous.
+\section{Interaction pour le contrôle du système solaire}
+
+Réalisez l'interface proposée ci-dessous pour le soleil:
+\begin{center}
+	\includegraphics[width=0.7\linewidth]{rc/ui_control_sun_planet}
+\end{center}
+
+Ensuite sur ce même modèle, réalisez l'interface pour la Terre et Mars uniquement. Maintenant que vous avez une jolie interface, nous allons réalisez la connexion au écouteur d'événement des boutons d'animation pour contrôler si oui ou non la rotation de l'astre associé est actif ou non. En bref, il vous est demandé de réaliser une fonction, qui détecte les changements de valeur de la checkbox pour en activer/désactiver l'animation selon la valeur du booléen. 
+Pour Le slider, nous considérons qu'il pourra prendre des valeurs de 0 à 100 et qui contrôlera la vitesse de rotation de l'objet associé.
+
+
+\section{Placement de caméra}
+
+Lisez la page du guide suivant: \url{https://docs.unity3d.com/Manual/MultipleCameras.html}. Elle explique les deux façons de contrôler l'affichage d'une caméra simplement.
+
+Pour mettre en pratique les explications du lien, nous vous proposons d'ajouter une caméra local à la Lune (de la Terre). Ajoutez des widgets à l'interface pour changer de caméra à la volée comme indiquez dans la documentation.
+
+Pour les explications de la seconde partie, on se propose d'ajouter une 3e caméra en vu de haut de notre système solaire. Cette vue devra apparaitre en miniature dans le bord bas gauche de la fenêtre (ou un autre bord si vous préférez).
+
+
+\section{Pour aller plus loin}
+
+La mécanique céleste mise en place jusqu'à présent est vraiment catastrophique, mais offre un cadre suffisant pour l'apprentissage des mécaniques. Nous vous proposons d'ajouter une comète cyclique (ou autre astre) qui n'est plus sous-fils du Soleil, mais bien un objet quelconques.
+
+Pour pouvoir animer votre comète vous allez devoir lui fournir une équation qui va traduire sa trajectoire pour cela je vous propose de vous inspirez du lien suivant \url{https://fr.wikipedia.org/wiki/Trajectoire_d%27une_com%C3%A8te}
+ou d'utiliser l'équation d'un cercle autour du soleil par exemple.
 
 
 
