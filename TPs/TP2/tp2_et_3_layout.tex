@@ -1,0 +1,319 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{wrapfig}
+
+\usepackage{hyperref}
+\setlength{\parindent}{10pt}
+\setlength{\parskip}{1.5mm}
+\usepackage{geometry}
+\geometry{margin=1.25cm}
+\addtolength{\textheight}{-1.5cm}
+\setlength{\headheight}{32pt}
+
+\usepackage{amsfonts, amstext, color,
+	ifthen, fancybox, multirow, fancyhdr, pgf, tikz,%
+	colortbl, array, tabularx
+}
+
+\definecolor{bgcode}{rgb}{0.95,0.95,0.95}
+
+\usepackage{url}
+
+\usepackage[french]{babel}
+\selectlanguage{french}
+
+%partie concernant la gestion des entêtes
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{lastpage}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Interface Homme-Machine Android}
+\fancyhead[R]{Université de Poitiers}
+\renewcommand\footrulewidth{1pt}
+\fancyfoot[L]{Département d'Informatique}
+\fancyfoot[C]{\textbf{\thepage/\pageref{LastPage}}}
+\fancyfoot[R]{année 2021-2022}
+%fin
+
+\usepackage{enumitem}
+
+\usepackage{listings}
+
+\usepackage{version}
+\usepackage{tcolorbox}
+
+\newcounter{Exercice}
+\newcommand{\Exercice}[1]{\refstepcounter{Exercice}%
+	\ \vspace{0mm} \\ \hspace{0.8cm}%
+	\noindent \hspace*{0.5cm} {\bf Question \theExercice :} #1 \vspace{-13mm} \\ %
+	\subparagraph*{}%
+}
+
+\lstset{language=Caml,basicstyle=\normalsize\tt,keywordstyle=\ttfamily\bfseries\underbar,%
+	commentstyle=\normalsize, extendedchars=true, fontadjust=true, columns = flexible, flexiblecolumns=true,
+	linewidth=.975\linewidth, backgroundcolor=\color{bgcode}, frame=tlrb, xleftmargin=1cm}
+
+\lstnewenvironment{ocamlcode}
+{\lstset{language=Caml,basicstyle=\normalsize\tt,keywordstyle=\ttfamily\bfseries\underbar,%
+		commentstyle=\normalsize, extendedchars=true, fontadjust=true, columns = flexible, flexiblecolumns=true,
+		linewidth=.975\linewidth, backgroundcolor=\color{bgcode}, frame=tlrb, xleftmargin=1cm,
+		literate={à}{{\`a}}1 {è}{{\`e}}1 {é}{{\'e}}1 {ê}{{\^e}}1,
+	}}%, framexleftmargin=5mm,frame=box}}
+{}
+
+\lstnewenvironment{fsharp}
+{\lstset{language=Caml,basicstyle=\normalsize\tt,keywordstyle=\ttfamily\bfseries\underbar,%
+		commentstyle=\normalsize, extendedchars=true, fontadjust=true, columns = flexible, flexiblecolumns=true,
+		linewidth=.975\linewidth, backgroundcolor=\color{bgcode}, frame=tlrb, xleftmargin=1cm,
+		literate={à}{{\`a}}1 {è}{{\`e}}1 {é}{{\'e}}1 {ê}{{\^e}}1 {ç}{{\c c}}1,
+}}%, framexleftmargin=5mm,frame=box}}
+{}
+
+\lstnewenvironment{javasansbord}
+{\lstset{language=Java,basicstyle=\normalsize\tt,keywordstyle=\ttfamily\bfseries\underbar,%
+		commentstyle=\normalsize, extendedchars=true, fontadjust=true, columns = flexible, flexiblecolumns=true,
+		linewidth=.975\linewidth,frame=,backgroundcolor=,xleftmargin=0cm,
+		literate={à}{{\`a}}1 {è}{{\`e}}1 {é}{{\'e}}1 {ê}{{\^e}}1 {ç}{{\c c}}1,
+}}%, framexleftmargin=5mm,frame=box}}
+{}
+
+\lstnewenvironment{csharpsansbord}
+{\lstset{language=[Sharp]C,basicstyle=\normalsize\tt,keywordstyle=\ttfamily\bfseries\underbar,%
+		commentstyle=\normalsize, extendedchars=true, fontadjust=true, columns = flexible, flexiblecolumns=true,
+		linewidth=.975\linewidth,frame=,backgroundcolor=,xleftmargin=0cm,
+		literate={à}{{\`a}}1 {è}{{\`e}}1 {é}{{\'e}}1 {ê}{{\^e}}1 {ç}{{\c c}}1,
+}}%, framexleftmargin=5mm,frame=box}}
+{}
+
+\lstnewenvironment{java}
+{\lstset{language=Java,basicstyle=\normalsize\tt,keywordstyle=\ttfamily\bfseries\underbar,%
+		commentstyle=\normalsize, extendedchars=true, fontadjust=true, columns = flexible, flexiblecolumns=true,
+		linewidth=.975\linewidth, backgroundcolor=\color{bgcode}, frame=tlrb, xleftmargin=1cm,
+		literate={à}{{\`a}}1 {è}{{\`e}}1 {é}{{\'e}}1 {ê}{{\^e}}1 {ç}{{\c c}}1,
+}}%, framexleftmargin=5mm,frame=box}}
+{}
+
+\lstnewenvironment{csharp}
+{\lstset{language= [Sharp]C,basicstyle=\normalsize\tt,keywordstyle=\ttfamily\bfseries\underbar,%
+		commentstyle=\normalsize, extendedchars=true, fontadjust=true, columns = flexible, flexiblecolumns=true,
+		linewidth=.975\linewidth, backgroundcolor=\color{bgcode}, frame=tlrb, xleftmargin=1cm,
+		literate={à}{{\`a}}1 {è}{{\`e}}1 {é}{{\'e}}1 {ê}{{\^e}}1 {ç}{{\c c}}1,
+}}%, framexleftmargin=5mm,frame=box}}
+{}
+
+\newboolean{versionenseignant}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%__     __            _
+%\ \   / /__ _ __ ___(_) ___  _ __
+% \ \ / / _ \ '__/ __| |/ _ \| '_ \
+%  \ V /  __/ |  \__ \ | (_) | | | |
+%   \_/ \___|_|  |___/_|\___/|_| |_|
+% _____                _                         _
+%| ____|_ __  ___  ___(_) __ _ _ __   __ _ _ __ | |_
+%|  _| | '_ \/ __|/ _ \ |/ _` | '_ \ / _` | '_ \| __|
+%| |___| | | \__ \  __/ | (_| | | | | (_| | | | | |_
+%|_____|_| |_|___/\___|_|\__, |_| |_|\__,_|_| |_|\__|
+%                        |___/ 
+%% modifiez le booleen ci-dessous pour generer la version enseignant ou etudiant
+%% ===> true = version enseignant
+%% ===> false = version etudiant
+\setboolean{versionenseignant}{false}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \includeversion{ensnote}
+%\excludeversion{ensnote}
+\ifthenelse{\boolean{versionenseignant}}{\includeversion{ensnote}}{\excludeversion{ensnote}}
+
+\tcbuselibrary{breakable}
+
+
+\newenvironment{solution}%
+{\begin{tcolorbox}[breakable,colback=red!5!white,colframe=red!75!black,title=Solution]}%
+{\end{tcolorbox}}
+
+%\tcblower
+
+\newenvironment{info}%
+{\begin{tcolorbox}[breakable,colback=green!5!white,colframe=green!75!black,title=Information]}%
+{\end{tcolorbox}}
+
+
+\newenvironment{attention}%
+{\begin{tcolorbox}[breakable,colback=green!25!white,colframe=red!55!black,title=Attention]}%
+{\end{tcolorbox}}
+
+
+\newenvironment{boxcode}%
+{\begin{tcolorbox}[breakable,colback=gray!5!white,colframe=black]}%
+	{\end{tcolorbox}}
+	
+	
+\begin{document}
+	
+
+
+\title{\vspace*{-1cm}Réalisation de nos premiers widgets}
+\author{\vspace*{-1.5cm}Interface Homme-Machine: Unity
+\begin{ensnote}
+	(Version enseignant)
+\end{ensnote}
+}
+\date{\vspace*{-1.5cm}version 1}
+\maketitle
+\thispagestyle{fancy}
+
+Voici les objectifs de ce sujet:
+\begin{itemize}
+	\item Continuez à manipuler l'IDE \texttt{Unity}.
+	\item Création d'un \textit{widget} complexe.
+	\item Mécanisme des préfabriqués.
+	\item Exportation de son travail: les \textit{unity package}.
+\end{itemize}
+
+
+%\begin{attention}
+%	Le sujet ce fait en deux étapes. Avec une proposition notée de votre interface au bout de 2h (si vous avez fini avant la \textit{deadline} rien ne vous empêche de continuer)!
+%	
+%	N'oubliez pas d'utiliser les bons réflexes de tout développeur:
+%	\begin{itemize}
+%		\item Le système de log très bien fait sous Android
+%		\item Le mode débogue qui vous permet de voir les valeurs des variables pendant 
+%	\end{itemize}
+%\end{attention}
+
+\section*{Description générale du TP}
+
+La fois précédente, nous avons réalisé notre premier projet Unity et nous avons vu la manipulation de l'interface. La manipulation est simple (mais nécessite quelques calibration). Nous avons réalisé entre autre notre première interface très simplifiée, reposant sur la mécanique des ancres (voire aucune pour certains d'entre vous). La mécanique des ancres n'est pas aisé surtout lorsque les ratio de l'écran peuvent changer (réalisation d'une application PC et une application Android). Ce dernier point ne sera pas étudié dans ce TP car cela rentre dans les aspects très avancées. Cependant, pour le lecteur volontaire ou si vous finissez le TP (donc pas au début) il serait intéressant de regarder ce pointeur \url{https://docs.unity3d.com/2020.1/Documentation/Manual/HOWTO-UIMultiResolution.html}. 
+
+Quoi qu'il arrive, on vous demande dans un premier temps de créer un NOUVEAU projet vide et de fixer une résolution raisonnable\footnote{La résolution que j'ai dans mes versions sont par défaut le \texttt{1024x768}.} de votre Canvas, dans le menu Game de la fenêtre (sinon il s'agit de paramètre spécifique au déploiement de votre application). Modifier aussi en sélectionnant dans le Canvas de la hiérarchie, le composant gérant la mise à l'échelle en fonction de la résolution (\texttt{Canvas Scaler}) et respectant les paramètres à la résolution prêt l'image de droite.
+
+\begin{center}
+\hfill	\includegraphics[width=0.3\linewidth]{rc/unity_set_ui_resolution_game}%
+\hfill	\includegraphics[width=0.6\linewidth]{rc/unity_set_ui_resolution_canvas_scaler}%
+\hfill
+\end{center}
+
+Une fois réalisez ça, nous pouvons passer à la réalisation de widget complexe. Pour expliquer ce terme, nous allons réalisé un agglomérat de widget existant avec un ou plusieurs scripts pour régir le comportement global du widget.
+
+\section{Premier widget complexe: FormattedInputField}
+
+L'objectif de ce widget est de réaliser une zone de texte qui change de couleur selon une expression régulière particulière comme sur l'image ci-dessous, où le champ valide la présence d'un nombre, ainsi lorsque la saisie est vide, nous avons une couleur standard, la présence d'un nombre engendre une couleur et une autre couleur si l'expression régulière n'est pas présente.
+\begin{center}
+	\includegraphics[width=0.4\linewidth]{rc/widget_formattetinputfield_start}
+\end{center}
+
+Pour cela, nous vous donnons le code suivant
+
+\begin{boxcode}
+\begin{csharpsansbord}
+Console.WriteLine("Regex experimentation");
+string regex = "[0-9]+";
+string montext = "bonjour";
+
+if (System.Text.RegularExpressions.Regex.IsMatch(regex, montext))
+	Console.WriteLine("Le text match la regex");
+else
+	Console.WriteLine("le text ne match pas la regex");
+
+\end{csharpsansbord}
+\end{boxcode}
+
+
+D'un point de vue conceptuel, nous devons faire les étapes suivantes (si vous faite autrement tant pis pour vous, même si cela peut marcher):
+\begin{enumerate}
+	\item Créez les attributs publique correspondant aux couleurs et les initialisées directement.
+	\item Créez l'attribut de la regex sous forme de chaine de caractère.
+	\item Réalisez la callback lorsqu'on change le texte dans le champ de saisie.
+	\item La couleur qu'il faut changer est celle du composant image.
+\end{enumerate}
+
+\begin{info}
+Pour réaliser le dernier point, il faut bien se rappeler de la séance précédente et de la partie sur l'inspecteur des objets en Unity. En effet, si on regarde bien nous avons différents composants pour le champs de saisie. Le composant qui nous intéresse est l'image pour changer l'attribut color pour répondre à nos conditions. Pour cela, il nous suffit à partir du \texttt{gameObject} de récupérer l'objet souhaité:
+
+\begin{csharp}
+Image image = gameObject.GetComponent<Image>();
+\end{csharp}
+
+J'insiste que \texttt{GetComponent} récupère le premier composant du type souhaité dans le gameObject courant, il existe une version permettant de récupérer tous les composants d'un type cible.
+\begin{csharp}
+Image[] images = gameObject.GetComponents<Image>();
+\end{csharp}
+\end{info}
+
+Réalisez le widget voulu, en attachant une importance à la hiérarchie dans la structure de votre projet et aux noms que vous adoptez (harmonisation et uniformisation).
+
+\section{Widget: ComplexSlider}
+
+Dans le précédent widget nous avions un unique widget et ici nous allons composé un widget complexe à partir de 3 widgets basiques. Pour cela nous allons réaliser des curseurs complexes en composant un texte qui servira de label, d'un slider basique et d'un champ de saisie sur les nombres pour visualiser la valeur du slider et/ou le modifier manuellement.
+\begin{center}
+	\includegraphics[width=0.5\linewidth]{rc/widget_complexslider_demo}
+\end{center}
+
+\begin{info}
+Généralement un widget complexe doit avoir un panel à la base pour servir de fond visuel que vous opacifierez par défaut et qui permet de hiérarchiser les 3 sous-widgets le composant.
+\end{info}
+
+Vous devez réaliser un tel composant et une fois la partie réalisez, vous réaliserez un unique script qui gouverne tous les aspects comportemental. En particulier, lorsqu'une valeur est modifié, cela impacte l'autre widget pour avoir toujours une cohérence entre le champ de saisie et le slider basique.
+
+
+\section{Exporter son travail}
+
+Bravo vous avez fait le plus gros essayer d'appeler l'enseignant pour qu'il vérifie votre développement ou critiquer vos noms et autres petits détails.
+
+\subsection{Préfabriqué}
+L'intéret de développer un widget est de pouvoir le réutiliser plusieurs fois sans devoir faire plusieurs manipulations identiques ou des \texttt{copier-coller}. Pour cela, Unity à la possibilité de faire des \texttt{Préfabs}, une sorte de sauvegarde de votre réalisation au sein d'un projet!
+
+Pour ce faire il est assez simple lorsque vous avez fini un widget qui n'a pas de dépendance extérieur, c'est à dire que le widget est autonome (sinon ils risquent d'être sauvegardé), il suffit de glisser le gameObject de la hiérarchie à la zone des Assets. Ainsi l'icone du gameobject devient bleu! C'est ainsi qu'on sait qu'il s'agit d'un Préfab.
+
+
+\begin{info}
+Lorsque vous sélectionnez un Préfab dans la zone des Assets vous avez un nouveau bouton dans l'inspecteur qui vous permet de modifier le préfab.
+\begin{center}
+	\includegraphics[width=0.5\linewidth]{rc/unity_set_ui_open_prefab}
+\end{center}
+\end{info}
+
+\begin{attention}
+Quand vous modifiez un Préfab vous êtes dans un environnement particulier, il est essentiel de revenir au plus vite dans le mode standard en particulier pour sauvegarder et ainsi éviter des petits problèmes. 
+
+Pour quitter, il faut cliquer sur le bouton retour (noté par $'<'$) au niveau de la hiérarchie.
+\begin{center}
+	\includegraphics[width=0.3\linewidth]{rc/unity_set_ui_close_prefab}
+\end{center}
+\end{attention}
+
+Réalisez des préfabs de vos widgets et les ayant nettoyés si besoin AVANT! Ensuite instancié pour expérimenter deux ou trois de votre préfab. Pour cela, il suffit de glisser votre préfab depuis l'Assert vers la vue 3D ou la hiérarchie à l'endroit souhaité.
+
+\subsection{Export vers d'autre projet Unity}
+
+\subsection{Export}
+
+Maintenant que vous avez la possibilité de sauvegarder et réutiliser votre production, au sein d'un projet, il est fréquent de devoir les exporter pour les utiliser dans d'autre projet. 
+Pour cela, il faut exporter des Préfabs dont vous connaissez les dépendances, en sélectionnant votre Préfab dans les Assets et en faisant un clique droit dessus. Dans le menu contextuel, sélectionnez \texttt{'Export Package\ldots'}.
+
+Dans la nouvelle fenêtre vous devez sélectionner les bonnes dépendances de votre widget. En particulier, par défaut Unity sélectionne tous les scripts sans distinction car il n'arrive pas à calculer les dépendances correctement. Vous devez donc sélectionner les bonnes dépendances de scripts manuellement. Puis cliquez, sur le bouton export pour sauvegarder le package unity.
+
+\begin{center}
+\hfill \includegraphics[width=0.35\linewidth]{rc/unity_set_ui_export_package}
+\hfill \includegraphics[width=0.5\linewidth]{rc/unity_set_ui_export_prefab_deps}
+\hfill 
+\end{center}
+
+\subsection{Import}
+
+Pour tester nos paquets unity créés à l'étape précédent, c'est très simple! Il suffit de créer un nouveau projet Unity et glissez votre fichier \texttt{.unitypackage} dans les Assets et de se laisser guider par le menu.
+
+\begin{info}
+Une alternative consiste juste à faire un clique droit dans la zone des Assets et cliquer sur l'import d'un paquet personnalisé.
+\end{info}
+
+Votre widget est prêt à l'emploi. La mécanique des unitypackage est l'une des façons de se partager le travail lorsqu'on est plusieurs sur un même projet et que cela s'y prête bien. 
+
+\section{Toujours plus loin}
+
+Reprenez votre TP précédent ou un nouveau projet qui exploite vos nouveaux widgets, histoire de voir une application complète et comprendre que votre prefab doit bien être autonome pour embarquer uniquement son comportement intrinsèque!
+
+
+\end{document}
