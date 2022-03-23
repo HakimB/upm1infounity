@@ -138,8 +138,8 @@
 	
 
 
-\title{\vspace*{-1cm}Réalisation d'un système solaire}
-\author{\vspace*{-1.5cm}Interface Homme-Machine: Android
+\title{\vspace*{-1cm}Manipulation des layouts}
+\author{\vspace*{-1.5cm}Interface Homme-Machine: Unity
 \begin{ensnote}
 	(Version enseignant)
 \end{ensnote}
@@ -151,9 +151,9 @@
 Voici les objectifs de ce sujet:
 \begin{itemize}
 	\item Continuez à manipuler l'IDE \texttt{Unity}.
-	\item Création d'un \textit{widget} complexe.
-	\item Mécanisme des préfabriqués.
-	\item Exportation de son travail: les \textit{unity package}.
+	\item Continuez la création d'un \textit{widget} complexe.
+	\item Exploitez les mécaniques vues précédemment.
+	\item L'utilisation des Layouts
 \end{itemize}
 
 
@@ -169,31 +169,68 @@ Voici les objectifs de ce sujet:
 
 \section*{Description générale du TP}
 
-La fois précédente, nous avons réalisé notre premier projet Unity et nous avons vu la manipulation de l'interface. La manipulation est simple (mais nécessite quelques calibration). Nous avons réalisé entre autre notre première interface très simplifiée, reposant sur la mécanique des ancres (voire aucune pour certains d'entre vous). La mécanique des ancres n'est pas aisé surtout lorsque les ratio de l'écran peuvent changer (réalisation d'une application PC et une application Android). Ce dernier point ne sera pas étudié dans ce TP car cela rentre dans les aspects très avancées. Cependant, pour le lecteur volontaire ou si vous finissez le TP (donc pas au début) il serait intéressant de regarder ce pointeur \url{https://docs.unity3d.com/2020.1/Documentation/Manual/HOWTO-UIMultiResolution.html}. 
+La fois précédente, nous avons réalisé nos premiers widget complexe en exploitant l'agrégation de plusieurs widget de base. Nous avons en particulier manipuler le système d'ancre que propose Unity pour placer les objets de façon relative.
 
-Quoi qu'il arrive, on vous demande dans un premier temps de créer un NOUVEAU projet vide et de fixer une résolution raisonnable\footnote{La résolution que j'ai dans mes versions sont par défaut le \texttt{1024x768}.} de votre Canvas, dans le menu Game de la fenêtre (sinon il s'agit de paramètre spécifique au déploiement de votre application).
+Ici, nous allons voir une autre méthode un peu plus couteuse mais offrant une plus grande puissance en terme de placement et qui reprend les points que vous avez étudié dans les années précédentes en IHM: les mises en pages (layout). La documentation est présente ici: \url{https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/UIAutoLayout.html}
+
+\section*{Présentation des outils de mise en pages en Unity UI}
+
+Il est conseillé de lire en détail la documentation cité plus haut pour bien comprendre les aspects et tous les détails. Je me contente ici de résumer des points clés:
+\begin{itemize}
+	\item Vous avez 2 types de composants dédiés à la mise en page
+	\item Les conteneurs ou \textit{Layout Group} contrôlent le comportement des widgets fils (enchainement horizontal, enchainement vertical ou sous forme de grille, \ldots)
+\begin{center}
+	\includegraphics[width=0.6\linewidth]{rc/ui_layout_group_horiz}
+\end{center}	
+	\item Les composants élément ou \textit{Layout Element} qui indique leur présence de mise en page.
+\begin{center}
+	\includegraphics[width=0.6\linewidth]{rc/ui_layout_element}
+\end{center}
+\end{itemize}
+
+Ainsi, chaque conteneur peut avoir des paramétrages différents qui vont faire évoluer les éléments selon les contraintes. Vous ferez attention à certains paramètres qui peuvent forcer le redimensionnement des widgets éléments sans les consulter même si leur taille n'était pas voulue. Vous ferez aussi attention aux éléments qui doivent activer la flexibilité des dimensions voulues pour agrandir dans cette direction (une valeur de 1 peut être suffisant pour indiquer un degré de liberté).
+
+\section{Widget: ComplexSlider le retour en joli}
+
+Refaite le widget ComplexSlider (soit sous un autre nom, soit après avoir fait une sauvegarde de votre ancien projet/widget). Pour obtenir un affichage joli peu importe la largeur que vous donnerez à votre widget pour que le slider prenne la plus grande place.
 
 \begin{center}
-	\includegraphics[width=0.5\linewidth]{rc/unity_set_ui_resolution_game}
+	\includegraphics[width=0.6\linewidth]{rc/ui_complexslider_layout}
+
+	\includegraphics[width=0.8\linewidth]{rc/ui_complexslider_layout_v2}
+	
 \end{center}
 
-Une fois réalisez ça, nous pouvons passer à la réalisation de widget complexe. Pour expliquer ce terme, nous allons réalisé un agglomérat de widget existant avec un ou plusieurs scripts pour régir le comportement global du widget.
+
+\section{Widget: Spinner}
+
+Réalisez le widget du Spinner qui consiste à contrôler les évolutions d'un nombre via 2 boutons regroupés en bout de ligne. 
+
+\begin{center}
+	\includegraphics[width=0.6\linewidth]{rc/ui_spinner_layout}
+\end{center}
+
+Le widget doit être fonctionnel, mais vous pouvez bien sur changer/adapter selon vos souhaits le coté esthétique du widget.
 
 
+\section{Aspects avancés sur le système d'événement souris}
 
-\section{Premier widget complexe: FormattedInputField}
+Le système événementiel est en cours de modification, mais nous présentons ici une mécanique pour interagir avec des événements particuliers. Pour cela, je vous renvoie sur le lien suivant qui donne les événements supportés \url{https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/SupportedEvents.html}. Pour cela, nous vous proposons un petit exercice sous forme de tutoriel:
+\begin{itemize}
+	\item Dans un nouveau projet, ajoutez un panel occupant l'entièreté du Canvas.
+	\item Modifiez la couleur du panel pour qu'il soit entièrement transparent.
+	\item Ajoutez un nouveau script.
+	\item Au début du fichier script, ajoutez la ligne \lstinline|using UnityEngine.EventSystems;|.
+	\item Faire hériter notre script avec les événements voulues (cf. lien plus haut). Dans notre exemple nous allons nous concentrer sur les cliques souris et donc nous prendrons l'interface: \texttt{IPointerClickHandler}.
+	\item Surchargez les fonctions associées aux interfaces. Ici: \lstinline|public void OnPointerClick(PointerEventData data) { }|
+\end{itemize}
 
+Normalement, les événements fait avec cette mécanique réagisse normalement et vous pouvez le vérifier avec des messages de Log.
 
-\section{Widget: SpinnerNumber}
+A présent, nous souhaitons réalisez les points suivants: lorsque nous cliquons sur une zone de l'écran, nous voulons créer à la volée un widget de notre choix à l'écran en tant que fils de notre Panel initial (n'oubliez pas un widget UI doit avoir comme parent un Canvas !!! ). Pour réalisez cela, nous regarderons la fonction \url{https://docs.unity3d.com/ScriptReference/Object.Instantiate.html}.
 
+Réalisez un exemple simple et que remarquez vous sur le pivot de vos ajouts?
 
-\section{Widget: ComplexSlider}
-
-
-\section{Exporter son travail}
-
-
-\section{Toujours plus loin}
-
+Enfin, vous êtes prêt à créer un script \texttt{ResizeWidget} qui consiste à agrandir en largeur/hauteur un widget si nous faisons un drag sur un widget.
 
 \end{document}

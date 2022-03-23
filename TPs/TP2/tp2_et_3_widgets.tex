@@ -199,12 +199,12 @@ Une fois réalisez ça, nous pouvons passer à la réalisation de widget complex
 
 \section{Premier widget complexe: FormattedInputField}
 
-L'objectif de ce widget est de réaliser une zone de texte qui change de couleur selon une expression régulière particulière comme sur l'image ci-dessous, où le champ valide la présence d'un nombre, ainsi lorsque la saisie est vide, nous avons une couleur standard, la présence d'un nombre engendre une couleur et une autre couleur si l'expression régulière n'est pas présente.
+L'objectif de ce widget est de réaliser une zone de texte qui change de couleur selon une expression régulière particulière comme sur l'image ci-dessous, où nous avons 3 \texttt{FormattedInputField}, ainsi lorsque la saisie est vide (le widget de gauche), nous avons une couleur standard, la présence d'un nombre engendre une couleur (le widget au centre) et une autre couleur si l'expression régulière n'est pas présente (le widget à droite).
 \begin{center}
 	\includegraphics[width=0.4\linewidth]{rc/widget_formattetinputfield_start}
 \end{center}
 
-Pour cela, nous vous donnons le code suivant
+Pour cela, nous vous donnons le code suivant qui vient d'un programme C\# basique en dehors d'Unity:
 
 \begin{boxcode}
 \begin{csharpsansbord}
@@ -212,7 +212,7 @@ Console.WriteLine("Regex experimentation");
 string regex = "[0-9]+";
 string montext = "bonjour";
 
-if (System.Text.RegularExpressions.Regex.IsMatch(regex, montext))
+if (System.Text.RegularExpressions.Regex.IsMatch(montext, regex))
 	Console.WriteLine("Le text match la regex");
 else
 	Console.WriteLine("le text ne match pas la regex");
@@ -246,7 +246,8 @@ Réalisez le widget voulu, en attachant une importance à la hiérarchie dans la
 
 \section{Widget: ComplexSlider}
 
-Dans le précédent widget nous avions un unique widget et ici nous allons composé un widget complexe à partir de 3 widgets basiques. Pour cela nous allons réaliser des curseurs complexes en composant un texte qui servira de label, d'un slider basique et d'un champ de saisie sur les nombres pour visualiser la valeur du slider et/ou le modifier manuellement.
+Dans le précédent widget nous avions un unique widget et ici nous allons composé un widget complexe à partir de 3 widgets basiques. Pour cela nous allons réaliser des curseurs complexes en composant un texte qui servira de label, d'un slider basique et d'un champ de saisie sur les nombres pour visualiser la valeur du slider et/ou le modifier manuellement. Ci-dessous, vous avez une image qui illustre 2 ComplexSlider pour choisir des coordonnées (x,y).
+
 \begin{center}
 	\includegraphics[width=0.5\linewidth]{rc/widget_complexslider_demo}
 \end{center}
@@ -257,6 +258,13 @@ Généralement un widget complexe doit avoir un panel à la base pour servir de 
 
 Vous devez réaliser un tel composant et une fois la partie réalisez, vous réaliserez un unique script qui gouverne tous les aspects comportemental. En particulier, lorsqu'une valeur est modifié, cela impacte l'autre widget pour avoir toujours une cohérence entre le champ de saisie et le slider basique.
 
+Pour cela, nous allons exploiter la hiérarchie de notre widget. Il existe deux mécaniques pour retrouver les sous-fils:
+\begin{enumerate}
+	\item via les fonctions de recherche basées sur leur nom. 
+	\item via les mécaniques de recherche sur un type souhaité.
+\end{enumerate}
+Réfléchissez sur les avantages et inconvénients des deux mécaniques en lisant la documentation associée à ces familles de fonction: \url{https://docs.unity3d.com/ScriptReference/GameObject.html}.
+En particulier on réfléchira que se passe-t-il si plusieurs objets sont du même type? ou si l'utilisateur modifie le nom d'un sous-widget.
 
 \section{Exporter son travail}
 
@@ -291,7 +299,7 @@ Réalisez des préfabs de vos widgets et les ayant nettoyés si besoin AVANT! En
 \subsection{Export}
 
 Maintenant que vous avez la possibilité de sauvegarder et réutiliser votre production, au sein d'un projet, il est fréquent de devoir les exporter pour les utiliser dans d'autre projet. 
-Pour cela, il faut exporter des Préfabs dont vous connaissez les dépendances, en sélectionnant votre Préfab dans les Assets et en faisant un clique droit dessus. Dans le menu contextuel, sélectionnez \texttt{'Export Package\ldots'}.
+Pour cela, il faut exporter des Préfabs dont vous connaissez les dépendances, en sélectionnant votre Préfab dans les Assets et en faisant un clique droit dessus (attention on vous demande de tester l'export d'un widget dans un premier temps, puis plusieurs widgets dans un second temps afin que vous compreniez les dépendances). Dans le menu contextuel, sélectionnez \texttt{'Export Package\ldots'}.
 
 Dans la nouvelle fenêtre vous devez sélectionner les bonnes dépendances de votre widget. En particulier, par défaut Unity sélectionne tous les scripts sans distinction car il n'arrive pas à calculer les dépendances correctement. Vous devez donc sélectionner les bonnes dépendances de scripts manuellement. Puis cliquez, sur le bouton export pour sauvegarder le package unity.
 
