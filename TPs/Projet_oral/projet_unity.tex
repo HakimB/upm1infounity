@@ -1,0 +1,189 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{wrapfig}
+
+\usepackage{hyperref}
+\setlength{\parindent}{10pt}
+\setlength{\parskip}{1.5mm}
+\usepackage{geometry}
+\geometry{margin=1.25cm}
+\addtolength{\textheight}{-1.5cm}
+\setlength{\headheight}{32pt}
+
+\usepackage{amsfonts, amstext, color,
+	ifthen, fancybox, multirow, fancyhdr, pgf, tikz,%
+	colortbl, array, tabularx
+}
+
+\definecolor{bgcode}{rgb}{0.95,0.95,0.95}
+
+\usepackage{url}
+
+\usepackage[french]{babel}
+\selectlanguage{french}
+
+%partie concernant la gestion des entêtes
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{lastpage}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Interface Homme-Machine Android}
+\fancyhead[R]{Université de Poitiers}
+\renewcommand\footrulewidth{1pt}
+\fancyfoot[L]{Département d'Informatique}
+\fancyfoot[C]{\textbf{\thepage/\pageref{LastPage}}}
+\fancyfoot[R]{année 2021-2022}
+%fin
+
+\usepackage{enumitem}
+
+\usepackage{listings}
+
+\usepackage{version}
+\usepackage{tcolorbox}
+
+\newcounter{Exercice}
+\newcommand{\Exercice}[1]{\refstepcounter{Exercice}%
+	\ \vspace{0mm} \\ \hspace{0.8cm}%
+	\noindent \hspace*{0.5cm} {\bf Question \theExercice :} #1 \vspace{-13mm} \\ %
+	\subparagraph*{}%
+}
+
+\lstset{language=Caml,basicstyle=\normalsize\tt,keywordstyle=\ttfamily\bfseries\underbar,%
+	commentstyle=\normalsize, extendedchars=true, fontadjust=true, columns = flexible, flexiblecolumns=true,
+	linewidth=.975\linewidth, backgroundcolor=\color{bgcode}, frame=tlrb, xleftmargin=1cm}
+
+\lstnewenvironment{ocamlcode}
+{\lstset{language=Caml,basicstyle=\normalsize\tt,keywordstyle=\ttfamily\bfseries\underbar,%
+		commentstyle=\normalsize, extendedchars=true, fontadjust=true, columns = flexible, flexiblecolumns=true,
+		linewidth=.975\linewidth, backgroundcolor=\color{bgcode}, frame=tlrb, xleftmargin=1cm,
+		literate={à}{{\`a}}1 {è}{{\`e}}1 {é}{{\'e}}1 {ê}{{\^e}}1,
+	}}%, framexleftmargin=5mm,frame=box}}
+{}
+
+\lstnewenvironment{fsharp}
+{\lstset{language=Caml,basicstyle=\normalsize\tt,keywordstyle=\ttfamily\bfseries\underbar,%
+		commentstyle=\normalsize, extendedchars=true, fontadjust=true, columns = flexible, flexiblecolumns=true,
+		linewidth=.975\linewidth, backgroundcolor=\color{bgcode}, frame=tlrb, xleftmargin=1cm,
+		literate={à}{{\`a}}1 {è}{{\`e}}1 {é}{{\'e}}1 {ê}{{\^e}}1 {ç}{{\c c}}1,
+}}%, framexleftmargin=5mm,frame=box}}
+{}
+
+\lstnewenvironment{javasansbord}
+{\lstset{language=Java,basicstyle=\normalsize\tt,keywordstyle=\ttfamily\bfseries\underbar,%
+		commentstyle=\normalsize, extendedchars=true, fontadjust=true, columns = flexible, flexiblecolumns=true,
+		linewidth=.975\linewidth,frame=,backgroundcolor=,xleftmargin=0cm,
+		literate={à}{{\`a}}1 {è}{{\`e}}1 {é}{{\'e}}1 {ê}{{\^e}}1 {ç}{{\c c}}1,
+}}%, framexleftmargin=5mm,frame=box}}
+{}
+
+\lstnewenvironment{java}
+{\lstset{language=Java,basicstyle=\normalsize\tt,keywordstyle=\ttfamily\bfseries\underbar,%
+		commentstyle=\normalsize, extendedchars=true, fontadjust=true, columns = flexible, flexiblecolumns=true,
+		linewidth=.975\linewidth, backgroundcolor=\color{bgcode}, frame=tlrb, xleftmargin=1cm,
+		literate={à}{{\`a}}1 {è}{{\`e}}1 {é}{{\'e}}1 {ê}{{\^e}}1 {ç}{{\c c}}1,
+}}%, framexleftmargin=5mm,frame=box}}
+{}
+
+\newboolean{versionenseignant}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%__     __            _
+%\ \   / /__ _ __ ___(_) ___  _ __
+% \ \ / / _ \ '__/ __| |/ _ \| '_ \
+%  \ V /  __/ |  \__ \ | (_) | | | |
+%   \_/ \___|_|  |___/_|\___/|_| |_|
+% _____                _                         _
+%| ____|_ __  ___  ___(_) __ _ _ __   __ _ _ __ | |_
+%|  _| | '_ \/ __|/ _ \ |/ _` | '_ \ / _` | '_ \| __|
+%| |___| | | \__ \  __/ | (_| | | | | (_| | | | | |_
+%|_____|_| |_|___/\___|_|\__, |_| |_|\__,_|_| |_|\__|
+%                        |___/ 
+%% modifiez le booleen ci-dessous pour generer la version enseignant ou etudiant
+%% ===> true = version enseignant
+%% ===> false = version etudiant
+\setboolean{versionenseignant}{false}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \includeversion{ensnote}
+%\excludeversion{ensnote}
+\ifthenelse{\boolean{versionenseignant}}{\includeversion{ensnote}}{\excludeversion{ensnote}}
+
+\tcbuselibrary{breakable}
+
+
+\newenvironment{solution}%
+{\begin{tcolorbox}[breakable,colback=red!5!white,colframe=red!75!black,title=Solution]}%
+{\end{tcolorbox}}
+
+%\tcblower
+
+\newenvironment{info}%
+{\begin{tcolorbox}[breakable,colback=green!5!white,colframe=green!75!black,title=Information]}%
+{\end{tcolorbox}}
+
+
+\newenvironment{attention}%
+{\begin{tcolorbox}[breakable,colback=green!25!white,colframe=red!55!black,title=Attention]}%
+{\end{tcolorbox}}
+
+
+\newenvironment{boxcode}%
+{\begin{tcolorbox}[breakable,colback=gray!5!white,colframe=black]}%
+	{\end{tcolorbox}}
+	
+	
+\begin{document}
+	
+
+
+\title{\vspace*{-1cm}Projet IHM avec Unity}
+\author{\vspace*{-1.5cm}Interface Homme-Machine: Unity
+\begin{ensnote}
+	(Version enseignant)
+\end{ensnote}
+}
+\date{\vspace*{-1.5cm}version 1}
+\maketitle
+\thispagestyle{fancy}
+
+Voici les objectifs du projet est d'exploitez l'ensemble des éléments vus précédemment de manière cohérente.
+
+\textcolor{red}{Interdiction formelle d'utiliser l'asset-store de Unity ou de code Unity extérieur (Vous avez cependant la possibilité d'utiliser des ressources venant de Blender par exemple).}
+
+
+\section{Description du projet}
+
+\subsection{Énoncé}
+Dans le cadre du projet, vous devez mettre en avant la création de widget en Unity comme vu dans les précédents TP. La mise en valeur de vos widgets est libre vous pouvez reprendre le système solaire si cela s'y prête bien ou alors choisir un autre domaine.
+
+Concernant, la réalisation des widgets, il faut prendre en considération les points suivants:
+\begin{itemize}
+	\item Vous devez avoir des widgets en adéquation avec l'application d'illustration.
+	\item Vous devez prendre en compte la difficulté de votre widget à savoir si vous jugez que votre widget est trop simple vous devez en réalisez un ou plusieurs autres selon la difficulté.
+	\item Au moins l'un de vos widgets doit se composer de différentes partie.
+	\item Au moins l'un de vos widgets doit avoir des aspects dynamiques.
+	\item Un ou plusieurs widgets doivent influencer la scène ou l'environnement.
+\end{itemize}
+
+Vous devrez soumettre uniquement 1 seul unitypackage en guise de soumission de vos widgets, plus un ZIP de votre projet Unity. Donc on attend sur UPDAGO 2 fichiers uniquement. Si vous vous trompez vous aurez 0, si il n'y a pas 2 fichiers vous aurez 0, si ce n'est pas un format ZIP vous aurez 0, si votre zip ne se dézippe pas ou met n'importe quoi vous aurez 0, si votre unitypackage ne contient pas toutes les dépendances vous aurez 0. Enfin, si nous n'arrivons pas à compiler/importer vos widgets, nous ferons au mieux mais si nous ne retrouvons pas la version mentionnée en début d'année nous noterons une pénalité.
+
+\subsection{Exemple}
+
+Nous proposons ici des exemples de widget dont la difficulté est laissée à votre jugement:
+\begin{itemize}
+	\item un gestionnaire d'onglets (tabbed panel)
+	\item un système de menu
+\end{itemize}
+
+\section{Attendus pour la soutenance finale}
+
+Les groupes doivent être constitué lors de la dernière séance de TP. Il est très fortement conseillé de conserver les groupes du projet Android. La soutenance finale doit aborder au moins les points suivants:
+\begin{itemize}
+	\item Une présentation succincte de votre application Android et les widgets mis en œuvre.
+	\item Une présentation de votre projet Unity et les choix de réalisation que vous avez fait.
+	\item Une partie publicité de vos applications: pourquoi votre application est celle nous devrions prendre et pas une autre dans la même cible.
+\end{itemize}
+
+\end{document}
