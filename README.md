@@ -1,29 +1,14 @@
 # upm1infounity
 
-
+Le cours d'IHM de la seconde partie du cours IHM du M1 Informatique de l'Université de Poitiers.
 
 Objectif:
+Introduction à UnityUI pour comprendre les interfaces dans le cadre de la réalisation d'une application 3D (pas forcément un jeu vidéo!).
 
-
-
-TP1:
-- tutoriel: compréhension des fenêtres, des events
-- toggle bouton d'icone.
-
-TP2:
-- faire un resize des panneaux (approcher le bord et agrandir)
-
-TP3:
-- réaliser une action sur l'environnement
-- 
-
-Projet:
-- faire un systeme de tabbedPane
-- faire un widget: text/slider/boutons pour mettre a jour le tout
-- 
-
-Idées:
-checkbox image
-spinner number
-slider/spinner/text
-tooltips
+Idée de projet/widget à faire:
+- systeme de tabbedPane
+- text/slider/boutons pour mettre a jour le tout
+- checkbox image
+- spinner number 
+- slider/spinner/text
+- tooltips avec durée 
