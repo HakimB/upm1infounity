@@ -1,19 +1,19 @@
 m_ProjectFiles:
   m_ManifestFileStatus:
-    m_FilePath: C:/enseignement/upm1infounity/Codes/IHMUnity/Packages/manifest.json
+    m_FilePath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Packages/manifest.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637815976843546367
+      ticks: 638094753110000000
     m_Hash: 980436348
   m_LockFileStatus:
-    m_FilePath: C:/enseignement/upm1infounity/Codes/IHMUnity/Packages/packages-lock.json
+    m_FilePath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637815976875277020
+      ticks: 638094753110000000
     m_Hash: 1810897712
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
@@ -25,7 +25,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.15.1
       source: 1
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.collab-proxy@1.15.1
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.collab-proxy@1.15.1
       assetPath: Packages/com.unity.collab-proxy
       name: com.unity.collab-proxy
       displayName: Version Control
@@ -34,7 +34,7 @@ m_PackageAssets:
         email: 
         url: 
       category: Editor
-      type: 
+      type: asset
       description: The Version Control package gives you the ability to use either
         Collaborate or Plastic SCM for Unity (beta) in the Unity editor. To use Plastic
         SCM for Unity (beta), a Plastic SCM subscription is required. Learn more
@@ -72,8 +72,29 @@ m_PackageAssets:
         - 1.13.5
         - 1.14.1
         - 1.14.4
+        - 1.14.7
+        - 1.14.9
+        - 1.14.12
+        - 1.14.13
+        - 1.14.15
+        - 1.14.16
+        - 1.14.17
+        - 1.14.18
         - 1.15.1
         - 1.15.4
+        - 1.15.7
+        - 1.15.9
+        - 1.15.12
+        - 1.15.13
+        - 1.15.15
+        - 1.15.16
+        - 1.15.17
+        - 1.15.18
+        - 1.17.0
+        - 1.17.1
+        - 1.17.2
+        - 1.17.6
+        - 1.17.7
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -87,6 +108,19 @@ m_PackageAssets:
         compatible:
         - 1.15.1
         - 1.15.4
+        - 1.15.7
+        - 1.15.9
+        - 1.15.12
+        - 1.15.13
+        - 1.15.15
+        - 1.15.16
+        - 1.15.17
+        - 1.15.18
+        - 1.17.0
+        - 1.17.1
+        - 1.17.2
+        - 1.17.6
+        - 1.17.7
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -97,7 +131,7 @@ m_PackageAssets:
         - 2.1.0-preview.3
         - 2.1.0-preview.5
         - 2.1.0-preview.6
-        verified: 1.15.4
+        verified: 1.15.18
       dependencies:
       - name: com.unity.nuget.newtonsoft-json
         version: 2.0.0
@@ -132,7 +166,7 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
@@ -149,7 +183,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 2.0.7
       source: 1
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.ide.rider@2.0.7
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.ide.rider@2.0.7
       assetPath: Packages/com.unity.ide.rider
       name: com.unity.ide.rider
       displayName: JetBrains Rider Editor
@@ -158,7 +192,7 @@ m_PackageAssets:
         email: 
         url: 
       category: 
-      type: 
+      type: asset
       description: The JetBrains Rider Editor package provides an integration for
         using the JetBrains Rider IDE as a code editor for Unity. It adds support
         for generating .csproj files for code completion and auto-discovery of installations.
@@ -191,6 +225,15 @@ m_PackageAssets:
         - 3.0.5
         - 3.0.6
         - 3.0.7
+        - 3.0.9
+        - 3.0.10
+        - 3.0.12
+        - 3.0.13
+        - 3.0.14
+        - 3.0.15
+        - 3.0.16
+        - 3.0.17
+        - 3.0.18
         compatible:
         - 1.0.2
         - 1.0.6
@@ -217,6 +260,15 @@ m_PackageAssets:
         - 3.0.5
         - 3.0.6
         - 3.0.7
+        - 3.0.9
+        - 3.0.10
+        - 3.0.12
+        - 3.0.13
+        - 3.0.14
+        - 3.0.15
+        - 3.0.16
+        - 3.0.17
+        - 3.0.18
         verified: 2.0.7
       dependencies:
       - name: com.unity.test-framework
@@ -239,7 +291,7 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
@@ -256,7 +308,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 2.0.11
       source: 1
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.ide.visualstudio@2.0.11
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.ide.visualstudio@2.0.11
       assetPath: Packages/com.unity.ide.visualstudio
       name: com.unity.ide.visualstudio
       displayName: Visual Studio Editor
@@ -265,7 +317,7 @@ m_PackageAssets:
         email: 
         url: 
       category: 
-      type: 
+      type: asset
       description: Code editor integration for supporting Visual Studio as code editor
         for unity. Adds support for generating csproj files for intellisense purposes,
         auto discovery of installations, etc.
@@ -289,6 +341,10 @@ m_PackageAssets:
         - 2.0.9
         - 2.0.11
         - 2.0.12
+        - 2.0.14
+        - 2.0.15
+        - 2.0.16
+        - 2.0.17
         compatible:
         - 1.0.2
         - 1.0.3
@@ -306,7 +362,11 @@ m_PackageAssets:
         - 2.0.9
         - 2.0.11
         - 2.0.12
-        verified: 2.0.12
+        - 2.0.14
+        - 2.0.15
+        - 2.0.16
+        - 2.0.17
+        verified: 2.0.17
       dependencies:
       - name: com.unity.test-framework
         version: 1.1.9
@@ -328,7 +388,7 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
@@ -345,7 +405,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.2.4
       source: 1
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.ide.vscode@1.2.4
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.ide.vscode@1.2.4
       assetPath: Packages/com.unity.ide.vscode
       name: com.unity.ide.vscode
       displayName: Visual Studio Code Editor
@@ -354,7 +414,7 @@ m_PackageAssets:
         email: 
         url: 
       category: 
-      type: 
+      type: asset
       description: Code editor integration for supporting Visual Studio Code as code
         editor for unity. Adds support for generating csproj files for intellisense
         purposes, auto discovery of installations, etc.
@@ -374,6 +434,7 @@ m_PackageAssets:
         - 1.2.2
         - 1.2.3
         - 1.2.4
+        - 1.2.5
         compatible:
         - 1.0.2
         - 1.0.3
@@ -387,7 +448,8 @@ m_PackageAssets:
         - 1.2.2
         - 1.2.3
         - 1.2.4
-        verified: 1.2.4
+        - 1.2.5
+        verified: 1.2.5
       dependencies: []
       resolvedDependencies: []
       keywords: []
@@ -399,7 +461,7 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
@@ -416,7 +478,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.1.29
       source: 1
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.test-framework@1.1.29
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.test-framework@1.1.29
       assetPath: Packages/com.unity.test-framework
       name: com.unity.test-framework
       displayName: Test Framework
@@ -425,7 +487,7 @@ m_PackageAssets:
         email: 
         url: 
       category: Unity Test Framework
-      type: 
+      type: asset
       description: Test framework for running Edit mode and Play mode tests in Unity.
       status: 4
       errors: []
@@ -463,10 +525,28 @@ m_PackageAssets:
         - 1.1.27
         - 1.1.29
         - 1.1.30
+        - 1.1.31
+        - 1.1.33
+        - 1.3.0
+        - 1.3.1
+        - 1.3.2
+        - 2.0.1-exp.1
+        - 2.0.1-exp.2
+        - 2.0.1-pre.12
+        - 2.0.1-pre.18
         compatible:
         - 1.1.29
         - 1.1.30
-        verified: 1.1.30
+        - 1.1.31
+        - 1.1.33
+        - 1.3.0
+        - 1.3.1
+        - 1.3.2
+        - 2.0.1-exp.1
+        - 2.0.1-exp.2
+        - 2.0.1-pre.12
+        - 2.0.1-pre.18
+        verified: 1.1.33
       dependencies:
       - name: com.unity.ext.nunit
         version: 1.0.6
@@ -492,7 +572,7 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
@@ -509,7 +589,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 3.0.6
       source: 1
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.textmeshpro@3.0.6
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.textmeshpro@3.0.6
       assetPath: Packages/com.unity.textmeshpro
       name: com.unity.textmeshpro
       displayName: TextMeshPro
@@ -518,7 +598,7 @@ m_PackageAssets:
         email: 
         url: 
       category: Text Rendering
-      type: 
+      type: asset
       description: 'TextMeshPro is the ultimate text solution for Unity. It''s the
         perfect replacement for Unity''s UI Text and the legacy Text Mesh.
 
@@ -606,6 +686,7 @@ m_PackageAssets:
         - 2.1.6
         - 2.2.0-preview.1
         - 2.2.0-preview.2
+        - 2.2.0-preview.3
         - 3.0.0-preview.1
         - 3.0.0-preview.3
         - 3.0.0-preview.4
@@ -625,11 +706,15 @@ m_PackageAssets:
         - 3.0.6
         - 3.2.0-pre.1
         - 3.2.0-pre.2
+        - 3.2.0-pre.3
+        - 3.2.0-pre.4
         - 4.0.0-pre.1
         compatible:
         - 3.0.6
         - 3.2.0-pre.1
         - 3.2.0-pre.2
+        - 3.2.0-pre.3
+        - 3.2.0-pre.4
         verified: 3.0.6
       dependencies:
       - name: com.unity.ugui
@@ -655,7 +740,7 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
@@ -672,7 +757,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.4.8
       source: 1
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.timeline@1.4.8
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.timeline@1.4.8
       assetPath: Packages/com.unity.timeline
       name: com.unity.timeline
       displayName: Timeline
@@ -681,7 +766,7 @@ m_PackageAssets:
         email: 
         url: 
       category: 
-      type: 
+      type: asset
       description: Use Unity Timeline to create cinematic content, game-play sequences,
         audio sequences, and complex particle effects.
       status: 4
@@ -755,7 +840,13 @@ m_PackageAssets:
         - 1.6.1
         - 1.6.2
         - 1.6.3
+        - 1.6.4
         - 1.7.0-pre.1
+        - 1.7.0-pre.2
+        - 1.7.0
+        - 1.7.1
+        - 1.7.2
+        - 1.8.0
         compatible:
         - 1.4.8
         - 1.5.0-pre.2
@@ -779,7 +870,13 @@ m_PackageAssets:
         - 1.6.1
         - 1.6.2
         - 1.6.3
+        - 1.6.4
         - 1.7.0-pre.1
+        - 1.7.0-pre.2
+        - 1.7.0
+        - 1.7.1
+        - 1.7.2
+        - 1.8.0
         verified: 1.4.8
       dependencies:
       - name: com.unity.modules.director
@@ -813,7 +910,7 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
@@ -830,7 +927,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.ugui@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.ugui@1.0.0
       assetPath: Packages/com.unity.ugui
       name: com.unity.ugui
       displayName: Unity UI
@@ -893,7 +990,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.ai@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.ai@1.0.0
       assetPath: Packages/com.unity.modules.ai
       name: com.unity.modules.ai
       displayName: AI
@@ -941,7 +1038,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.androidjni@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.androidjni@1.0.0
       assetPath: Packages/com.unity.modules.androidjni
       name: com.unity.modules.androidjni
       displayName: Android JNI
@@ -989,7 +1086,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.animation@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.animation@1.0.0
       assetPath: Packages/com.unity.modules.animation
       name: com.unity.modules.animation
       displayName: Animation
@@ -1037,7 +1134,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.assetbundle@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.assetbundle@1.0.0
       assetPath: Packages/com.unity.modules.assetbundle
       name: com.unity.modules.assetbundle
       displayName: Asset Bundle
@@ -1085,7 +1182,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.audio@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.audio@1.0.0
       assetPath: Packages/com.unity.modules.audio
       name: com.unity.modules.audio
       displayName: Audio
@@ -1133,7 +1230,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.cloth@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.cloth@1.0.0
       assetPath: Packages/com.unity.modules.cloth
       name: com.unity.modules.cloth
       displayName: Cloth
@@ -1185,7 +1282,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.director@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.director@1.0.0
       assetPath: Packages/com.unity.modules.director
       name: com.unity.modules.director
       displayName: Director
@@ -1241,7 +1338,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.imageconversion@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.imageconversion@1.0.0
       assetPath: Packages/com.unity.modules.imageconversion
       name: com.unity.modules.imageconversion
       displayName: Image Conversion
@@ -1290,7 +1387,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.imgui@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.imgui@1.0.0
       assetPath: Packages/com.unity.modules.imgui
       name: com.unity.modules.imgui
       displayName: IMGUI
@@ -1338,7 +1435,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.jsonserialize@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.jsonserialize@1.0.0
       assetPath: Packages/com.unity.modules.jsonserialize
       name: com.unity.modules.jsonserialize
       displayName: JSONSerialize
@@ -1386,7 +1483,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.particlesystem@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.particlesystem@1.0.0
       assetPath: Packages/com.unity.modules.particlesystem
       name: com.unity.modules.particlesystem
       displayName: Particle System
@@ -1434,7 +1531,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.physics@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.physics@1.0.0
       assetPath: Packages/com.unity.modules.physics
       name: com.unity.modules.physics
       displayName: Physics
@@ -1482,7 +1579,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.physics2d@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.physics2d@1.0.0
       assetPath: Packages/com.unity.modules.physics2d
       name: com.unity.modules.physics2d
       displayName: Physics 2D
@@ -1530,7 +1627,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.screencapture@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.screencapture@1.0.0
       assetPath: Packages/com.unity.modules.screencapture
       name: com.unity.modules.screencapture
       displayName: Screen Capture
@@ -1582,7 +1679,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.terrain@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.terrain@1.0.0
       assetPath: Packages/com.unity.modules.terrain
       name: com.unity.modules.terrain
       displayName: Terrain
@@ -1630,7 +1727,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.terrainphysics@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.terrainphysics@1.0.0
       assetPath: Packages/com.unity.modules.terrainphysics
       name: com.unity.modules.terrainphysics
       displayName: Terrain Physics
@@ -1686,7 +1783,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.tilemap@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.tilemap@1.0.0
       assetPath: Packages/com.unity.modules.tilemap
       name: com.unity.modules.tilemap
       displayName: Tilemap
@@ -1738,7 +1835,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.ui@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.ui@1.0.0
       assetPath: Packages/com.unity.modules.ui
       name: com.unity.modules.ui
       displayName: UI
@@ -1786,7 +1883,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.uielements@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.uielements@1.0.0
       assetPath: Packages/com.unity.modules.uielements
       name: com.unity.modules.uielements
       displayName: UIElements
@@ -1850,7 +1947,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.umbra@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.umbra@1.0.0
       assetPath: Packages/com.unity.modules.umbra
       name: com.unity.modules.umbra
       displayName: Umbra
@@ -1898,7 +1995,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.unityanalytics@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.unityanalytics@1.0.0
       assetPath: Packages/com.unity.modules.unityanalytics
       name: com.unity.modules.unityanalytics
       displayName: Unity Analytics
@@ -1954,7 +2051,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.unitywebrequest@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.unitywebrequest@1.0.0
       assetPath: Packages/com.unity.modules.unitywebrequest
       name: com.unity.modules.unitywebrequest
       displayName: Unity Web Request
@@ -2002,7 +2099,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.unitywebrequestassetbundle@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.unitywebrequestassetbundle@1.0.0
       assetPath: Packages/com.unity.modules.unitywebrequestassetbundle
       name: com.unity.modules.unitywebrequestassetbundle
       displayName: Unity Web Request Asset Bundle
@@ -2058,7 +2155,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.unitywebrequestaudio@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.unitywebrequestaudio@1.0.0
       assetPath: Packages/com.unity.modules.unitywebrequestaudio
       name: com.unity.modules.unitywebrequestaudio
       displayName: Unity Web Request Audio
@@ -2114,7 +2211,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.unitywebrequesttexture@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.unitywebrequesttexture@1.0.0
       assetPath: Packages/com.unity.modules.unitywebrequesttexture
       name: com.unity.modules.unitywebrequesttexture
       displayName: Unity Web Request Texture
@@ -2170,7 +2267,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.unitywebrequestwww@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.unitywebrequestwww@1.0.0
       assetPath: Packages/com.unity.modules.unitywebrequestwww
       name: com.unity.modules.unitywebrequestwww
       displayName: Unity Web Request WWW
@@ -2242,7 +2339,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.vehicles@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.vehicles@1.0.0
       assetPath: Packages/com.unity.modules.vehicles
       name: com.unity.modules.vehicles
       displayName: Vehicles
@@ -2294,7 +2391,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.video@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.video@1.0.0
       assetPath: Packages/com.unity.modules.video
       name: com.unity.modules.video
       displayName: Video
@@ -2354,7 +2451,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.vr@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.vr@1.0.0
       assetPath: Packages/com.unity.modules.vr
       name: com.unity.modules.vr
       displayName: VR
@@ -2416,7 +2513,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.wind@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.wind@1.0.0
       assetPath: Packages/com.unity.modules.wind
       name: com.unity.modules.wind
       displayName: Wind
@@ -2464,7 +2561,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.xr@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.xr@1.0.0
       assetPath: Packages/com.unity.modules.xr
       name: com.unity.modules.xr
       displayName: XR
@@ -2524,7 +2621,7 @@ m_PackageAssets:
       isDirectDependency: 0
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.subsystems@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.subsystems@1.0.0
       assetPath: Packages/com.unity.modules.subsystems
       name: com.unity.modules.subsystems
       displayName: Subsystems
@@ -2576,7 +2673,7 @@ m_PackageAssets:
       isDirectDependency: 0
       version: 1.0.0
       source: 2
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.modules.uielementsnative@1.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.modules.uielementsnative@1.0.0
       assetPath: Packages/com.unity.modules.uielementsnative
       name: com.unity.modules.uielementsnative
       displayName: UIElements Native
@@ -2635,7 +2732,7 @@ m_PackageAssets:
       isDirectDependency: 0
       version: 1.0.6
       source: 1
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.ext.nunit@1.0.6
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.ext.nunit@1.0.6
       assetPath: Packages/com.unity.ext.nunit
       name: com.unity.ext.nunit
       displayName: Custom NUnit
@@ -2644,16 +2741,30 @@ m_PackageAssets:
         email: 
         url: 
       category: Libraries
-      type: 
+      type: asset
       description: Custom version of the nunit package build to work with Unity.
         Used by the Unity Test Framework.
       status: 4
       errors: []
       versions:
         all:
+        - 0.1.5-preview
+        - 0.1.6-preview
+        - 0.1.9-preview
+        - 1.0.0
+        - 1.0.5
         - 1.0.6
+        - 2.0.2
+        - 2.0.3
         compatible:
+        - 0.1.5-preview
+        - 0.1.6-preview
+        - 0.1.9-preview
+        - 1.0.0
+        - 1.0.5
         - 1.0.6
+        - 2.0.2
+        - 2.0.3
         verified: 1.0.6
       dependencies: []
       resolvedDependencies: []
@@ -2669,11 +2780,11 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 0
+      datePublishedTicks: 637429759280000000
       documentationUrl: 
       hasRepository: 1
       repository:
@@ -2686,7 +2797,7 @@ m_PackageAssets:
       isDirectDependency: 0
       version: 2.0.0
       source: 1
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0
       assetPath: Packages/com.unity.nuget.newtonsoft-json
       name: com.unity.nuget.newtonsoft-json
       displayName: Newtonsoft Json
@@ -2710,10 +2821,34 @@ m_PackageAssets:
       errors: []
       versions:
         all:
+        - 1.0.0-preview.2
+        - 1.0.0-preview.3
+        - 1.0.0-preview.4
+        - 1.0.1-preview.1
+        - 1.1.2
+        - 2.0.0-preview
+        - 2.0.0-preview.1
+        - 2.0.0-preview.2
         - 2.0.0
+        - 2.0.1-preview.1
+        - 2.0.2
+        - 3.0.1
+        - 3.0.2
         compatible:
+        - 1.0.0-preview.2
+        - 1.0.0-preview.3
+        - 1.0.0-preview.4
+        - 1.0.1-preview.1
+        - 1.1.2
+        - 2.0.0-preview
+        - 2.0.0-preview.1
+        - 2.0.0-preview.2
         - 2.0.0
-        verified: 2.0.0
+        - 2.0.1-preview.1
+        - 2.0.2
+        - 3.0.1
+        - 3.0.2
+        verified: 2.0.2
       dependencies: []
       resolvedDependencies: []
       keywords: []
@@ -2729,7 +2864,7 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 0
+      datePublishedTicks: 637237898320000000
       documentationUrl: 
       hasRepository: 1
       repository:
@@ -2742,7 +2877,7 @@ m_PackageAssets:
       isDirectDependency: 0
       version: 1.0.1
       source: 1
-      resolvedPath: C:\enseignement\upm1infounity\Codes\IHMUnity\Library\PackageCache\com.unity.services.core@1.0.1
+      resolvedPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Library/PackageCache/com.unity.services.core@1.0.1
       assetPath: Packages/com.unity.services.core
       name: com.unity.services.core
       displayName: Services Core
@@ -2751,7 +2886,7 @@ m_PackageAssets:
         email: 
         url: 
       category: 
-      type: 
+      type: asset
       description: 'This package defines common components used by multiple Game
         Service packages.
 
@@ -2762,8 +2897,42 @@ m_PackageAssets:
       versions:
         all:
         - 1.0.1
+        - 1.1.0-pre.7
+        - 1.1.0-pre.8
+        - 1.1.0-pre.9
+        - 1.1.0-pre.10
+        - 1.1.0-pre.11
+        - 1.1.0-pre.41
+        - 1.1.0-pre.69
+        - 1.2.0
+        - 1.3.1
+        - 1.3.2
+        - 1.4.0
+        - 1.4.1
+        - 1.4.2
+        - 1.4.3
+        - 1.5.2
+        - 1.6.0
+        - 1.7.0
         compatible:
         - 1.0.1
+        - 1.1.0-pre.7
+        - 1.1.0-pre.8
+        - 1.1.0-pre.9
+        - 1.1.0-pre.10
+        - 1.1.0-pre.11
+        - 1.1.0-pre.41
+        - 1.1.0-pre.69
+        - 1.2.0
+        - 1.3.1
+        - 1.3.2
+        - 1.4.0
+        - 1.4.1
+        - 1.4.2
+        - 1.4.3
+        - 1.5.2
+        - 1.6.0
+        - 1.7.0
         verified: 1.0.1
       dependencies:
       - name: com.unity.modules.unitywebrequest
@@ -2780,11 +2949,11 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 0
+      datePublishedTicks: 637604883250000000
       documentationUrl: 
       hasRepository: 1
       repository:
@@ -2794,5 +2963,5 @@ m_PackageAssets:
         path: 
   m_LocalPackages:
     m_LocalFileStatus: []
-m_ProjectPath: C:/enseignement/upm1infounity/Codes/IHMUnity/Packages
+m_ProjectPath: /media/xavier/DATA/opt/Xavier_Documents/2023/Professionnel/Organismes/Universite-Poitiers/SFA_Sciences-Fondamentales-et-Appliquees/Formations/Mention_Master-Informatique/M1-Informatique/Semestre-2/Enseignements/IHM/depots_github/upm1infounity/Codes/IHMUnity/Packages
 m_EditorVersion: 2020.3.23f1 (c5d91304a876)
