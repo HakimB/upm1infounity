@@ -35,7 +35,7 @@
 \renewcommand\footrulewidth{1pt}
 \fancyfoot[L]{Département d'Informatique}
 \fancyfoot[C]{\textbf{\thepage/\pageref{LastPage}}}
-\fancyfoot[R]{année 2021-2022}
+\fancyfoot[R]{année 2022-2023}
 %fin
 
 \usepackage{enumitem}
@@ -166,7 +166,7 @@
 
 Voici les objectifs de ce sujet:
 \begin{itemize}
-	\item Continuez à manipuler l'IDE \texttt{Unity}.
+	\item Continuer à manipuler l'IDE \texttt{Unity}.
 	\item Création d'un \textit{widget} complexe.
 	\item Mécanisme des préfabriqués.
 	\item Exportation de son travail: les \textit{unity package}.
@@ -185,9 +185,9 @@ Voici les objectifs de ce sujet:
 
 \section*{Description générale du TP}
 
-La fois précédente, nous avons réalisé notre premier projet Unity et nous avons vu la manipulation de l'interface. La manipulation est simple (mais nécessite quelques calibration). Nous avons réalisé entre autre notre première interface très simplifiée, reposant sur la mécanique des ancres (voire aucune pour certains d'entre vous). La mécanique des ancres n'est pas aisé surtout lorsque les ratio de l'écran peuvent changer (réalisation d'une application PC et une application Android). Ce dernier point ne sera pas étudié dans ce TP car cela rentre dans les aspects très avancées. Cependant, pour le lecteur volontaire ou si vous finissez le TP (donc pas au début) il serait intéressant de regarder ce pointeur \url{https://docs.unity3d.com/2020.1/Documentation/Manual/HOWTO-UIMultiResolution.html}. 
+La fois précédente, nous avons réalisé notre premier projet Unity et nous avons vu la manipulation de l'interface. La manipulation est simple (mais nécessite quelques calibrations). Nous avons réalisé entre autres notre première interface très simplifiée, reposant sur la mécanique des ancres (voire aucune pour certains d'entre vous). La mécanique des ancres n'est pas aisée, surtout lorsque les ratios de l'écran peuvent changer (réalisation d'une application \texttt{PC} et une application \texttt{Android}). Ce dernier point ne sera pas étudié dans ce TP car cela rentre dans les aspects très avancés. Cependant, pour le lecteur volontaire ou si vous finissez le TP (donc pas au début) il serait intéressant de regarder ce pointeur \url{https://docs.unity3d.com/2020.1/Documentation/Manual/HOWTO-UIMultiResolution.html}. 
 
-Quoi qu'il arrive, on vous demande dans un premier temps de créer un NOUVEAU projet vide et de fixer une résolution raisonnable\footnote{La résolution que j'ai dans mes versions sont par défaut le \texttt{1024x768}.} de votre Canvas, dans le menu Game de la fenêtre (sinon il s'agit de paramètre spécifique au déploiement de votre application). Modifier aussi en sélectionnant dans le Canvas de la hiérarchie, le composant gérant la mise à l'échelle en fonction de la résolution (\texttt{Canvas Scaler}) et respectant les paramètres à la résolution prêt l'image de droite.
+Quoi qu'il arrive, on vous demande dans un premier temps de créer un \textbf{nouveau} projet vide et de fixer une résolution raisonnable\footnote{La résolution que j'ai dans mes versions est par défaut le \texttt{1024x768}.} de votre \texttt{Canvas}, dans le menu \texttt{Game} de la fenêtre (sinon il s'agit de paramètre spécifique au déploiement de votre application). Modifier aussi en sélectionnant dans le \texttt{Canvas} de la hiérarchie, le composant gérant la mise à l'échelle en fonction de la résolution (\texttt{Canvas Scaler}) et respectant les paramètres (à la résolution près) de l'image de droite.
 
 \begin{center}
 \hfill	\includegraphics[width=0.3\linewidth]{rc/unity_set_ui_resolution_game}%
@@ -195,16 +195,16 @@ Quoi qu'il arrive, on vous demande dans un premier temps de créer un NOUVEAU pr
 \hfill
 \end{center}
 
-Une fois réalisez ça, nous pouvons passer à la réalisation de widget complexe. Pour expliquer ce terme, nous allons réalisé un agglomérat de widget existant avec un ou plusieurs scripts pour régir le comportement global du widget.
+Une fois cela réalisé, nous pouvons passer à la réalisation d'un widget complexe. Pour expliquer ce terme, nous allons réaliser un agglomérat de widgets existants avec un ou plusieurs scripts pour régir le comportement global du widget.
 
 \section{Premier widget complexe: FormattedInputField}
 
-L'objectif de ce widget est de réaliser une zone de texte qui change de couleur selon une expression régulière particulière comme sur l'image ci-dessous, où nous avons 3 \texttt{FormattedInputField}, ainsi lorsque la saisie est vide (le widget de gauche), nous avons une couleur standard, la présence d'un nombre engendre une couleur (le widget au centre) et une autre couleur si l'expression régulière n'est pas présente (le widget à droite).
+L'objectif de ce widget est de réaliser une zone de texte qui change de couleur selon une expression régulière particulière comme sur l'image ci-dessous, où nous avons 3 \texttt{FormattedInputField}. Ainsi, lorsque la saisie est vide (le widget de gauche), nous avons une couleur standard. La présence d'un nombre engendre une couleur (le widget au centre) et une autre couleur si l'expression régulière n'est pas présente (le widget à droite).
 \begin{center}
 	\includegraphics[width=0.4\linewidth]{rc/widget_formattetinputfield_start}
 \end{center}
 
-Pour cela, nous vous donnons le code suivant qui vient d'un programme C\# basique en dehors d'Unity:
+Pour cela, nous vous donnons le code suivant qui vient d'un programme \texttt{C\#} basique en dehors de \texttt{Unity}:
 
 \begin{boxcode}
 \begin{csharpsansbord}
@@ -213,40 +213,40 @@ string regex = "[0-9]+";
 string montext = "bonjour";
 
 if (System.Text.RegularExpressions.Regex.IsMatch(montext, regex))
-	Console.WriteLine("Le text match la regex");
+	Console.WriteLine("Le texte matche la regex");
 else
-	Console.WriteLine("le text ne match pas la regex");
+	Console.WriteLine("le texte ne matche pas la regex");
 
 \end{csharpsansbord}
 \end{boxcode}
 
 
-D'un point de vue conceptuel, nous devons faire les étapes suivantes (si vous faite autrement tant pis pour vous, même si cela peut marcher):
+D'un point de vue conceptuel, nous devons suivre les étapes suivantes (si vous faites autrement, tant pis pour vous, même si cela peut fonctionner):
 \begin{enumerate}
-	\item Créez les attributs publique correspondant aux couleurs et les initialisées directement.
-	\item Créez l'attribut de la regex sous forme de chaine de caractère.
-	\item Réalisez la callback lorsqu'on change le texte dans le champ de saisie.
+	\item Créer les attributs publics correspondant aux couleurs et les initialiser directement.
+	\item Créer l'attribut de la \texttt{regex} sous forme de chaîne de caractères.
+	\item Réaliser la \texttt{callback} lorsqu'on change le texte dans le champ de saisie.
 	\item La couleur qu'il faut changer est celle du composant image.
 \end{enumerate}
 
 \begin{info}
-Pour réaliser le dernier point, il faut bien se rappeler de la séance précédente et de la partie sur l'inspecteur des objets en Unity. En effet, si on regarde bien nous avons différents composants pour le champs de saisie. Le composant qui nous intéresse est l'image pour changer l'attribut color pour répondre à nos conditions. Pour cela, il nous suffit à partir du \texttt{gameObject} de récupérer l'objet souhaité:
+Pour réaliser le dernier point, il faut bien se rappeler de la séance précédente et de la partie sur l'\texttt{inspecteur} des objets en \texttt{Unity}. En effet, si on regarde bien, nous avons différents composants pour le champs de saisie. Le composant qui nous intéresse est l'\textbf{image} permettant de changer l'attribut \texttt{color} pour répondre à nos conditions. Pour cela, il nous suffit, à partir du \texttt{GameObject}, de récupérer l'objet souhaité:
 
 \begin{csharp}
 Image image = gameObject.GetComponent<Image>();
 \end{csharp}
 
-J'insiste que \texttt{GetComponent} récupère le premier composant du type souhaité dans le gameObject courant, il existe une version permettant de récupérer tous les composants d'un type cible.
+J'insiste que \texttt{GetComponent} récupère le premier composant du type souhaité dans le \texttt{GameObject} courant, il existe une version permettant de récupérer tous les composants d'un type cible.
 \begin{csharp}
 Image[] images = gameObject.GetComponents<Image>();
 \end{csharp}
 \end{info}
 
-Réalisez le widget voulu, en attachant une importance à la hiérarchie dans la structure de votre projet et aux noms que vous adoptez (harmonisation et uniformisation).
+Réaliser le widget voulu, en attachant une importance à la hiérarchie dans la structure de votre projet et aux noms que vous adoptez (harmonisation et uniformisation).
 
 \section{Widget: ComplexSlider}
 
-Dans le précédent widget nous avions un unique widget et ici nous allons composé un widget complexe à partir de 3 widgets basiques. Pour cela nous allons réaliser des curseurs complexes en composant un texte qui servira de label, d'un slider basique et d'un champ de saisie sur les nombres pour visualiser la valeur du slider et/ou le modifier manuellement. Ci-dessous, vous avez une image qui illustre 2 ComplexSlider pour choisir des coordonnées (x,y).
+Dans la section précédente, nous avions un unique widget. Ici, nous allons composer un widget complexe à partir de 3 widgets basiques. Pour cela, nous allons réaliser des curseurs complexes en composant un \texttt{texte} qui servira de label, d'un \texttt{slider} basique et d'un \texttt{champ de saisie} sur les nombres pour visualiser la valeur du \texttt{slider} et/ou la modifier manuellement. Ci-dessous, vous avez une image qui illustre deux \texttt{ComplexSlider} pour choisir des coordonnées \texttt{(x,y)}.
 
 \begin{center}
 	\includegraphics[width=0.5\linewidth]{rc/widget_complexslider_demo}
@@ -256,52 +256,52 @@ Dans le précédent widget nous avions un unique widget et ici nous allons compo
 Généralement un widget complexe doit avoir un panel à la base pour servir de fond visuel que vous opacifierez par défaut et qui permet de hiérarchiser les 3 sous-widgets le composant.
 \end{info}
 
-Vous devez réaliser un tel composant et une fois la partie réalisez, vous réaliserez un unique script qui gouverne tous les aspects comportemental. En particulier, lorsqu'une valeur est modifié, cela impacte l'autre widget pour avoir toujours une cohérence entre le champ de saisie et le slider basique.
+Vous devez réaliser un tel composant puis réaliser un unique script qui gouverne tous les aspects comportementaux. En particulier, lorsqu'une valeur est modifiée, cela impacte l'autre widget pour avoir toujours une cohérence entre le champ de saisie et le \texttt{slider} basique.
 
-Pour cela, nous allons exploiter la hiérarchie de notre widget. Il existe deux mécaniques pour retrouver les sous-fils:
+Pour cela, nous allons exploiter la hiérarchie de notre widget. Il existe deux mécaniques pour retrouver les enfants:
 \begin{enumerate}
-	\item via les fonctions de recherche basées sur leur nom. 
-	\item via les mécaniques de recherche sur un type souhaité.
+	\item \textit{via} les fonctions de recherche basées sur leur nom,
+	\item \textit{via} les mécaniques de recherche sur un type souhaité.
 \end{enumerate}
 Réfléchissez sur les avantages et inconvénients des deux mécaniques en lisant la documentation associée à ces familles de fonction: \url{https://docs.unity3d.com/ScriptReference/GameObject.html}.
-En particulier on réfléchira que se passe-t-il si plusieurs objets sont du même type? ou si l'utilisateur modifie le nom d'un sous-widget.
+En particulier, que se passe-t-il si plusieurs objets sont du même type? Ou si l'utilisateur modifie le nom d'un \texttt{sous-widget}.
 
 \section{Exporter son travail}
 
-Bravo vous avez fait le plus gros essayer d'appeler l'enseignant pour qu'il vérifie votre développement ou critiquer vos noms et autres petits détails.
+Bravo, vous avez fait le plus gros. Demander à l'enseignant  qu'il vérifie votre développement ou critique vos noms et autres petits détails.
 
 \subsection{Préfabriqué}
-L'intéret de développer un widget est de pouvoir le réutiliser plusieurs fois sans devoir faire plusieurs manipulations identiques ou des \texttt{copier-coller}. Pour cela, Unity à la possibilité de faire des \texttt{Préfabs}, une sorte de sauvegarde de votre réalisation au sein d'un projet!
+L'intéret de développer un widget est de pouvoir le réutiliser plusieurs fois sans devoir faire plusieurs manipulations identiques ou des \texttt{copier-coller}. Pour cela, \texttt{Unity} a la possibilité de créer des \texttt{Préfabs}, une sorte de sauvegarde de votre réalisation au sein d'un projet!
 
-Pour ce faire il est assez simple lorsque vous avez fini un widget qui n'a pas de dépendance extérieur, c'est à dire que le widget est autonome (sinon ils risquent d'être sauvegardé), il suffit de glisser le gameObject de la hiérarchie à la zone des Assets. Ainsi l'icone du gameobject devient bleu! C'est ainsi qu'on sait qu'il s'agit d'un Préfab.
+La procédure est assez simple: lorsque vous avez fini un \texttt{widget} qui n'a pas de dépendance extérieure, c'est-à-dire que le \texttt{widget} est autonome (sinon les dépendances risquent aussi d'être sauvegardées): il suffit de glisser le \texttt{GameObject} de la hiérarchie à la zone des \texttt{Assets}. Ainsi l'icône du \texttt{Gameobject} devient bleue! C'est ainsi qu'on sait qu'il s'agit d'un \texttt{Prefab}.
 
 
 \begin{info}
-Lorsque vous sélectionnez un Préfab dans la zone des Assets vous avez un nouveau bouton dans l'inspecteur qui vous permet de modifier le préfab.
+Lorsque vous sélectionnez un \texttt{Prefab} dans la zone des \texttt{Assets}, vous avez un nouveau bouton dans l'\texttt{Inspecteur} qui vous permet de modifier ce \texttt{Prefab}.
 \begin{center}
 	\includegraphics[width=0.5\linewidth]{rc/unity_set_ui_open_prefab}
 \end{center}
 \end{info}
 
 \begin{attention}
-Quand vous modifiez un Préfab vous êtes dans un environnement particulier, il est essentiel de revenir au plus vite dans le mode standard en particulier pour sauvegarder et ainsi éviter des petits problèmes. 
+Quand vous modifiez un \texttt{Prefab}, vous êtes dans un environnement particulier. Il est essentiel de revenir au plus vite dans le mode standard, en particulier pour sauvegarder et ainsi éviter des petits problèmes. 
 
-Pour quitter, il faut cliquer sur le bouton retour (noté par $'<'$) au niveau de la hiérarchie.
+Pour quitter, il faut cliquer sur le bouton "Retour" (noté par $'<'$) au niveau de la hiérarchie.
 \begin{center}
 	\includegraphics[width=0.3\linewidth]{rc/unity_set_ui_close_prefab}
 \end{center}
 \end{attention}
 
-Réalisez des préfabs de vos widgets et les ayant nettoyés si besoin AVANT! Ensuite instancié pour expérimenter deux ou trois de votre préfab. Pour cela, il suffit de glisser votre préfab depuis l'Assert vers la vue 3D ou la hiérarchie à l'endroit souhaité.
+Réaliser des \texttt{Prefabs} de vos widgets en les ayant nettoyés si besoin AVANT! Ensuite, instancier pour expérimenter deux ou trois de vos \texttt{Prefabs}. Pour cela, il suffit de glisser votre \texttt{Prefab} depuis l'\texttt{Assert} vers la vue 3D ou la hiérarchie à l'endroit souhaité.
 
-\subsection{Export vers d'autre projet Unity}
+\subsection{Export vers d'autres projets Unity}
 
 \subsection{Export}
 
-Maintenant que vous avez la possibilité de sauvegarder et réutiliser votre production, au sein d'un projet, il est fréquent de devoir les exporter pour les utiliser dans d'autre projet. 
-Pour cela, il faut exporter des Préfabs dont vous connaissez les dépendances, en sélectionnant votre Préfab dans les Assets et en faisant un clique droit dessus (attention on vous demande de tester l'export d'un widget dans un premier temps, puis plusieurs widgets dans un second temps afin que vous compreniez les dépendances). Dans le menu contextuel, sélectionnez \texttt{'Export Package\ldots'}.
+Maintenant que vous avez la possibilité de sauvegarder et réutiliser votre production au sein d'un projet, il est fréquent de devoir les exporter pour les utiliser dans d'autre projet. 
+Pour cela, il faut exporter des \texttt{Prefabs} dont vous connaissez les dépendances, en sélectionnant votre \texttt{Prefab} dans les \texttt{Assets} et en faisant un clique droit dessus (attention, on vous demande de tester l'export d'un widget dans un premier temps, puis plusieurs widgets dans un second temps afin que vous compreniez les dépendances). Dans le menu contextuel, sélectionner \texttt{'Export Package\ldots'}.
 
-Dans la nouvelle fenêtre vous devez sélectionner les bonnes dépendances de votre widget. En particulier, par défaut Unity sélectionne tous les scripts sans distinction car il n'arrive pas à calculer les dépendances correctement. Vous devez donc sélectionner les bonnes dépendances de scripts manuellement. Puis cliquez, sur le bouton export pour sauvegarder le package unity.
+Dans la nouvelle fenêtre, vous devez sélectionner les bonnes dépendances de votre widget. En particulier, \texttt{Unity} sélectionne par défaut tous les scripts sans distinction, car il n'arrive pas à calculer les dépendances correctement. Vous devez donc sélectionner les bonnes dépendances de scripts manuellement. Puis, cliquez sur le bouton \texttt{Export...} pour sauvegarder le package \texttt{Unity}.
 
 \begin{center}
 \hfill \includegraphics[width=0.35\linewidth]{rc/unity_set_ui_export_package}
@@ -311,17 +311,17 @@ Dans la nouvelle fenêtre vous devez sélectionner les bonnes dépendances de vo
 
 \subsection{Import}
 
-Pour tester nos paquets unity créés à l'étape précédent, c'est très simple! Il suffit de créer un nouveau projet Unity et glissez votre fichier \texttt{.unitypackage} dans les Assets et de se laisser guider par le menu.
+Pour tester nos paquets \texttt{Unity} créés à l'étape précédente, c'est très simple! Il suffit de créer un nouveau projet \texttt{Unity} et glisser votre fichier \texttt{.unitypackage} dans les \texttt{Assets}, puis se laisser guider par le menu.
 
 \begin{info}
-Une alternative consiste juste à faire un clique droit dans la zone des Assets et cliquer sur l'import d'un paquet personnalisé.
+Une alternative consiste  à faire juste un clique droit dans la zone des \texttt{Assets} et cliquer sur l'import d'un paquet personnalisé.
 \end{info}
 
-Votre widget est prêt à l'emploi. La mécanique des unitypackage est l'une des façons de se partager le travail lorsqu'on est plusieurs sur un même projet et que cela s'y prête bien. 
+Votre widget est prêt à l'emploi. La mécanique des \texttt{Unity packages} est l'une des façons de se partager le travail lorsqu'on est plusieurs sur un même projet et que cela s'y prête bien. 
 
 \section{Toujours plus loin}
 
-Reprenez votre TP précédent ou un nouveau projet qui exploite vos nouveaux widgets, histoire de voir une application complète et comprendre que votre prefab doit bien être autonome pour embarquer uniquement son comportement intrinsèque!
+Reprendre votre TP précédent ou un nouveau projet qui exploite vos nouveaux widgets, histoire de voir une application complète et comprendre que votre \texttt{Prefab} doit bien être autonome pour embarquer uniquement son comportement intrinsèque!
 
 
 \end{document}
