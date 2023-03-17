@@ -35,7 +35,7 @@
 \renewcommand\footrulewidth{1pt}
 \fancyfoot[L]{Département d'Informatique}
 \fancyfoot[C]{\textbf{\thepage/\pageref{LastPage}}}
-\fancyfoot[R]{année 2021-2022}
+\fancyfoot[R]{Année 2022-2023}
 %fin
 
 \usepackage{enumitem}
@@ -148,45 +148,54 @@
 \maketitle
 \thispagestyle{fancy}
 
-Voici les objectifs du projet est d'exploitez l'ensemble des éléments vus précédemment de manière cohérente.
+L'objectif du projet est d'exploiter l'ensemble des éléments vus précédemment de manière cohérente.
 
-\textcolor{red}{Interdiction formelle d'utiliser l'asset-store de Unity ou du code Unity extérieur (Vous avez cependant la possibilité d'utiliser des ressources venant de Blender par exemple).}
+\textcolor{red}{Interdiction formelle d'utiliser l'\textit{Asset Store} de \texttt{Unity} ou du code \texttt{Unity} extérieur (vous avez cependant la possibilité d'utiliser des ressources venant de \texttt{Blender} par exemple).}
 
 
 \section{Description du projet}
 
 \subsection{Énoncé}
-Dans le cadre du projet, vous devez mettre en avant la création de widget en Unity comme vu dans les précédents TP. La mise en valeur de vos widgets est libre, vous pouvez reprendre le système solaire si cela s'y prête bien ou alors choisir un autre domaine.
+Dans le cadre du projet, vous devez mettre en avant la création de \textbf{widgets} en \texttt{Unity} comme vu dans les précédents TP. La mise en contexte de vos widgets est libre, vous pouvez reprendre le système solaire si cela s'y prête bien ou alors choisir un autre domaine.
 
 Concernant la réalisation des widgets, il faut prendre en considération les points suivants:
 \begin{itemize}
-	\item Vous devez avoir des widgets en adéquation avec l'application d'illustration.
-	\item Vous devez prendre en compte la difficulté de votre widget, à savoir~: si vous jugez que votre widget est trop simple, vous devez en réalisez un ou plusieurs autres selon la difficulté.
-	\item Au moins l'un de vos widgets doit se composer de différentes parties.
-	\item Au moins l'un de vos widgets doit avoir des aspects dynamiques.
-	\item Un ou plusieurs widgets doivent influencer la scène ou l'environnement.
+	\item vous devez avoir des widgets en adéquation avec l'application d'illustration;
+%	\item Vous devez prendre en compte la difficulté de votre widget, à savoir~: si vous jugez que votre widget est trop simple, vous devez en réalisez un ou plusieurs autres selon la difficulté.
+	\item plusieurs widgets doivent se composer de différentes parties;
+	\item au moins l'un de vos widgets doit avoir des aspects dynamiques;
+	\item Un ou plusieurs widgets doivent influencer la scène ou l'environnement;
+	\item les widgets complexes seront convertis en \texttt{Prefab}, ce qui implique qu'on puisse les réutiliser tels quels dans d'autres applications.
 \end{itemize}
 
-Vous devrez soumettre uniquement 1 seul unitypackage en guise de soumission de vos widgets, plus un ZIP de votre projet Unity. Donc on attend sur UPDAGO 2 fichiers uniquement. Si vous vous trompez vous aurez 0, si il n'y a pas 2 fichiers vous aurez 0, si ce n'est pas un format ZIP vous aurez 0, si votre zip ne se dézippe pas ou met n'importe quoi vous aurez 0, si votre unitypackage ne contient pas toutes les dépendances vous aurez 0\footnote{Et si vous ne connaissez pas l'âge du capitaine, vous aurez 0.}. Enfin, si nous n'arrivons pas à compiler/importer vos widgets, nous ferons au mieux, mais si nous ne retrouvons pas la version mentionnée en début d'année, nous noterons une pénalité.
+Vous devrez soumettre uniquement 1 seul \texttt{Unity package} en guise de soumission de vos widgets, plus un ZIP de votre projet \texttt{Unity}. Donc on attend sur \textit{UPdago} deux fichiers uniquement. Si vous vous trompez vous aurez 0, si il n'y a pas deux fichiers vous aurez 0, si ce n'est pas un format ZIP vous aurez 0, si votre zip ne se dézippe pas ou met n'importe quoi vous aurez 0, si votre \texttt{Unity Package} ne contient pas toutes les dépendances vous aurez 0\footnote{Et si vous ne connaissez pas l'âge du capitaine, vous aurez 0.}. Enfin, si nous n'arrivons pas à compiler/importer vos widgets, nous ferons au mieux, mais si nous ne retrouvons pas la version mentionnée en début d'année, nous noterons une pénalité.
 
-\subsection{Exemple}
+\subsection{Exemples de widgets complexes}
 
 Nous proposons ici des exemples de widget dont la difficulté est laissée à votre jugement:
 \begin{itemize}
-	\item un gestionnaire d'onglets (tabbed panel)
-	\item un système de menu
+	\item un gestionnaire d'onglets ("\texttt{tabbed panel}");
+	\item un système de menu;
+	\item une liste avec ajout automatique de \texttt{scrollbars} lorsque le nombre d'éléments dépasse la zone d'affichage.
+\end{itemize}
+
+Remarques
+\begin{itemize}
+	\item  l'application mettant en valeurs vos widgets peut être de n'importe quel type (pas forcément un jeu);
+	\item la gestion du \textit{multiplayer} est déconseillée car compliquée à mettre en place.
+	
 \end{itemize}
 
 \section{Attendus pour la soutenance finale}
 
-Les groupes doivent être constitué lors de la dernière séance de TP. Il est très fortement conseillé de conserver les groupes du projet Android. La soutenance finale doit aborder au moins les points suivants:
+Les groupes doivent être constitués avant de la dernière séance de TP. Il est très fortement conseillé de conserver les groupes du projet Android. La soutenance finale doit aborder au moins les points suivants:
 \begin{itemize}
 	%\item Une présentation succincte de votre application Android et les widgets mis en œuvre.
-	\item Une présentation de votre projet Unity et les choix de réalisation que vous avez fait.
-	\item Sans forcément rentrer dans le détail, présentez le coté technique possibilité de votre widget.
-	\item Une présentation de l'utilisation/une projection dans un autre projet (ou des estimations si ce dernier est sophistiqué de votre widget).
-	\item un ressentit sur votre utilisation de Unity vis-à-vis d'Android Studio.
-	\item Une partie "publicité"~: pourquoi votre application est celle que nous devrions prendre et pas une autre dans la même cible (pub, comparatif avec des existants).
+	\item une présentation de votre projet \texttt{Unity} et les choix de réalisation que vous avez faits;
+	\item sans forcément rentrer dans le détail, le côté technique possibilité de votre widget;
+	\item une présentation de l'utilisation/une projection dans un autre projet (ou des estimations si ce dernier est sophistiqué) de votre widget;
+	\item un ressenti sur votre utilisation de \texttt{Unity} vis-à-vis d'\texttt{Android Studio};
+	\item une partie "publicité"~: pourquoi votre application est celle que nous devrions prendre et pas une autre dans la même cible (pub, comparatif avec des existants).
 \end{itemize}
 
 \end{document}
