@@ -263,8 +263,8 @@ Pour cela, nous allons exploiter la hiérarchie de notre widget. Il existe deux 
 	\item \textit{via} les fonctions de recherche basées sur leur nom,
 	\item \textit{via} les mécaniques de recherche sur un type souhaité.
 \end{enumerate}
-Réfléchissez sur les avantages et inconvénients des deux mécaniques en lisant la documentation associée à ces familles de fonction: \url{https://docs.unity3d.com/ScriptReference/GameObject.html}.
-En particulier, que se passe-t-il si plusieurs objets sont du même type? Ou si l'utilisateur modifie le nom d'un \texttt{sous-widget}.
+Réfléchissez sur les avantages et inconvénients des deux mécaniques en lisant la documentation associée à ces familles de fonctions: \url{https://docs.unity3d.com/ScriptReference/GameObject.html}.
+En particulier, que se passe-t-il si plusieurs objets sont du même type? Ou si l'utilisateur modifie le nom d'un \texttt{sous-widget} ?.
 
 \section{Exporter son travail}
 
@@ -294,11 +294,11 @@ Pour quitter, il faut cliquer sur le bouton "Retour" (noté par $'<'$) au niveau
 
 Réaliser des \texttt{Prefabs} de vos widgets en les ayant nettoyés si besoin AVANT! Ensuite, instancier pour expérimenter deux ou trois de vos \texttt{Prefabs}. Pour cela, il suffit de glisser votre \texttt{Prefab} depuis l'\texttt{Assert} vers la vue 3D ou la hiérarchie à l'endroit souhaité.
 
-\subsection{Export vers d'autres projets Unity}
+%\subsection{Export vers d'autres projets Unity}
 
 \subsection{Export}
 
-Maintenant que vous avez la possibilité de sauvegarder et réutiliser votre production au sein d'un projet, il est fréquent de devoir les exporter pour les utiliser dans d'autre projet. 
+Maintenant que vous avez la possibilité de sauvegarder et réutiliser votre production au sein d'un projet, il est fréquent de devoir les exporter pour les utiliser dans d'autres projets. 
 Pour cela, il faut exporter des \texttt{Prefabs} dont vous connaissez les dépendances, en sélectionnant votre \texttt{Prefab} dans les \texttt{Assets} et en faisant un clique droit dessus (attention, on vous demande de tester l'export d'un widget dans un premier temps, puis plusieurs widgets dans un second temps afin que vous compreniez les dépendances). Dans le menu contextuel, sélectionner \texttt{'Export Package\ldots'}.
 
 Dans la nouvelle fenêtre, vous devez sélectionner les bonnes dépendances de votre widget. En particulier, \texttt{Unity} sélectionne par défaut tous les scripts sans distinction, car il n'arrive pas à calculer les dépendances correctement. Vous devez donc sélectionner les bonnes dépendances de scripts manuellement. Puis, cliquez sur le bouton \texttt{Export...} pour sauvegarder le package \texttt{Unity}.
@@ -321,7 +321,12 @@ Votre widget est prêt à l'emploi. La mécanique des \texttt{Unity packages} es
 
 \section{Toujours plus loin}
 
+\subsection{Des Prefabs partout !}
 Reprendre votre TP précédent ou un nouveau projet qui exploite vos nouveaux widgets, histoire de voir une application complète et comprendre que votre \texttt{Prefab} doit bien être autonome pour embarquer uniquement son comportement intrinsèque!
 
+\subsection{Retour sur la multi-résolution}
+En reprenant l'hyperlien cité en introduction, vérifier que les \textit{ancres} des éléments du \texttt{Canvas} sont bien définies puis jouer avec le composant \texttt{Canvas Scaler} pour tester le positionnement de ces éléments. 
+
+Tester également les résolutions proposées dans le \texttt{GameView}. Enfin, créer une résolution personnalisée (imiter un mode "Portrait" par exemple) et vérifier si les widgets sont toujours positionnés correctement.
 
 \end{document}
