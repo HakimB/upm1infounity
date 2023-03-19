@@ -389,6 +389,24 @@ Lorsque l'on change de résolution, le facteur de redimensionnement appliqué au
 - Si ```Match = 0``` (resp. ```Match = 1```), le facteur tient uniquement compte du redimensionnement de la largeur (resp. la hauteur). Une valeur de *0,5* détermine un facteur calculé de manière égale sur les deux dimensions.
 
 
+## Modifier l'angle de vue du Canvas
+
+Source [https://docs.unity3d.com/2020.1/Documentation/Manual/UICanvas.html](https://docs.unity3d.com/2020.1/Documentation/Manual/UICanvas.html)
+
+On veut faire pivoter le ```Canvas``` pour obtenir le même effet que celui montré dans l'hyperlien.
+
+- Sélectionner le ```Canvas``` dans la *hiérarchie*
+- Composant ```Canvas```
+    - Propriété ```Render Mode = World Space``` => ```Unity``` se plaint si aucune caméra n'est associée à ce mode
+    - Propriété ```Event Camera``` : faire glisser une des caméras de la scène (par exemple ```Main Camera``` dans cette propriété
+- Composant ```Rect Transform```
+    - ```Pos Z``` : modifier cette valeur pour éloigner le ```Canvas``` de la caméra (il est à la même profondeur sinon)
+    - ```Rotation``` : modifier la valeur sur chacun des axes pour observer différents effets
+
+Remarques : 
+- On peut modifier la rotation de chaque enfant du ```Canvas``` indépendamment des autres
+- Si on utilise la valeur ```Canvas > Render Mode = Screen Space - Camera``` (toujours avec la caméra associé au ```Canvas```), le positionnement du ```Canvas``` (*i.e.* composant ```Rect Transform```) est désactivé. Mais on peut toujours modifier le positionnement de ses enfants.
+
 
 
 
