@@ -40,7 +40,7 @@ Remarque: par défaut, le ```Canvas``` a comme propriété ```Canvas > Render Mo
 
 - Dans chaque ```InputFieldText```, sélectionner le composant ```Text (Legacy)``` et affecter la valeur 44 à la propriété ```Character > Font Size```.
 
-### Script associé à chaque Inputfield
+### Script associé à chaque InputField
 
 Associer le script *FormattedinputFieldScript.cs* :
 
@@ -235,7 +235,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class ComplexSliderScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
+public class ComplexSliderScript : MonoBehaviour
 {
 
     public Slider m_Slider;
@@ -277,51 +277,6 @@ public class ComplexSliderScript : MonoBehaviour, IPointerDownHandler, IPointerU
         catch(System.Exception e) {
             Debug.Log("error: " + e);
         }
-    }
-
-    //---------------------------------------------------------------------------------------------------------
-		// Redimensionnement du Panel parent selon les déplacements de la souris
-    private Vector2 previousPointerPosition;
-    private Vector2 currentPointerPosition;
-    private RectTransform rectTransform;
-
-    private void Awake()
-    {
-        rectTransform = GetComponent<RectTransform>();
-    }
-		
-    public void OnPointerDown(PointerEventData data)
-    {
-        Debug.Log("OnPointerDown " + data);
-    }
-
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        Debug.Log("OnPointerUp " + eventData);
-    }
-
-    public void OnDrag(PointerEventData data)
-    {
-        Debug.Log("OnDrag " + data);
-				rectTransform = GetComponent<RectTransform>();
-				        
-        if (rectTransform == null)
-            return;
-
-        Vector2 sizeDelta = rectTransform.sizeDelta;
-        Debug.Log("Current Size: " + sizeDelta);
-
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, data.position, data.pressEventCamera, out currentPointerPosition);
-        Vector2 resizeValue = currentPointerPosition - previousPointerPosition;
-
-        Debug.Log("resize: " + resizeValue);
-
-        sizeDelta += new Vector2(resizeValue.x, -resizeValue.y);
-        
-        rectTransform.sizeDelta = sizeDelta;
-        Debug.Log("resize: " + rectTransform);
-
-        previousPointerPosition = currentPointerPosition;
     }
 }
 
