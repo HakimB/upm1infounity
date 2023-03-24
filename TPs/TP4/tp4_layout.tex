@@ -35,7 +35,7 @@
 \renewcommand\footrulewidth{1pt}
 \fancyfoot[L]{Département d'Informatique}
 \fancyfoot[C]{\textbf{\thepage/\pageref{LastPage}}}
-\fancyfoot[R]{année 2021-2022}
+\fancyfoot[R]{année 2022-2023}
 %fin
 
 \usepackage{enumitem}
@@ -150,10 +150,10 @@
 
 Voici les objectifs de ce sujet:
 \begin{itemize}
-	\item Continuez à manipuler l'IDE \texttt{Unity}.
-	\item Continuez la création d'un \textit{widget} complexe.
-	\item Exploitez les mécaniques vues précédemment.
-	\item L'utilisation des Layouts
+	\item continuer à manipuler l'IDE \texttt{Unity};
+	\item continuer la création d'un \textit{widget} complexe;
+	\item exploiter les mécaniques vues précédemment;
+	\item utiliser les \texttt{Layouts}.
 \end{itemize}
 
 
@@ -167,32 +167,49 @@ Voici les objectifs de ce sujet:
 %	\end{itemize}
 %\end{attention}
 
-\section*{Description générale du TP}
+\section{Description générale du TP}
 
-La fois précédente, nous avons réalisé nos premiers widget complexe en exploitant l'agrégation de plusieurs widget de base. Nous avons en particulier manipuler le système d'ancre que propose Unity pour placer les objets de façon relative.
+La fois précédente, nous avons réalisé nos premiers widgets complexes en exploitant l'agrégation de plusieurs widgets de base. Nous avons en particulier manipulé le système d'ancre que propose \texttt{Unity} pour placer les objets de façon relative.
 
-Ici, nous allons voir une autre méthode un peu plus couteuse mais offrant une plus grande puissance en terme de placement et qui reprend les points que vous avez étudié dans les années précédentes en IHM: les mises en pages (layout). La documentation est présente ici: \url{https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/UIAutoLayout.html}
+Ici, nous allons voir une autre méthode un peu plus coûteuse mais offrant une plus grande puissance en terme de placement et qui reprend les points que vous avez étudié dans les années précédentes en IHM: les mises en page (\texttt{layout}). La documentation est présente ici: \url{https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/UIAutoLayout.html}
 
-\section*{Présentation des outils de mise en pages en Unity UI}
+\subsection*{Composants basiques}
 
-Il est conseillé de lire en détail la documentation cité plus haut pour bien comprendre les aspects et tous les détails. Je me contente ici de résumer des points clés:
 \begin{itemize}
-	\item Vous avez 2 types de composants dédiés à la mise en page
-	\item Les conteneurs ou \textit{Layout Group} contrôlent le comportement des widgets fils (enchainement horizontal, enchainement vertical ou sous forme de grille, \ldots)
+	  \item Tester les propriétés du  composant \texttt{Content Size Fitter} sur un \texttt{GameObject} de type \texttt{Text} ou \texttt{Image}.
+	  
+	  \item Faites de même pour le composant \texttt{Aspect Ratio Filter}. Pour bien distinguer les effets de chaque composant, il est recommandé d'en associer un seul à la fois au \texttt{GameObject}.
+\end{itemize}
+
+\section{Présentation des outils de mise en pages en Unity UI}
+
+Il est conseillé de lire en détail la documentation citée plus haut pour bien comprendre les aspects et tous les détails. Voici le résumé des points clés:
+\begin{itemize}
+	\item Il y a deux types de composants dédiés à la mise en page.
+	\item Les \textit{conteneurs} ou \texttt{Layout Group} contrôlent le comportement des widgets fils (enchaînement horizontal, enchaînement vertical ou sous forme de grille, \ldots)
 \begin{center}
 	\includegraphics[width=0.6\linewidth]{rc/ui_layout_group_horiz}
 \end{center}	
-	\item Les composants élément ou \textit{Layout Element} qui indique leur présence de mise en page.
+	\item Les composants \textit{éléments} ou \texttt{Layout Element} qui indiquent leur présence de mise en page.
 \begin{center}
 	\includegraphics[width=0.6\linewidth]{rc/ui_layout_element}
 \end{center}
 \end{itemize}
 
-Ainsi, chaque conteneur peut avoir des paramétrages différents qui vont faire évoluer les éléments selon les contraintes. Vous ferez attention à certains paramètres qui peuvent forcer le redimensionnement des widgets éléments sans les consulter même si leur taille n'était pas voulue. Vous ferez aussi attention aux éléments qui doivent activer la flexibilité des dimensions voulues pour agrandir dans cette direction (une valeur de 1 peut être suffisant pour indiquer un degré de liberté).
+Ainsi, chaque conteneur peut avoir des paramétrages différents qui vont faire évoluer les éléments selon les contraintes. Vous ferez attention à certains paramètres qui peuvent forcer le redimensionnement des widgets éléments sans les consulter même si leur taille n'était pas voulue. Vous ferez aussi attention aux éléments qui doivent activer la flexibilité des dimensions voulues pour agrandir dans cette direction (une valeur de 1 peut être suffisante pour indiquer un degré de liberté).
 
-\section{Widget: ComplexSlider le retour en joli}
+\subsection*{Tests}
 
-Refaite le widget ComplexSlider (soit sous un autre nom, soit après avoir fait une sauvegarde de votre ancien projet/widget). Pour obtenir un affichage joli peu importe la largeur que vous donnerez à votre widget pour que le slider prenne la plus grande place.
+\begin{enumerate}
+	\item Dans un premier temps, tester les conteneurs \texttt{Horizontal Layout Group}, \texttt{Vertical Layout Group} et \texttt{Grid Layout Group} \textbf{sans} ajouter de composant \texttt{Layout Element} aux enfants des groupes.
+	\item Associer ensuite des \texttt{Layout Element} aux enfants des groupes et tester les conteneurs.
+\end{enumerate}
+
+\section{Widget: ComplexSlider - le retour en joli}
+
+Refaites le widget \texttt{ComplexSlider} (soit sous un autre nom, soit après avoir fait une sauvegarde de votre ancien projet/widget). Pour obtenir un affichage joli, peu importe la largeur que vous donnerez à votre widget, pourvu que le \texttt{Slider} prenne la plus grande place.
+
+Veillez à ce que le widget contenant la valeur numérique ne soit pas modifiable directement par l'utilisateur.
 
 \begin{center}
 	\includegraphics[width=0.6\linewidth]{rc/ui_complexslider_layout}
@@ -204,33 +221,38 @@ Refaite le widget ComplexSlider (soit sous un autre nom, soit après avoir fait 
 
 \section{Widget: Spinner}
 
-Réalisez le widget du Spinner qui consiste à contrôler les évolutions d'un nombre via 2 boutons regroupés en bout de ligne. 
+Réalisez le widget du \texttt{Spinner} qui consiste à contrôler les évolutions d'un nombre via deux boutons regroupés en bout de ligne. 
+
+La valeur de l'incrément (positif ou négatif) sera laissé au choix de l'utilisateur. 
 
 \begin{center}
 	\includegraphics[width=0.6\linewidth]{rc/ui_spinner_layout}
 \end{center}
 
-Le widget doit être fonctionnel, mais vous pouvez bien sur changer/adapter selon vos souhaits le coté esthétique du widget.
-
+Le widget doit être fonctionnel, mais vous pouvez bien sûr changer/adapter selon vos souhaits le coté esthétique du widget.
+De nouveau, vérifiez que le widget contenant la valeur numérique ne soit pas modifiable directement par l'utilisateur.
 
 \section{Aspects avancés sur le système d'événement souris}
 
-Le système événementiel est en cours de modification, mais nous présentons ici une mécanique pour interagir avec des événements particuliers. Pour cela, je vous renvoie sur le lien suivant qui donne les événements supportés \url{https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/SupportedEvents.html}. Pour cela, nous vous proposons un petit exercice sous forme de tutoriel:
+Le système événementiel est en cours de modification, mais nous présentons ici une mécanique pour interagir avec des événements particuliers. Pour cela, consultez le lien suivant qui donne les événements supportés \url{https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/SupportedEvents.html}. Nous vous proposons un petit exercice sous forme de tutoriel:
 \begin{itemize}
-	\item Dans un nouveau projet, ajoutez un panel occupant l'entièreté du Canvas.
-	\item Modifiez la couleur du panel pour qu'il soit entièrement transparent.
+	\item Dans un nouveau projet ou une nouvelle \texttt{Scene}\footnote{Dans ce dernier cas, ajouter dans chaque scène un bouton pour permuter entre les scènes.}, ajoutez un \texttt{Panel} occupant l'entièreté du \texttt{Canvas}.
+	\item Modifiez la couleur du \texttt{Panel} pour qu'il soit entièrement transparent.
 	\item Ajoutez un nouveau script.
 	\item Au début du fichier script, ajoutez la ligne \lstinline|using UnityEngine.EventSystems;|.
-	\item Faire hériter notre script avec les événements voulues (cf. lien plus haut). Dans notre exemple nous allons nous concentrer sur les cliques souris et donc nous prendrons l'interface: \texttt{IPointerClickHandler}.
+	\item Faire hériter le script avec les événements voulus (cf.~lien plus haut). Dans notre exemple, nous allons nous concentrer sur les cliques souris et donc nous prendrons l'interface: \texttt{IPointerClickHandler}.
 	\item Surchargez les fonctions associées aux interfaces. Ici: \lstinline|public void OnPointerClick(PointerEventData data) { }|
 \end{itemize}
 
-Normalement, les événements fait avec cette mécanique réagisse normalement et vous pouvez le vérifier avec des messages de Log.
+Normalement, les événements gérés par cette mécanique réagissent par défaut et vous pouvez le vérifier avec des messages de \texttt{Log}.
 
-A présent, nous souhaitons réalisez les points suivants: lorsque nous cliquons sur une zone de l'écran, nous voulons créer à la volée un widget de notre choix à l'écran en tant que fils de notre Panel initial (n'oubliez pas un widget UI doit avoir comme parent un Canvas !!! ). Pour réalisez cela, nous regarderons la fonction \url{https://docs.unity3d.com/ScriptReference/Object.Instantiate.html}.
-
-Réalisez un exemple simple et que remarquez vous sur le pivot de vos ajouts?
-
-Enfin, vous êtes prêt à créer un script \texttt{ResizeWidget} qui consiste à agrandir en largeur/hauteur un widget si nous faisons un drag sur un widget.
+A présent, nous souhaitons réaliser les traitements suivants.
+\begin{enumerate}
+	\item  Lorsque nous cliquons sur une zone de l'écran, nous voulons créer à la volée un widget de notre choix à l'écran en tant que fils de notre \texttt{Panel} initial (n'oubliez pas un widget UI doit avoir comme parent un \texttt{Canvas} !!! ). Pour réaliser cela, consultez  la page \url{https://docs.unity3d.com/ScriptReference/Object.Instantiate.html}. \\	
+	Réalisez un exemple simple et que remarquez-vous sur le pivot de vos ajouts?
+ 
+	\item Enfin, vous êtes prêt à créer un script \texttt{ResizeWidget} qui consiste à agrandir en largeur/hauteur un widget en faisant un drag sur ce widget.
+	
+\end{enumerate}
 
 \end{document}
