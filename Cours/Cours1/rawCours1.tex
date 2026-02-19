@@ -61,7 +61,7 @@
 	La version personnelle est amplement suffisante pour ce cours, car fonctionne sous les plateformes classiques.
 	\end{block}
 
-	\begin{block}{Mécanisme de HUB (version cours: \texttt{6000.0.XXX} chez vous (on verra en TP))}
+	\begin{block}{Mécanisme de HUB (version cours: \texttt{6000.3.XXX} chez vous (on verra en TP))}
 \begin{center}
 \hfill
 	\includegraphics[width=0.45\linewidth]{../../imgs/unity_hub}
@@ -123,7 +123,7 @@ La barre de lancement
 	\vfill
 \end{frame}
 
-\section{La classe GameObject en Unity}
+\section{GameObject en Unity}
 
 \begin{frame}{La classe GameObject}
 	
@@ -164,66 +164,6 @@ La barre de lancement
 	\end{block}
 	\vfill
 \end{frame}
-
-\section{Composant Script en Unity}
-
-\begin{frame}[fragile]{Composant script}
-	\begin{block}{Prélude}
-		Comme nous allons devoir coder, donc réflexes de développeur:
-		\begin{itemize}
-			\item Préparation de la documentation officielle: \url{https://docs.unity3d.com/}. Cette dernière se décompose en un manuel d'utilisation (guide) et d'une référence technique (Scripting API).
-			\item La référence technique montre 2 espaces de noms distincts:
-			\begin{enumerate}
-				\item UnityEngine: qui contient l'ensemble des fonctionnalités accessible à l'exécution.
-				\item UnityEditor: qui contient l'ensemble des fonctionnalités dans le mode éditeur (celui qu'il faut éviter car pas exploitable une fois déployer sur notre plateforme cible, mais bien pratique pour le débogage).
-			\end{enumerate}
-			\item La configuration de son environnement pour développer en C\#: Edit $>$ Preferences $>$ External Tools
-			
-\begin{center}
-	\includegraphics[width=0.8\linewidth]{../../imgs/unity_param_exttools}
-\end{center}
-		\end{itemize}
-	\end{block}
-\end{frame}
-
-\begin{frame}[fragile]{Composant script}
-	\vfill
-	\begin{alertblock}{Attention!}
-		Tous les composants scripts héritent de MonoBehaviour! Elle possède pleins de fonction en accord avec son cycle de vie:
-		\begin{itemize}
-			\item Awake: lorsque le script est chargé pour la première fois.
-			\item Start: lorsque le script est lancé pour la première fois.
-			\item Update: callback appelé à chaque frame (plusieurs variantes). 
-			\item (détail: \url{https://docs.unity3d.com/Manual/ExecutionOrder.html})
-		\end{itemize}
-	\end{alertblock}
-
-	\vfill
-	\begin{block}{Paramétrage de script}
-		Les variables publiques sont reconnaissables par l'éditeur et manipulable directement dans l'éditeur. 
-	\end{block}
-	\vfill
-\end{frame}
-
-
-\begin{frame}{Demo3}
-		\vfill
-	\begin{block}{Objectifs}
-		\begin{itemize}
-			\item Dans une scène, ajoutez un cube/sphère.
-			\item Ajoutez un nouveau script composant nommé: JeTourne.
-			\item Editez le script pour qu'il affiche un message de débogage pour certaines fonctions du cycle de vie et qu'il réalise une rotation autour de lui.
-			\item Dans le script faite une rotation de 5° autour de y par frame. Observez.
-			\item Modifiez pour que cela se fasse dans \texttt{FixedUpdate} (avec \texttt{Time.fixedDeltaTime}). Observez.
-			\item Réalisez un schéma du système Soleil-Terre-Lune qui tourne autour d'eux et entraine l'objet gravitant avec eux d'un point de vue hiérarchique (aucune importance de la véracité physique).
-			\item Modifiez le script pour avoir un attribut publique qui correspond à la vitesse de rotation.
-		\end{itemize}
-	\end{block}
-		\vfill
-	
-\end{frame}
-
-
 
 \section{Présentation des interfaces UI}
 
@@ -275,23 +215,6 @@ La barre de lancement
 \end{frame}
 
 
-\begin{frame}{Demo}
-	\vfill
-	\begin{block}{Objectifs}
-		\begin{itemize}
-			\item Dans la scène précédente (Soleil-Terre-Lune).
-			\item Ajoutez bouton comme interface.
-			\item Ajoutez dans le script JeTourne une fonction toggle qui active et désactive la rotation.
-			\item Lié le bouton ajouter à la fonction précédente pour contrôler l'animation sur un objet.
-			\item Vous pouvez ajouter d'autre bouton pour contrôler les rotations des autres astres.
-		\end{itemize}
-	\end{block}
-	\vfill
-	
-\end{frame}
-
-\section{La mise en page}
-
 \begin{frame}{La mise en page}
 	\begin{alertblock}{Attention!}
 Le canevas a toujours une taille précise (dans les paramètres de l'application) et mise à l'échelle. Elle sera donc toujours comme vous la voyez dans l'éditeur!
@@ -313,19 +236,752 @@ La mise en page des widgets n'est pas aussi intuitive que les autres outils, en 
 
 \end{frame}
 
-\section{Petites astuces diverses et autres informations}
+\section{La notion de Préfab}
 
-\begin{frame}{En Vrac}
-\begin{itemize}
-	\item L'asset store est strictement interdit dans vos projets (rend les corrections trop compliqués, donc ZERO si dépendance manquante sur nos machines).
-	\item Notion de Préfabs et création dynamique.
-	\item Mécanisme d'export.
-	\item Prudence Git et soumission de vos projets.
-	\item Mécanique des inputs (attention refonte dans Unity).
-	\item Retrouver un objet? (En TP)
-	\item Faire plusieurs scènes pour expérimenter.
-\end{itemize}
+\begin{frame}{La notion de Préfab}
+	\vfil
+	\begin{definition}
+		Un préfab est un objet qui peut être réutilisé à l'infini dans votre projet. Il est composé d'un GameObject et de tous ses composants.
+	\end{definition}
+	\vfil
+	\begin{block}{Pourquoi?}
+		Parce que cela permet de faire du prototypage rapide et de la réutilisation d'éléments dans votre projet.
+	\end{block}
+	\vfil
+	\begin{exampleblock}{Comment?}
+		Pour créer un préfab, il suffit de faire glisser un objet de la hiérarchie vers le projet. Vous pouvez ensuite faire glisser ce préfab dans votre scène pour l'instancier.
+	\end{exampleblock}
+	\vfil
+	(cf. démo - prochaine page)
 \end{frame}
+
+\begin{frame}{Démonstration: la création d'un préfab}
+	% prefab_create.gif
+	% \usepackage{animate} % Required for animating GIFs
+	
+	\begin{center}
+		\begin{tabular}{cc}
+			\onslide<1->{\textbf{Étape 1}} & \onslide<2->{\textbf{Étape 2}} \\
+			\onslide<1->{\includegraphics[width=0.4\linewidth]{../../videos/prefab_create-1.png}} &
+			\onslide<2->{\includegraphics[width=0.4\linewidth]{../../videos/prefab_create-16.png}} \\
+			& \\
+			\onslide<3->{\textbf{Étape 3}} & \onslide<4->{\textbf{Étape 4}} \\
+			\onslide<3->{\includegraphics[width=0.4\linewidth]{../../videos/prefab_create-19.png}} &
+			\onslide<4->{\includegraphics[width=0.4\linewidth]{../../videos/prefab_create-40.png}} \\
+		\end{tabular}
+	\end{center}
+	% prefab_use.gif
+\end{frame}
+
+
+\begin{frame}{Démonstration: l'utilisation d'un préfab}
+	% prefab_use.gif
+	% \usepackage{animate} % Required for animating GIFs
+	
+	\begin{center}
+		\begin{tabular}{cc}
+			\onslide<1->{\textbf{Étape 1}} &  \onslide<2->{\textbf{Étape 2}} \\
+			\onslide<1->{\includegraphics[width=0.4\linewidth]{../../videos/prefab_use-1.png}} &
+			\onslide<2->{\includegraphics[width=0.4\linewidth]{../../videos/prefab_use-13.png}} \\
+			& \\
+			\onslide<3->{\textbf{Étape 3}} & \onslide<4->{\textbf{Étape 4}} \\
+			\onslide<3->{\includegraphics[width=0.4\linewidth]{../../videos/prefab_use-18.png}} &
+			\onslide<4->{\includegraphics[width=0.4\linewidth]{../../videos/prefab_use-42.png}} \\
+		\end{tabular}
+	\end{center}
+	% prefab_use.gif
+\end{frame}
+
+\section{Exportation d'un \emph{widget} graphique}
+
+\begin{frame}{Exportation d'un \emph{widget} graphique}
+
+	
+	\begin{block}{Les \emph{unitypackage}}
+		Un \emph{unitypackage} est un format d'archive utilisé par Unity pour stocker et partager des ressources, des scripts, des scènes, des préfabs, et d'autres éléments de projet. Il permet de regrouper plusieurs fichiers et dossiers en une seule archive compressée, facilitant ainsi le transfert et l'importation de ces éléments dans d'autres projets Unity.		
+	\end{block}
+	
+	\begin{alertblock}{Attention!}
+		\begin{itemize}
+		\item L'exportation d'un \emph{unitypackage} est un processus simple qui permet de partager facilement des éléments de projet entre différents projets Unity.
+		\item Votre soumission finale devra contenir quelques \emph{unitypackage} bien réalisés pour que nous puissions les réutiliser pour la correction.
+		\item Mettez bien les dépendances nécessaires et uniquement ceux nécessaires pour éviter les problèmes d'importation.
+		\item La notation prendra en compte le bon découpage de vos interfaces.
+		\end{itemize}
+		
+	\end{alertblock}
+
+	(cf. démo - prochaine page)
+\end{frame}
+
+\begin{frame}{Démonstration: l'exportation d'un \emph{widget} graphique}
+	% export_package.gif
+	% \usepackage{animate} % Required for animating GIFs
+	
+	\begin{block}{Processus}
+		\begin{itemize}
+			\item Sélectionnez le Préfab ou les éléments que vous souhaitez exporter.
+			\item Faites un clic droit et choisissez "Export Package".
+			% \item Dans la fenêtre d'exportation, assurez-vous de cocher les éléments que vous souhaitez inclure dans le package, y compris les dépendances nécessaires.
+			% \item Cliquez sur "Export" et choisissez un emplacement pour enregistrer votre fichier.
+		\end{itemize}
+	\end{block}
+
+
+	\begin{center}
+		\begin{columns}
+			\column{0.3\linewidth}
+			\onslide<1->{\textbf{Étape 1} \\
+			\includegraphics[height=0.6\textheight]{../../imgs/unitypackage_step1_camsphe.png}}
+			
+			\column{0.3\linewidth}
+			\onslide<2->{\textbf{Étape 2} \\
+			\includegraphics[height=0.4\textheight]{../../imgs/unitypackage_step2_camsphe.png}}
+		\end{columns}
+	\end{center}
+	% export_package.gif
+\end{frame}
+
+
+\section{Construction de votre exécutable}
+
+\begin{frame}{Construction de votre exécutable}
+	\begin{block}{Processus de construction}
+		\begin{itemize}
+			\item Allez dans "File" > "Build Settings".
+			\item Sélectionnez la plateforme cible (PC, Mac, Linux, Android, iOS, etc.).
+			\item Configurez les paramètres de construction selon vos besoins.
+			\item Cliquez sur "Build" pour générer l'exécutable \alert{dans un répertoire vide}.
+		\end{itemize}
+	\end{block}
+
+	\begin{center}
+		\begin{columns}
+			\column{0.3\linewidth}
+			\onslide<1->{\textbf{Étape 1} \\
+			\includegraphics[height=0.4\textheight]{../../imgs/export_app_unity_step1.png}}
+			
+			\column{0.3\linewidth}
+			\onslide<2->{\textbf{Étape 2} \\
+			\includegraphics[height=0.4\textheight]{../../imgs/export_app_unity_step2.png}}
+			
+			\column{0.3\linewidth}
+			\onslide<3->{\hfill\textbf{Étape 3} \\
+			\includegraphics[height=0.2\textheight]{../../imgs/export_app_unity_step3.png}}
+		\end{columns}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Demo}
+	\vfill
+	\begin{block}{Objectifs: un widget de contrôle de caméra}
+		\begin{itemize}
+			\item Créez une nouvelle scène.
+			\item Ajoutez un canevas.
+			\item Ajoutez un panel dans le canevas.
+			\item Ajoutez 4 boutons dans le panel.
+			\item Amusez vous à les positionner et à les redimensionner.
+			% \item Dans la scène précédente (Soleil-Terre-Lune).
+			% \item Ajoutez bouton comme interface.
+			% \item Ajoutez dans le script JeTourne une fonction toggle qui active et désactive la rotation.
+			% \item Lié le bouton ajouter à la fonction précédente pour contrôler l'animation sur un objet.
+			% \item Vous pouvez ajouter d'autre bouton pour contrôler les rotations des autres astres.
+		\end{itemize}
+	\end{block}
+	\vfill
+	
+\end{frame}
+
+
+\section{Programmation avec Unity}
+
+\begin{frame}{Programmation avec Unity}
+	\begin{block}{Langage de programmation}
+		Unity utilise principalement le langage de programmation C\#. Ce langage est puissant et très proche de Java.
+	\end{block}
+
+	\begin{alertblock}{Environnement de développement}
+		\begin{itemize}
+			\item Choix de l'IDE dans les paramètres d'Unity.
+			\item Sinon risque de ne pas avoir d'autocomplétion ou de fonctionnalités avancées.
+		\end{itemize}
+		\begin{center}
+			\includegraphics[width=0.5\linewidth]{../../imgs/external_tools}
+		\end{center}
+	\end{alertblock}
+\end{frame}
+
+\begin{frame}{La documentation Unity}
+
+	\begin{itemize}
+		\item Disponible en ligne: \url{https://docs.unity3d.com/}.
+		\item Selon moi la meilleure documentation par rapport aux autres moteurs de jeu.
+		\item Attention, deux parties distinctes: le manuel d'utilisation et la référence technique (Scripting API).
+		\item 2 espaces de noms distincts: UnityEngine (fonctionnalités à l'exécution) et UnityEditor (fonctionnalités dans le mode éditeur).
+	\end{itemize}
+
+	\begin{center}
+		\includegraphics[width=0.45\linewidth]{../../imgs/unity_doc_manual.png}\qquad\includegraphics[width=0.45\linewidth]{../../imgs/unity_doc_scripting.png}
+	\end{center}
+\end{frame}
+
+
+
+\section{Composant Script en Unity}
+
+\begin{frame}[fragile]{Composant script}
+	\begin{block}{Composant script}
+		Un script s'ajoute comme un composant à un objet de la scène. Il hérite de la classe MonoBehaviour.
+	\end{block}
+		
+	\begin{block}{Le cycle de vie d'un script}
+		\alert{Plus complexe que sur Android: \url{https://docs.unity3d.com/Manual/ExecutionOrder.html}}	
+		\begin{itemize}
+			\item \texttt{Awake()}: appelée lorsque le script est chargé pour la première fois.
+			\item \texttt{Start()}: appelée avant la première frame de mise à jour, après que tous les objets ont été initialisés.
+			\item \texttt{Update()}: appelée une fois par frame, utilisée pour la logique de jeu et les interactions.
+			\item \texttt{FixedUpdate()}: appelée à intervalles fixes, utilisée pour la physique.
+			\item \texttt{OnDestroy()}: appelée lorsque l'objet est détruit.
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Programmation: attributs et états}
+\begin{block}{Variables publiques dans l'inspecteur}
+	Les variables publiques d'un script sont automatiquement affichées dans l'inspecteur Unity, permettant de modifier les valeurs directement sans recompiler.
+\end{block}
+
+\begin{exampleblock}{Exemple simple}
+	\begin{itemize}
+		\item \texttt{public int nombre = 10;} — affiche un entier modifiable
+		\item \texttt{public bool actif = true;} — affiche une case à cocher
+		\item \texttt{public string nom = "objet";} — affiche un champ texte
+	\end{itemize}
+\end{exampleblock}
+
+\begin{alertblock}{Bonnes pratiques}
+	Évitez d'exposer des variables publiques critiques. Utilisez plutôt \texttt{[SerializeField]} pour les variables privées que vous voulez éditer.
+\end{alertblock}
+
+\end{frame}
+
+\begin{frame}[fragile]{Attributs de contrôle: Range et Clamp}
+
+\begin{block}{\texttt{[Range(min, max)]}}
+	Limite une valeur numérique entre deux bornes avec un curseur dans l'inspecteur.
+\end{block}
+
+\begin{exampleblock}{Exemple}
+	\texttt{[Range(0f, 10f)] public float vitesse = 5f;}
+	
+	Affiche un curseur entre 0 et 10 pour contrôler facilement la vitesse.
+\end{exampleblock}
+
+\begin{block}{\texttt{[Min(valeur)]} et \texttt{[Max(valeur)]}}
+	Impose une valeur minimale ou maximale sans curseur.
+\end{block}
+
+\begin{exampleblock}{Exemple}
+	\texttt{[Min(0f)] public float duree = 2f;} — empêche les valeurs négatives
+\end{exampleblock}
+
+\end{frame}
+
+\begin{frame}[fragile]{Attributs d'organisation}
+
+\begin{block}{\texttt{[Header("Titre")]}}
+	Ajoute un en-tête visuel pour organiser les variables dans l'inspecteur.
+\end{block}
+
+\begin{exampleblock}{Exemple}
+	\texttt{[Header("Paramètres de mouvement")] public float vitesse = 5f;}
+\end{exampleblock}
+
+\begin{block}{\texttt{[Space(hauteur)]}}
+	Ajoute un espacement vertical dans l'inspecteur pour améliorer la lisibilité.
+\end{block}
+
+\begin{block}{\texttt{[Tooltip("description")]}}
+	Affiche une bulle d'aide au survol de la variable dans l'inspecteur.
+\end{block}
+
+\begin{exampleblock}{Exemple}
+	\texttt{[Tooltip("Vitesse de rotation en degrés par seconde")] public float vrotation = 45f;}
+\end{exampleblock}
+
+\end{frame}
+
+\begin{frame}[fragile]{Attributs de contrôle avancés}
+
+\begin{block}{\texttt{[TextArea(minLignes, maxLignes)]}}
+	Affiche un champ de texte sur plusieurs lignes.
+\end{block}
+
+\begin{block}{\texttt{[Multiline(nbLignes)]}}
+	Alternative simple pour du texte multiligne.
+\end{block}
+
+\begin{block}{\texttt{[ColorUsage(showAlpha, hdr)]}}
+	Personnalise le sélecteur de couleur (avec ou sans canal alpha, support HDR).
+\end{block}
+
+\begin{exampleblock}{Exemple}
+	\texttt{[ColorUsage(true, true)] public Color couleur = Color.white;}
+\end{exampleblock}
+
+\end{frame}
+
+\begin{frame}[fragile]{Attributs de visibilité}
+
+\begin{block}{\texttt{[SerializeField]}}
+	Expose une variable \textbf{privée} à l'inspecteur (bonne pratique pour l'encapsulation).
+\end{block}
+
+\begin{block}{\texttt{[HideInInspector]}}
+	Masque une variable \textbf{publique} de l'inspecteur.
+\end{block}
+
+\begin{exampleblock}{Exemple complet}
+	\texttt{[SerializeField] [Range(0f, 100f)] [Tooltip("Santé du personnage")] private float sante = 50f;}
+	
+	Variable privée, modifiable dans l'inspecteur, limitée entre 0 et 100, avec une description.
+\end{exampleblock}
+
+\begin{alertblock}{Combinaison d'attributs}
+	Vous pouvez combiner plusieurs attributs sur une même variable pour plus de contrôle!
+\end{alertblock}
+
+\end{frame}
+
+\section{Les classes principales}
+
+\begin{frame}{La classe GameObject}
+	\begin{block}{Importance fondamentale}
+		GameObject est la \textbf{classe de base} de tous les objets dans une scène Unity. C'est le conteneur principal qui regroupe des composants pour créer des entités jouables.
+	\end{block}
+
+	\begin{exampleblock}{Attributs importants}
+		\begin{itemize}
+			\item \texttt{name}: identifie l'objet dans la hiérarchie
+			\item \texttt{active}: booléen indiquant si l'objet est actif
+			\item \texttt{transform}: référence au composant Transform (position, rotation, échelle)
+			\item \texttt{tag}: étiquette pour identifier rapidement des objets
+			\item \texttt{layer}: couche de rendu pour les caméras et collisions
+		\end{itemize}
+	\end{exampleblock}
+
+	\begin{alertblock}{Fonctions importantes}
+		\begin{itemize}
+			% \item \texttt{GetComponent<T>()}: récupère un composant attaché
+			% \item \texttt{AddComponent<T>()}: ajoute dynamiquement un composant
+			\item \texttt{SetActive(bool)}: active ou désactive l'objet
+			\item \texttt{Destroy()}: supprime l'objet de la scène
+		\end{itemize}
+	\end{alertblock}
+\end{frame}
+
+\begin{frame}{La classe Transform}
+	\begin{block}{Rôle central}
+		Transform gère la \textbf{position}, la \textbf{rotation} et l'\textbf{échelle} d'un objet dans l'espace 3D. Tout GameObject possède obligatoirement un Transform.
+	\end{block}
+
+	\begin{exampleblock}{Attributs essentiels}
+		\begin{itemize}
+			\item \texttt{position}: vecteur Vector3 en coordonnées mondiales
+			\item \texttt{localPosition}: position relative au parent
+			\item \texttt{rotation}: rotation en quaternion
+			\item \texttt{eulerAngles}: rotation en degrés (x, y, z)
+			\item \texttt{scale}: échelle sur les 3 axes
+			\item \texttt{parent}: référence au Transform parent
+		\end{itemize}
+	\end{exampleblock}
+
+	\begin{exampleblock}{Fonctions courantes}
+		\begin{itemize}
+			\item \texttt{Translate(Vector3)}: déplace l'objet
+			\item \texttt{Rotate(Vector3)}: fait tourner l'objet
+			\item \texttt{LookAt(Vector3)}: oriente l'objet vers une position
+		\end{itemize}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Les composants physiques}
+	\begin{block}{Rigidbody}
+		Ajoute des propriétés physiques à un objet (gravité, collisions, forces).
+		\begin{itemize}
+			\item \texttt{velocity}: vitesse actuelle
+			\item \texttt{mass}: masse de l'objet
+			\item \texttt{AddForce()}: applique une force
+			\item \texttt{SetVelocity()}: modifie la vélocité
+		\end{itemize}
+	\end{block}
+
+	\begin{block}{Colliders}
+		Définissent les zones de collision (BoxCollider, SphereCollider, MeshCollider, etc.).
+		\begin{itemize}
+			\item \texttt{isTrigger}: rend le collider sans collision physique
+			\item \texttt{OnCollisionEnter()}: appelée au contact avec un autre objet
+			\item \texttt{OnTriggerEnter()}: appelée quand un objet entre dans la zone
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Les composants de rendu}
+	\begin{block}{MeshRenderer et MeshFilter}
+		\begin{itemize}
+			\item MeshFilter: contient la géométrie (le maillage) de l'objet
+			\item MeshRenderer: affiche le maillage avec des matériaux et des textures
+		\end{itemize}
+	\end{block}
+
+	\begin{block}{Camera}
+		Capture la scène et la projette sur l'écran.
+		\begin{itemize}
+			\item \texttt{main}: accès à la caméra principale
+			\item \texttt{ScreenPointToRay()}: crée un rayon depuis l'écran
+			\item \texttt{WorldToScreenPoint()}: convertit positions 3D en 2D écran
+		\end{itemize}
+	\end{block}
+
+	\begin{block}{Light}
+		Éclaire la scène (directional, point, spot).
+		\begin{itemize}
+			\item \texttt{intensity}: intensité lumineuse
+			\item \texttt{range}: portée (pour point et spot)
+			\item \texttt{color}: couleur de la lumière
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Les classes d'entrée}
+	\begin{block}{Input (ancien système)}
+		Gère le clavier, la souris et les manettes.
+		\begin{itemize}
+			\item \texttt{GetKey(KeyCode)}: touche actuellement appuyée
+			\item \texttt{GetKeyDown()}: première frame d'appui
+			\item \texttt{GetMouseButton()}: bouton souris appuyé
+			\item \texttt{mousePosition}: position du curseur
+		\end{itemize}
+	\end{block}
+
+	\begin{block}{InputSystem (nouveau système recommandé)}
+		Système plus flexible et moderne pour gérer les entrées.
+		\begin{itemize}
+			\item Actions mappables
+			\item Support multiplateforme amélioré
+			\item Événements plutôt que polling
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Les classes de gestion de temps}
+	\begin{block}{Time}
+		Gère le temps écoulé et le framerate.
+		\begin{itemize}
+			\item \texttt{deltaTime}: temps depuis la dernière frame
+			\item \texttt{fixedDeltaTime}: intervalle fixe pour FixedUpdate
+			\item \texttt{timeScale}: multiplicateur de vitesse (pause si 0)
+			\item \texttt{unscaledDeltaTime}: deltaTime non affecté par timeScale
+		\end{itemize}
+	\end{block}
+
+	\begin{exampleblock}{Utilisation courante}
+		Toujours multiplier les mouvements par \texttt{Time.deltaTime} pour une vitesse indépendante du framerate.
+	\end{exampleblock}
+\end{frame}
+
+\section{Calculs vectoriels en Unity}
+
+\begin{frame}{La classe Vector3}
+	\begin{block}{Fondamentale pour la 3D}
+		Vector3 représente un point ou une direction dans l'espace 3D avec trois composantes (x, y, z).
+	\end{block}
+
+	\begin{exampleblock}{Création et attributs}
+		\begin{itemize}
+			\item \texttt{new Vector3(1f, 2f, 3f)}: création manuelle
+			\item \texttt{Vector3.zero}: (0, 0, 0)
+			\item \texttt{Vector3.one}: (1, 1, 1)
+			\item \texttt{Vector3.forward}: direction (0, 0, 1)
+			\item \texttt{v.magnitude}: longueur du vecteur
+			\item \texttt{v.normalized}: vecteur unitaire dans la même direction
+		\end{itemize}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Opérations vectorielles essentielles}
+	\begin{block}{Opérations basiques}
+		\begin{itemize}
+			\item Addition: \texttt{v1 + v2} — déplacement cumulé
+			\item Soustraction: \texttt{v1 - v2} — direction et distance
+			\item Multiplication scalaire: \texttt{v * 2f} — augmente la longueur
+			\item \texttt{Vector3.Distance(v1, v2)}: distance entre deux points
+		\end{itemize}
+	\end{block}
+
+	\begin{exampleblock}{Exemple pratique}
+		Direction d'un objet vers une cible:
+		\texttt{Vector3 direction = (target - transform.position).normalized;}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Produit scalaire et produit vectoriel}
+	\begin{block}{Produit scalaire \texttt{Vector3.Dot()}}
+		Mesure l'alignement entre deux vecteurs.
+		\begin{itemize}
+			\item Résultat positif: vecteurs dans la même direction
+			\item Résultat négatif: directions opposées
+			\item Résultat zéro: vecteurs perpendiculaires
+		\end{itemize}
+	\end{block}
+
+	\begin{block}{Produit vectoriel \texttt{Vector3.Cross()}}
+		Crée un vecteur perpendiculaire aux deux vecteurs d'entrée.
+		\begin{itemize}
+			\item Utile pour calculer des rotations
+			\item Pour déterminer des sens (gauche/droite)
+		\end{itemize}
+	\end{block}
+
+	\begin{exampleblock}{Exemple}
+		\texttt{Vector3 right = Vector3.Cross(Vector3.up, forward);}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Interpolation vectorielle}
+	\begin{block}{\texttt{Vector3.Lerp()}}
+		Interpolation linéaire entre deux vecteurs.
+	\end{block}
+
+	\begin{exampleblock}{Syntaxe}
+		\texttt{Vector3.Lerp(start, end, t)} où \texttt{t} varie de 0 à 1
+	\end{exampleblock}
+
+	\begin{block}{\texttt{Vector3.SmoothDamp()}}
+		Interpolation progressive pour des mouvements fluides.
+	\end{block}
+
+	\begin{exampleblock}{Utilisation courante}
+		\texttt{transform.position = Vector3.SmoothDamp(transform.position, target, ref velocity, smoothTime);}
+		
+		\texttt{// velocity} est une variable de type Vector3 qui stocke la vitesse modifiée par la fonction.
+		
+		\texttt{// smoothTime} contrôle la rapidité de l'interpolation.
+
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Quaternions et rotations}
+	\begin{block}{Qu'est-ce qu'un Quaternion?}
+		Représentation mathématique d'une rotation en 3D sans risque de \emph{gimbal lock}.
+	\end{block}
+
+	\begin{exampleblock}{Utilisation pratique}
+		\begin{itemize}
+			\item \texttt{Quaternion.Euler(x, y, z)}: crée depuis des angles
+			\item \texttt{Quaternion.LookRotation(direction)}: rotation vers une direction
+			\item \texttt{Quaternion.Lerp()}: interpolation lisse entre rotations
+			\item \texttt{transform.rotation *= Quaternion.Euler(0, 45, 0)}: rotation incrémentale
+		\end{itemize}
+	\end{exampleblock}
+
+	\begin{alertblock}{Conseil}
+		Préférez les Quaternions aux angles d'Euler pour éviter les problèmes d'interpolation.
+	\end{alertblock}
+\end{frame}
+
+
+% \begin{frame}[fragile]{Composant script}
+% 	\vfill
+% 	\begin{alertblock}{Attention!}
+% 		Tous les composants scripts héritent de MonoBehaviour! Elle possède pleins de fonction en accord avec son cycle de vie:
+% 		\begin{itemize}
+% 			\item Awake: lorsque le script est chargé pour la première fois.
+% 			\item Start: lorsque le script est lancé pour la première fois.
+% 			\item Update: callback appelé à chaque frame (plusieurs variantes). 
+% 			\item (détail: \url{https://docs.unity3d.com/Manual/ExecutionOrder.html})
+% 		\end{itemize}
+% 	\end{alertblock}
+
+% 	\vfill
+% 	\begin{block}{Paramétrage de script}
+% 		Les variables publiques sont reconnaissables par l'éditeur et manipulable directement dans l'éditeur. 
+% 	\end{block}
+% 	\vfill
+% \end{frame}
+
+
+% \begin{frame}{Demo3}
+% 		\vfill
+% 	\begin{block}{Objectifs}
+% 		\begin{itemize}
+% 			\item Dans une scène, ajoutez un cube/sphère.
+% 			\item Ajoutez un nouveau script composant nommé: JeTourne.
+% 			\item Editez le script pour qu'il affiche un message de débogage pour certaines fonctions du cycle de vie et qu'il réalise une rotation autour de lui.
+% 			\item Dans le script faite une rotation de 5° autour de y par frame. Observez.
+% 			\item Modifiez pour que cela se fasse dans \texttt{FixedUpdate} (avec \texttt{Time.fixedDeltaTime}). Observez.
+% 			\item Réalisez un schéma du système Soleil-Terre-Lune qui tourne autour d'eux et entraine l'objet gravitant avec eux d'un point de vue hiérarchique (aucune importance de la véracité physique).
+% 			\item Modifiez le script pour avoir un attribut publique qui correspond à la vitesse de rotation.
+% 		\end{itemize}
+% 	\end{block}
+% 		\vfill
+	
+% \end{frame}
+
+\section{Manipulation de la hiérarchie et des objets}
+
+\begin{frame}{Manipulation de la hiérarchie}
+	\begin{block}{Hiérarchie d'objets}
+		\begin{itemize}
+			\item Les objets dans une scène sont organisés en une hiérarchie parent-enfant.
+			\item Un objet enfant hérite des transformations de son parent (position, rotation, échelle).
+			\item Vous pouvez faire glisser un objet dans la hiérarchie pour le rendre enfant d'un autre.
+		\end{itemize}
+	\end{block}
+
+	\begin{block}{Fonctions de manipulation}
+		\begin{itemize}
+			\item \texttt{transform.parent}: définit ou récupère le parent d'un objet.
+			\item \texttt{transform.SetParent(Transform)}: change le parent d'un objet.
+			\item \texttt{transform.GetChild(int)}: récupère un enfant par index.
+			\item \texttt{transform.childCount}: nombre d'enfants d'un objet.
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Manipulation des objets: création, recherche et destruction}
+	\begin{block}{Création d'objets}
+		\texttt{GameObject.Instantiate(prefab, position, rotation)}: crée une instance d'un objet à partir d'un préfab.
+	\end{block}
+
+	\begin{block}{Recherche d'objets}
+		\texttt{GameObject.Find("Nom")} ou \texttt{GameObject.FindWithTag("Tag")} pour trouver des objets dans la scène.
+	\end{block}
+
+	\begin{block}{Destruction d'objets}
+		\texttt{GameObject.Destroy(objet)}: détruit un objet de la scène.
+	\end{block}
+		\begin{codecsharptiny}
+// Trouver un prefab dans le dossier Resources
+GameObject prefab = Resources.Load<GameObject>("monprefab");
+GameObject instance = Instantiate(prefab, position, rotation);
+Destroy(instance, 5f); // détruit après 5 secondes
+// ou Destroy(instance); pour détruire immédiatement
+
+		\end{codecsharptiny}
+\end{frame}
+
+\begin{frame}{Manipulation des objets: diverses fonctions utiles}
+	\begin{block}{Activation/Désactivation d'objets}
+		\texttt{gameObject.SetActive(b)}: active un objet (visible et interactif) ou non.
+	\end{block}
+
+	\begin{block}{Déplacement d'objets}
+		\texttt{transform.Translate(Vector3)}: translate dans une direction donnée.
+	\end{block}
+
+	\begin{block}{Rotation d'objets}
+		\texttt{transform.Rotate(Vector3)}: fait tourner autour de ses axes locaux.
+	\end{block}
+
+	\begin{block}{Échelle d'objets}
+		\texttt{transform.localScale}: modifie la taille d'un objet.
+	\end{block}
+
+	\begin{block}{Parenté d'objets}
+		\texttt{transform.SetParent(Transform)}: change le parent d'un objet, affectant sa position relative.
+	\end{block}
+
+
+	% \begin{exampleblock}{Utilisation courante}
+	% 	Déplacer un objet vers une cible:
+	% 	\texttt{transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);}
+	% \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Manipulation des composants à un GameObject}
+	\begin{block}{Ajout de composants}
+		\texttt{AddComponent<T>()}: ajoute un composant de type T à un objet.
+	\end{block}
+
+	\begin{block}{Récupération de composants}
+		\begin{itemize}
+			\item \texttt{GetComponent<T>()}: récupère le composant de type T attaché.
+			\item \texttt{GetComponents<T>()}: récupère tous les composants de type T.
+			\item \texttt{GetComponentInChildren<T>()}: récupère le composant de type T dans les enfants d'un objet.
+			\item \texttt{GetComponentInParent<T>()}: récupère le composant de type T dans les parents d'un objet.
+			\item \texttt{TryGetComponent<T>(out T)}: tente de récupérer un composant de type T et retourne un booléen indiquant le succès.
+			\item \texttt{GetComponent<T>(string)}: récupère un composant de type T avec un nom spécifique.
+			\item \texttt{GetComponent<T>(Type)}: récupère un composant de type T à partir d'un type spécifié (utilisé pour les types non génériques).
+		\end{itemize}
+		
+	\end{block}
+
+\end{frame}
+
+\section{Les événements et les interactions}
+
+\begin{frame}{Gestion des événements et interactions}
+	\begin{block}{Système d'événements Unity}
+		Dans l'éditeur vous avez des événements prédéfinis dont vous pouvez ajouter des fonctions à appeler lorsque ces événements sont déclenchés.
+	\end{block}
+
+	\begin{center}
+		\begin{tabular}{ccc}
+			\includegraphics[width=0.28\linewidth]{../../imgs/event_button.png} &
+			\includegraphics[width=0.28\linewidth]{../../imgs/event_toggle.png} &
+			\includegraphics[width=0.28\linewidth]{../../imgs/event_scrollview.png} \\
+			Button & Toggle & ScrollView \\
+			& & \\
+			\includegraphics[width=0.28\linewidth]{../../imgs/event_inputtext.png} &
+			\includegraphics[width=0.28\linewidth]{../../imgs/event_dropdown.png} &
+			\includegraphics[width=0.28\linewidth]{../../imgs/event_XXX.png} \\
+			Input Text & Dropdown & Numérique \\
+		\end{tabular}
+	\end{center}
+
+\end{frame}
+
+\begin{frame}{Ajout de fonctions à des événements}
+	\begin{block}{Processus d'ajout de fonctions}
+		\begin{itemize}
+			\item Sélectionnez le composant avec l'événement.
+			\item Dans l'inspecteur, trouvez la section de l'événement.
+			\item Cliquez sur le "+" pour ajouter une nouvelle fonction.
+			\item Faites glisser l'objet dans le champ "None (Object)".
+			\item Sélectionnez la fonction à appeler dans la liste déroulante.
+		\end{itemize}
+	\end{block}
+
+	\begin{center}
+		\begin{columns}
+			\column{0.45\linewidth}
+			\onslide<1->{\textbf{Étape 1} \\
+			\includegraphics[width=0.7\linewidth]{../../imgs/event_tuto_step1.png}}
+			
+			\onslide<2->{\textbf{Étape 2} \\
+			\includegraphics[width=0.7\linewidth]{../../imgs/event_tuto_step2.png}}
+			
+			\column{0.45\linewidth}
+			\onslide<3->{\textbf{Étape 3} \\
+			\includegraphics[width=0.7\linewidth]{../../imgs/event_tuto_step3.png}}
+		\end{columns}
+	\end{center}
+\end{frame}
+
+% \section{Petites astuces diverses et autres informations}
+
+% \begin{frame}{En Vrac}
+% \begin{itemize}
+% 	\item L'asset store est strictement interdit dans vos projets (rend les corrections trop compliqués, donc ZERO si dépendance manquante sur nos machines).
+% 	\item Notion de Préfabs et création dynamique.
+% 	\item Mécanisme d'export.
+% 	\item Prudence Git et soumission de vos projets.
+% 	\item Mécanique des inputs (attention refonte dans Unity).
+% 	\item Retrouver un objet? (En TP)
+% 	\item Faire plusieurs scènes pour expérimenter.
+% \end{itemize}
+% \end{frame}
 
 
   

@@ -5,6 +5,8 @@
 \usepackage[french]{babel}
 \usetheme{Frankfurt}
 
+\usepackage{animate}
+\usepackage{multimedia}
 \usepackage{geometry}
 \usepackage{keyval, listings}
 \lstloadlanguages{[Ansi]C++, Java}
@@ -31,6 +33,23 @@
 		commentstyle=\normalsize, extendedchars=true, fontadjust=true, columns = flexible, flexiblecolumns=true,
 		linewidth=.975\linewidth, backgroundcolor=\color{gray}, frame=tlrb, xleftmargin=1cm}
 	}%, framexleftmargin=5mm,frame=box}}
+{}
+\lstnewenvironment{codecsharp}
+{\lstset{language=[Sharp]C,basicstyle=\normalsize\tt,%
+		keywordstyle=\ttfamily\bfseries\underbar,%
+		commentstyle=\normalsize, extendedchars=true, fontadjust=true, columns = flexible, flexiblecolumns=true,
+		linewidth=.975\linewidth, backgroundcolor=\color{gray}, frame=tlrb, xleftmargin=1cm,
+		literate={é}{{\'e}}1 {è}{{\`e}}1 {ê}{{\^e}}1 {ë}{{\"e}}1 {à}{{\`a}}1 {â}{{\^a}}1 {ù}{{\`u}}1 {û}{{\^u}}1 {ô}{{\^o}}1 {ç}{{\c c}}1}
+	}
+{}
+
+\lstnewenvironment{codecsharptiny}
+{\lstset{language=[Sharp]C,basicstyle=\scriptsize\tt,%
+		keywordstyle=\ttfamily\bfseries\underbar,%
+		commentstyle=\scriptsize, extendedchars=true, fontadjust=true, columns = flexible, flexiblecolumns=true,
+		linewidth=.975\linewidth, backgroundcolor=\color{gray}, frame=tlrb, xleftmargin=1cm,
+		literate={é}{{\'e}}1 {è}{{\`e}}1 {ê}{{\^e}}1 {ë}{{\"e}}1 {à}{{\`a}}1 {â}{{\^a}}1 {ù}{{\`u}}1 {û}{{\^u}}1 {ô}{{\^o}}1 {ç}{{\c c}}1}
+	}
 {}
 
 \begin{document}
