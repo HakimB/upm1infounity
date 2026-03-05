@@ -38,7 +38,6 @@ public class FormattedInputFieldScript : MonoBehaviour
 		});
 		
 	}
-
 	// Attention : cette fonction est definie independamment de la méthode Start()
 	// => initialiser  [m_Text] et [m_Image] dans Start() ne sert a rien
 	// ==> ils sont consideres comme "null" dans cette fonction.

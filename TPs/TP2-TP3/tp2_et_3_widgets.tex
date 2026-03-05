@@ -35,7 +35,7 @@
 \renewcommand\footrulewidth{1pt}
 \fancyfoot[L]{Département d'Informatique}
 \fancyfoot[C]{\textbf{\thepage/\pageref{LastPage}}}
-\fancyfoot[R]{année 2023-2024}
+\fancyfoot[R]{année 2025-2026}
 %fin
 
 \usepackage{enumitem}
@@ -166,10 +166,10 @@
 
 Voici les objectifs de ce sujet:
 \begin{itemize}
-	\item Continuer à manipuler l'IDE \texttt{Unity}.
-	\item Création d'un \textit{widget} complexe.
-	\item Mécanisme des préfabriqués.
-	\item Exportation de son travail: les \textit{unity package}.
+	\item continuer à manipuler l'IDE \texttt{Unity};
+	\item créer un \textit{widget} complexe;
+	\item étudier le mécanisme des préfabriqués;
+	\item exporter son travail: les \texttt{Unity package}.
 \end{itemize}
 
 
@@ -183,22 +183,24 @@ Voici les objectifs de ce sujet:
 %	\end{itemize}
 %\end{attention}
 
+\paragraph{Prélude}
+La fois précédente, nous avons réalisé notre premier projet Unity et nous avons vu la manipulation de l'interface. La manipulation est simple (mais nécessite quelques calibrations). Nous avons réalisé entre autres notre première interface très simplifiée, reposant sur la mécanique des ancres (voire aucune pour certains d'entre vous). La mécanique des ancres n'est pas aisée, surtout lorsque les ratios de l'écran peuvent changer (réalisation d'une application \texttt{PC} et une application \texttt{Android}). Ce dernier point ne sera pas étudié dans ce TP car cela rentre dans les aspects très avancés. Cependant, pour le lecteur volontaire ou si vous finissez le TP (donc pas au début) il serait intéressant de regarder ce pointeur \url{https://docs.unity3d.com/Packages/com.unity.ugui@2.5/manual/HOWTO-UIMultiResolution.html}. 
+
 \section*{Description générale du TP}
 
-%La fois précédente, nous avons réalisé notre premier projet Unity et nous avons vu la manipulation de l'interface. La manipulation est simple (mais nécessite quelques calibrations). Nous avons réalisé entre autres notre première interface très simplifiée, reposant sur la mécanique des ancres (voire aucune pour certains d'entre vous). La mécanique des ancres n'est pas aisée, surtout lorsque les ratios de l'écran peuvent changer (réalisation d'une application \texttt{PC} et une application \texttt{Android}). Ce dernier point ne sera pas étudié dans ce TP car cela rentre dans les aspects très avancés. Cependant, pour le lecteur volontaire ou si vous finissez le TP (donc pas au début) il serait intéressant de regarder ce pointeur \url{https://docs.unity3d.com/2022.3/Documentation/Manual/HOWTO-UIMultiResolution.html}. 
 
-Quoi qu'il arrive, on vous demande dans un premier temps de créer un \textbf{nouveau} projet vide et de fixer une résolution raisonnable\footnote{La résolution que j'ai dans mes versions est par défaut le \texttt{1024x768}.} de votre \texttt{Canvas}, dans le menu \texttt{Game} de la fenêtre (sinon, il s'agit de paramètres spécifiques au déploiement de votre application). Modifier également, en sélectionnant dans le \texttt{Canvas} de la hiérarchie, le composant gérant la mise à l'échelle en fonction de la résolution (\texttt{Canvas Scaler}) et respectant les paramètres (à la résolution près) de l'image de droite.
+On vous demande dans un premier temps de créer un \textbf{nouveau} projet vide et de fixer une résolution raisonnable\footnote{La résolution que j'ai dans mes versions est par défaut \texttt{1024x768}.} de votre \texttt{Canvas}, dans le menu \texttt{Game} de la fenêtre (sinon, il s'agit de paramètres spécifiques au déploiement de votre application). Modifier également, en sélectionnant dans le \texttt{Canvas} de la hiérarchie, le composant gérant la mise à l'échelle en fonction de la résolution (\texttt{Canvas Scaler}) et respectant les paramètres (à la résolution près) de l'image de droite.
 
 \begin{center}
-\hfill	\includegraphics[width=0.3\linewidth]{rc/unity_set_ui_resolution_game}%
-\hfill	\includegraphics[width=0.6\linewidth]{rc/unity_set_ui_resolution_canvas_scaler}%
+\hfill	\includegraphics[width=0.3\linewidth]{fig/unity_set_ui_resolution_game}%
+\hfill	\includegraphics[width=0.6\linewidth]{fig/unity_set_ui_resolution_canvas_scaler}%
 \hfill
 \end{center}
 
 \ifversionenseignant
 \begin{solution}
 	\begin{itemize}
-		\item Créer un nouveau projet de type \texttt{3D Core}.
+		\item Créer un nouveau projet de type \texttt{Universal 3D Core}.
 		\item Dans l'onglet \texttt{Game} de l'interface, cliquer sur \texttt{Free Aspect} et sélectionner une résolution, par exemple \textit{Full HD (1920x1080)}.
 		\item Ajouter un \texttt{Canvas} dans la \texttt{Hierarchy}.
 		\item Modifier le \texttt{Component Canvas Scaler}:
@@ -208,7 +210,7 @@ Quoi qu'il arrive, on vous demande dans un premier temps de créer un \textbf{no
 		\end{itemize}
 	\end{itemize}
 
-par défaut, le \texttt{Canvas} a comme propriété \texttt{Canvas > Render Mode} la valeur \texttt{Screen Space - Overlay} qui signifie que le \texttt{Canvas} va couvrir tout l'écran d'affichage (par conséquent, les propriétés du \texttt{Rect Transform} sont désactivées).
+Par défaut, le \texttt{Canvas} a comme propriété \textit{Canvas > Render Mode} la valeur \texttt{Screen Space - Overlay} qui signifie que le \texttt{Canvas} va couvrir tout l'écran d'affichage (par conséquent, les propriétés du \texttt{Rect Transform} sont désactivées).
 \end{solution}
 \fi 
 
@@ -219,7 +221,7 @@ Une fois cela réalisé, nous pouvons passer à la réalisation d'un widget comp
 
 L'objectif de ce widget est de réaliser une zone de texte qui change de couleur selon une expression régulière particulière comme sur l'image ci-dessous, où nous avons 3 \texttt{FormattedInputField}. Ainsi, lorsque la saisie est vide (le widget de gauche), nous avons une couleur standard. La présence d'un nombre engendre une couleur (le widget au centre) et une autre couleur si l'expression régulière n'est pas présente (le widget à droite).
 \begin{center}
-	\includegraphics[width=0.4\linewidth]{rc/widget_formattetinputfield_start}
+	\includegraphics[width=0.4\linewidth]{fig/widget_formattetinputfield_start}
 \end{center}
 
 \ifversionenseignant
@@ -228,21 +230,21 @@ L'objectif de ce widget est de réaliser une zone de texte qui change de couleur
 		\item Dans le \texttt{Canvas}, créer un \texttt{Panel} et le nommer \texttt{PanelInputFieldText}
 		\begin{itemize}
 			\item Définir son \textit{ancre} en \texttt{Center / Middle} pour qu'il soit placé automatiquement au centre du \texttt{Canvas}.
-			\item Préciser les dimensions, par exemple\texttt{ Width = 1000} et \texttt{Height = 100}.
+			\item Préciser les dimensions, par exemple\texttt{ Width = 990} et \texttt{Height = 100}.
 		\end{itemize}
 	\item Dans  \texttt{PanelInputFieldText}:
 	\begin{itemize}
-		\item Ajouter un \texttt{ UI > Legacy > Input Field} et le renommer \textit{InputFieldText1} et modifier son \texttt{Rect Transform}:
+		\item Ajouter un \texttt{ UI (Canvas) > Legacy > Input Field} et le renommer \textit{InputFieldText1} et modifier son \texttt{Rect Transform}:
 		\begin{itemize}
 			\item \texttt{Anchor Bottom Left}
 			\item \texttt{Pivot X = 0 ; Pivot Y = 0}
 			\item \texttt{Pos X = 0 ; Pos Y = 0; Pos Z = 0}
 			\item \texttt{Width = 300, Height = 100}
 		\end{itemize}
+		\end{itemize}
 		\item Dupliquer ce \texttt{GameObject} et le renommer \textit{InputFieldText2}. Le déplacer en \texttt{Rect Tranform > Pos X = 345 ; Pos Y = 0; Pos Z = 0}.
 		\item Dupliquer ce \texttt{GameObject} et le renommer \textit{InputFieldText3}. Le déplacer en \texttt{Rect Tranform > Pos X = 690 ; Pos Y = 0; Pos Z = 0}.		
-		\item  Dans chaque \texttt{InputFieldText}, sélectionner le composant \texttt{Text (Legacy) }et affecter la valeur $44$ à la propriété \texttt{Character > Font Size}.
-	\end{itemize}		
+		
 	\end{itemize}
 
 Remarque : chaque \texttt{InputFieldText} contient un \texttt{Placeholder}, qui affiche par défaut le texte: "\textit{Enter text...}" (inutile de le modifier).
@@ -266,12 +268,12 @@ else
 \end{boxcode}
 
 
-D'un point de vue conceptuel, nous devons suivre les étapes suivantes (vous pouvez procéder autrement, mais sans garantie de bon fonctionnement)% (si vous faites autrement, tant pis pour vous, même si cela peut fonctionner):
+D'un point de vue conceptuel, vous devriez suivre les étapes suivantes (vous pouvez procéder autrement, mais sans garantie de bon fonctionnement):% (si vous faites autrement, tant pis pour vous, même si cela peut fonctionner):
 \begin{enumerate}
-	\item Créer les attributs publics correspondant aux couleurs et les initialiser directement.
-	\item Créer l'attribut de la \texttt{regex} sous forme de chaîne de caractères.
-	\item Réaliser la \texttt{callback} lorsqu'on change le texte dans le champ de saisie.
-	\item La couleur qu'il faut changer est celle du composant image.
+	\item créer les attributs publics correspondant aux couleurs et les initialiser directement;
+	\item créer l'attribut de la \texttt{regex} sous forme de chaîne de caractères;
+	\item réaliser la \texttt{callback} lorsqu'on change le texte dans le champ de saisie;
+	\item la couleur qu'il faut changer est celle du composant image.
 \end{enumerate}
 
 \begin{info}
@@ -302,7 +304,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
 
-// Script à associer aux GameObject de type "InputFieldText"
+// Script associe aux GameObject de type "InputFieldText"
 
 public class FormattedInputFieldScript : MonoBehaviour
 {
@@ -310,7 +312,7 @@ public class FormattedInputFieldScript : MonoBehaviour
 	// Modifiable dans l'Inspector
 	public string m_Regex = "^[0-9]+$";
 	
-	// Composant InputField lié à ce GameObject
+	// Composant InputField lie a ce GameObject
 	private InputField m_InputField;
 	
 	// Si InputField vide
@@ -343,17 +345,17 @@ public class FormattedInputFieldScript : MonoBehaviour
 
 \begin{boxcode}
 \begin{csharpsansbord}
-	// Attention : cette fonction est définie indépendamment de la méthode Start()
-	// => initialiser  [m_Text] et [m_Image] dans Start() ne sert à rien
-	// ==> ils sont considérés comme null dans cette fonction.
-	// ===> on en fait des variables locales et le problème est réglé.
+	// Attention : cette fonction est definie independamment de la méthode Start()
+	// => initialiser  [m_Text] et [m_Image] dans Start() ne sert a rien
+	// ==> ils sont consideres comme "null" dans cette fonction.
+	// ===> on en fait des variables locales et le probleme est regle.
 	private void ValueChangeCheck() {
 		string m_Text = m_InputField.text;
 		if (m_Text == null) {
 			Debug.Log("[FormattedInputFieldScript] text = nul");
 		}
 		else {
-			// Le type "string" ne supporte pas la concaténation à la Java
+			// Le type "string" ne supporte pas la concatenation à la Java
 			// => Debug.Log("m_Text = " + m_Text); provoque des erreurs
 			Debug.Log(string.Concat("m_Text = ", m_Text));
 			
@@ -368,7 +370,7 @@ public class FormattedInputFieldScript : MonoBehaviour
 			else {
 				Debug.Log(string.Concat("m_Regex = ", m_Regex));
 				
-				// Version fonctionnelle numéro 1
+				// Version fonctionnelle numero 1
 				/*
 				if (Regex.IsMatch(m_Text, m_Regex)) {
 					m_Image.color = colorValid;
@@ -378,7 +380,7 @@ public class FormattedInputFieldScript : MonoBehaviour
 				}
 				*/
 				
-				// Version fonctionnelle numéro 2
+				// Version fonctionnelle numero 2
 // https://docs.unity3d.com/Manual/BestPracticeUnderstandingPerformanceInUnity5.html
 // https://learn.microsoft.com/en-us/dotnet/api/system.text.regularexpressions.regex.match?view=net-8.0
 				Regex myRegExp = new Regex(m_Regex);
@@ -401,24 +403,24 @@ public class FormattedInputFieldScript : MonoBehaviour
 
 \section{Widget: ComplexSlider}
 
-Dans la section précédente, nous avions un unique \texttt{widget}. Ici, nous allons composer un \texttt{widget} complexe à partir de 3 \texttt{widgets} basiques. Pour cela, nous allons réaliser des curseurs complexes en composant un \texttt{Text} qui servira de \texttt{Label}, d'un \texttt{Slider} basique et d'un \texttt{InputTextField} sur les nombres pour visualiser la valeur du \texttt{Slider} et/ou la modifier manuellement. Ci-dessous, vous avez une image qui illustre deux \texttt{ComplexSliders} pour choisir des coordonnées \texttt{(x,y)}.
+Dans la section précédente, nous avions un unique \texttt{widget}. Ici, nous allons composer un \texttt{widget} complexe à partir de 3 \texttt{widgets} basiques. Pour cela, nous allons réaliser des curseurs complexes en composant un \texttt{Text} qui servira de \texttt{Label}, un \texttt{Slider} basique et un \texttt{InputTextField} sur les nombres pour visualiser la valeur du \texttt{Slider} et/ou la modifier manuellement. Ci-dessous, vous avez une image qui illustre deux \texttt{ComplexSliders} pour choisir des coordonnées \texttt{(x,y)}.
 
 \begin{center}
-	\includegraphics[width=0.5\linewidth]{rc/widget_complexslider_demo}
+	\includegraphics[width=0.5\linewidth]{fig/widget_complexslider_demo}
 \end{center}
 
 \begin{info}
 Généralement, un widget complexe doit avoir un \texttt{Panel} à la base pour servir de fond visuel, que vous opacifierez par défaut et qui permet de hiérarchiser les 3 sous-\texttt{widgets} le composant.
 \end{info}
 
-Vous devez réaliser un tel composant puis réaliser un unique script qui gouverne tous les aspects comportementaux. En particulier, lorsqu'une valeur est modifiée, cela impacte l'autre \texttt{widget} pour avoir toujours une cohérence entre le champ de saisie et le \texttt{Slider} basique.
+Vous devez construire un tel composant puis écrire un unique script qui gouverne tous les aspects comportementaux. En particulier, lorsqu'une valeur est modifiée, cela impacte l'autre \texttt{widget} pour avoir toujours une cohérence entre le champ de saisie et le \texttt{Slider} basique.
 
 Pour cela, nous allons exploiter la hiérarchie de notre \texttt{widget}. Il existe deux mécaniques pour retrouver les enfants:
 \begin{enumerate}
-	\item \textit{via} les fonctions de recherche basées sur leur nom,
+	\item \textit{via} les fonctions de recherche basées sur leur nom;
 	\item \textit{via} les mécaniques de recherche sur un type souhaité.
 \end{enumerate}
-Réfléchissez sur les avantages et inconvénients des deux mécaniques en lisant la documentation associée à ces familles de fonctions: \url{https://docs.unity3d.com/ScriptReference/GameObject.html}.
+Réfléchissez aux avantages et inconvénients des deux mécaniques en lisant la documentation associée à ces familles de fonctions: \url{https://docs.unity3d.com/ScriptReference/GameObject.html}.
 En particulier, que se passe-t-il si plusieurs objets sont du même type? Ou si l'utilisateur modifie le nom d'un sous-\texttt{widget} ?
 
 \ifversionenseignant
@@ -430,7 +432,7 @@ En particulier, que se passe-t-il si plusieurs objets sont du même type? Ou si 
 	\item  Préciser les dimensions, par exemple \texttt{Width = 1000 et Height = 100}. \item Déplacer \textit{PanelComplexSlider1} en \texttt{Pos X = 0; Pos Y = -200; Pos Z = 0}.	
 	\item Dans \textit{PanelComplexSlider1}, créer
 	\begin{itemize}
-		\item un  \texttt{Text avec UI > Legacy > Text} renommé \textit{Text}
+		\item un  \texttt{Text avec UI (Canvas) > Legacy > Text} renommé \textit{Text}
 		\begin{itemize}
 			\item \texttt{Rect Transform}
 			\begin{itemize}
@@ -442,11 +444,11 @@ En particulier, que se passe-t-il si plusieurs objets sont du même type? Ou si 
 		    \item Text
 		    \begin{itemize}
 		    	\item \texttt{Text = x}
-		    	\item \texttt{Font Size = 44}
+		    	\item \texttt{Font Size = 36} [\textbf{ATTENTION}: si la taille est trop grande, rien n'apparaît dans le widget]
 		    	\item \texttt{Paragraph > Alignment = middle / center}
 		    \end{itemize}
 		\end{itemize}
-		\item un \texttt{Slider} avec \texttt{UI > Slider}
+		\item un \texttt{Slider} avec \texttt{UI (Canvas) > Slider}
 		\begin{itemize}
 			\item \texttt{Rect Transform}
 			\begin{itemize}
@@ -455,9 +457,10 @@ En particulier, que se passe-t-il si plusieurs objets sont du même type? Ou si 
 				\item \texttt{Pos X = 450 ; Pos Y = 50 ; Pos Z = 0}
 				\item \texttt{Width = 700 : Height = 60}				
 			\end{itemize}
-			\item Enfant \texttt{Handle Slide Area > Handle} : dans \texttt{Rect Transform}, modifier la propriété \texttt{Height} pour que la poignée du \texttt{Slider} dessine un joli cercle, égale à la hauteur du \texttt{Slider} : $60$.
+			\item \texttt{Max value} = \textit{100}
+			\item Enfant \texttt{Handle Slide Area > Handle} : dans \texttt{Rect Transform}, modifier la propriété \texttt{Width} pour que la poignée du \texttt{Slider} dessine un joli cercle, égale à la hauteur du \texttt{Slider} : $60$.
 		\end{itemize}
-		\item un \texttt{Input Field} \textit{InputFieldComplexSlider} avec \texttt{UI > Legacy > Input Field}
+		\item un \texttt{Input Field} \textit{InputFieldComplexSlider} avec \texttt{UI (Canvas) > Legacy > Input Field}
 		\begin{itemize}
 			\item \texttt{Rect Transform}
 			\begin{itemize}
@@ -469,7 +472,7 @@ En particulier, que se passe-t-il si plusieurs objets sont du même type? Ou si 
 			\item Enfant \texttt{PlaceHolder > Text} : effacer le texte par défaut \textit{Enter text...}
 			\item Enfant \texttt{Text (Legacy)} : propriété \texttt{Text}
 			\begin{itemize}
-				\item \texttt{Font Size = 24}. \textbf{ATTENTION} : le texte ne s'affiche pas si une taille de police est trop importante.
+				\item \texttt{Font Size = 36}. \textbf{ATTENTION} : le texte ne s'affiche pas si une taille de police est trop importante.
 				\item \texttt{Paragraph > Alignment = middle / center}
 			\end{itemize}
 		\end{itemize}
@@ -477,7 +480,7 @@ En particulier, que se passe-t-il si plusieurs objets sont du même type? Ou si 
 	
 \end{itemize}
 
-\subsection{Script de PanelComplexSlider1}
+\subsection{Script \textit{ComplexSliderScript.cs} à placer dans PanelComplexSlider1}
 
 \begin{boxcode}
 \begin{csharpsansbord}
@@ -542,13 +545,13 @@ Bravo, vous avez fait le plus gros. Demander à l'enseignant  qu'il vérifie vot
 \subsection{Préfabriqué}
 L'intéret de développer un widget est de pouvoir le réutiliser plusieurs fois sans devoir faire plusieurs manipulations identiques ou des \texttt{copier-coller}. Pour cela, \texttt{Unity} a la possibilité de créer des \texttt{Préfabs}, une sorte de sauvegarde de votre réalisation au sein d'un projet.
 
-La procédure est assez simple: lorsque vous avez fini un \texttt{widget} qui n'a pas de dépendance extérieure, c'est-à-dire que le \texttt{widget} est autonome (sinon les dépendances risquent aussi d'être sauvegardées): il suffit de glisser le \texttt{GameObject} de la hiérarchie à la zone des \texttt{Assets}. Ainsi l'icône du \texttt{Gameobject} devient bleue! C'est ainsi qu'on sait qu'il s'agit d'un \texttt{Prefab}.
+La procédure est assez simple. Lorsque vous avez fini un \texttt{widget} qui n'a pas de dépendance extérieure, c'est-à-dire que le \texttt{widget} est autonome (sinon les dépendances risquent aussi d'être sauvegardées): il suffit de glisser le \texttt{GameObject} de la hiérarchie vers la zone des \texttt{Assets}. Ainsi l'icône du \texttt{Gameobject} devient bleue! C'est ainsi qu'on sait qu'il s'agit d'un \texttt{Prefab}.
 
 
 \begin{info}
 Lorsque vous sélectionnez un \texttt{Prefab} dans la zone des \texttt{Assets}, vous avez un nouveau bouton dans l'\texttt{Inspecteur} qui vous permet de modifier ce \texttt{Prefab}.
 \begin{center}
-	\includegraphics[width=0.5\linewidth]{rc/unity_set_ui_open_prefab}
+	\includegraphics[width=0.5\linewidth]{fig/unity_set_ui_open_prefab}
 \end{center}
 \end{info}
 
@@ -557,7 +560,7 @@ Quand vous modifiez un \texttt{Prefab}, vous êtes dans un environnement particu
 
 Pour quitter, il faut cliquer sur le bouton "Retour" (noté par $'<'$) au niveau de la hiérarchie.
 \begin{center}
-	\includegraphics[width=0.3\linewidth]{rc/unity_set_ui_close_prefab}
+	\includegraphics[width=0.3\linewidth]{fig/unity_set_ui_close_prefab}
 \end{center}
 \end{attention}
 
@@ -566,12 +569,11 @@ Réaliser des \texttt{Prefabs} de vos widgets en les ayant nettoyés si besoin A
 \ifversionenseignant
 \begin{solution}
 Un \texttt{Prefab} est un container représentant la sauvegarde d'un \texttt{Component}, que l'on peut réutiliser dans d'autres projets.
-
-Il suffit de sélectionner le composant qui nous intéresse : ici, \textit{PanelComplexslider1}, et de le déplacer dans le \texttt{Project}.\\
+Il suffit de sélectionner le composant qui nous intéresse : ici, \textit{PanelComplexslider1}, et de le déplacer dans le \texttt{Project > Assets}.\\
 
 \textbf{Attention} : veiller à ce que ce composant n'ait pas de dépendance extérieure, sinon ces dernières seront également sauvegardées dans le \texttt{Prefab}.\\
 
-Remarque : si l'on sélectionne ce \texttt{Prefab}, l'\texttt{Inspector} affiche un bouton \texttt{Open} qui modifie l'interface principale pour lister uniquement la hiérarchie de ce \texttt{Prefab}. Pour revenir à la hiérarchie complète, on clique sur le symbole '\texttt{<}' à gauche du nom du \texttt{Prefab} dans la hiérarchie.
+Remarque : si l'on sélectionne ce \texttt{Prefab}, l'\texttt{Inspector} affiche un bouton \texttt{Open} (et une flèche '\texttt{>}' à droite du nom du \texttt{Prefab}) qui modifie l'interface principale pour lister uniquement la hiérarchie de ce \texttt{Prefab}. Pour revenir à la hiérarchie complète, on clique sur le symbole '\texttt{<}' à gauche du nom du \texttt{Prefab} dans la hiérarchie.
 
 \paragraph{Dupliquer un Prefab et le modifier}
 
@@ -598,8 +600,8 @@ Pour cela, il faut exporter des \texttt{Prefabs} dont vous connaissez les dépen
 Dans la nouvelle fenêtre, vous devez sélectionner les bonnes dépendances de votre widget. En particulier, \texttt{Unity} sélectionne par défaut tous les scripts sans distinction, car il n'arrive pas à calculer les dépendances correctement. Vous devez donc sélectionner les bonnes dépendances de scripts manuellement. Puis, cliquez sur le bouton \texttt{Export...} pour sauvegarder le package \texttt{Unity}.
 
 \begin{center}
-\hfill \includegraphics[width=0.35\linewidth]{rc/unity_set_ui_export_package}
-\hfill \includegraphics[width=0.5\linewidth]{rc/unity_set_ui_export_prefab_deps}
+\hfill \includegraphics[width=0.35\linewidth]{fig/unity_set_ui_export_package}
+\hfill \includegraphics[width=0.5\linewidth]{fig/unity_set_ui_export_prefab_deps}
 \hfill 
 \end{center}
 
@@ -607,7 +609,7 @@ Dans la nouvelle fenêtre, vous devez sélectionner les bonnes dépendances de v
 \begin{solution}
 \begin{itemize}
 	\item Sélectionner un \texttt{Prefab} dans l'onglet \texttt{Project}
-	\item clique droit : sélectionner \texttt{Export...} et ne cocher que les dépendances nécessaires:
+	\item clique droit : sélectionner \texttt{Export as Asset Package} et ne cocher que les dépendances nécessaires:
 	\begin{itemize}
 		\item le \texttt{Prefab} lui-même;
 		\item le script \textit{ComplexSliderScript.cs}
@@ -633,8 +635,8 @@ Votre widget est prêt à l'emploi. La mécanique des \texttt{Unity packages} es
 	\begin{itemize}
 		\item Créer un nouveau projet \texttt{Unity}
 		\item Dans le menu principal, cliquer sur \texttt{Assets > Import Package > Custom Package...}
-		\item Sélectionner \textit{MyPrefabCmplexslider.unitypackage} (on peut sélectionner tout ou partie du package)
-		\item Cliquer sur \texttt{Import} après la sélection
+		\item Sélectionner \textit{MyPrefabComplexslider.unitypackage} (on peut sélectionner tout ou partie du package)
+		\item Cliquer sur \texttt{Import} après la sélection.
 		\item Un \texttt{GameObject} nommé \textit{PanelComplexSlider1} apparaît dans \texttt{Project > Assets}.		
 		\item Il n'est pas directement visible : créer un \texttt{Canvas} et intégrer \textit{PanelComplexSlider1} comme son enfant.		
 		\item \texttt{PanelComplesSlider} est un objet 3D ! Modifier sa position pour le "coller" au \texttt{Canvas (Rect Transform > Pos Z = 0)}.		
@@ -648,7 +650,7 @@ Votre widget est prêt à l'emploi. La mécanique des \texttt{Unity packages} es
 \section{Toujours plus loin}
 
 \subsection{Des Prefabs partout !}
-Reprendre votre TP précédent ou un nouveau projet qui exploite vos nouveaux widgets, histoire de voir une application complète et comprendre que votre \texttt{Prefab} doit bien être autonome pour embarquer uniquement son comportement intrinsèque!
+Reprendre votre TP précédent ou un nouveau projet qui exploite vos nouveaux widgets, histoire de construire une application complète et comprendre que votre \texttt{Prefab} doit bien être autonome pour embarquer uniquement son comportement intrinsèque!
 
 \ifversionenseignant
 \begin{solution}
@@ -663,7 +665,7 @@ Tester également les résolutions proposées dans le \texttt{GameView}. Enfin, 
 
 \ifversionenseignant
 \begin{solution}
-	\href{ https://docs.unity3d.com/2020.1/Documentation/Manual/HOWTO-UIMultiResolution.html}{Documentation multiresolution}. \\
+	\href{ https://docs.unity3d.com/Packages/com.unity.ugui@2.5/manual/HOWTO-UIMultiResolution.html}{Documentation multiresolution}. \\
 	
 La documentation du \texttt{Canvas Scaler} permet de jouer sur plusieurs paramètres, notamment :
 \begin{itemize}
@@ -679,16 +681,24 @@ De plus, dans l'onglet \texttt{Resolution} qui permettait de sélectionner "\tex
 
 
 \subsection{Orientation du Canvas}
-À partir du lien \href{https://docs.unity3d.com/2022.3/Documentation/Manual/UICanvas.html}{UICanvas}, expérimenter les modes de rendu "\texttt{Screen Space - Camera}" et "\texttt{World Space}" pour modifier l'orientation et la position du \texttt{Canvas} et de ses enfants.
+À partir du lien \href{https://docs.unity3d.com/Packages/com.unity.ugui@2.5/manual/UICanvas.html}{UICanvas}, expérimenter les modes de rendu "\texttt{Screen Space - Camera}" et "\texttt{World Space}" pour modifier l'orientation et la position du \texttt{Canvas} et de ses enfants (fig.~ci-dessous). Noter que la caméra associée devra peut-être être mise à jour pour visualiser le \texttt{Canvas}.
+
+	\begin{figure}
+		\begin{centering}
+			\includegraphics[width=0.7\linewidth]{fig/oriented-canvas}
+
+		\end{centering}	
+	\end{figure}
+
 
 \ifversionenseignant
 \begin{solution}
-On veut faire pivoter le \texttt{Canvas} pour obtenir le même effet que celui montré dans l'hyperlien.
+On veut faire pivoter le \texttt{Canvas} pour obtenir le même effet que celui montré dans l'hyperlien. 
 
 \begin{itemize}
 	\item Sélectionner le \texttt{Canvas} dans la hiérarchie
 	\begin{itemize}
-		\item Propriété \texttt{Render Mode = World Space} => \texttt{Unity} se plaint si aucune caméra n'est associée à ce mode
+		\item Propriété \texttt{Render Mode = World Space} => \texttt{Unity} se plaint si aucune caméra n'est associée à ce mode.
 		\item Propriété \texttt{Event Camera} : faire glisser une des caméras de la scène (par exemple \textit{Main Camera} dans cette propriété
 \end{itemize}		
 	\item Composant \texttt{Rect Transform}
