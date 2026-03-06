@@ -308,9 +308,18 @@ using System.Text.RegularExpressions;
 
 public class FormattedInputFieldScript : MonoBehaviour
 {
+	// Attention : si les attributs sont classes "public",
+	// ils apparaitront dans l'Inspector. Mais s'ils ne sont pas initialises
+	// dans le code, l'Inspector peut leur affecter
+	// à l'exécution une valeur quelconque (vide par exemple).
+	// Et c'est cette valeur qui sera prise en compte.
+	
 	// Regex validant uniquement une suite de chiffres.
-	// Modifiable dans l'Inspector
+	// Modifiable dans l'Inspector.
+	// Il faut initialiser cet attribut ou il recevra la valeur ""vide" 
+	// par défaut à l'exécution.
 	public string m_Regex = "^[0-9]+$";
+	
 	
 	// Composant InputField lie a ce GameObject
 	private InputField m_InputField;
