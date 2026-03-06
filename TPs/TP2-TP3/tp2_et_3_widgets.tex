@@ -120,7 +120,7 @@
 %% modifiez le booleen ci-dessous pour generer la version enseignant ou etudiant
 %% ===> true = version enseignant
 %% ===> false = version etudiant
-\setboolean{versionenseignant}{false}
+\setboolean{versionenseignant}{true}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \includeversion{ensnote}
 %\excludeversion{ensnote}
@@ -355,7 +355,7 @@ public class FormattedInputFieldScript : MonoBehaviour
 			Debug.Log("[FormattedInputFieldScript] text = nul");
 		}
 		else {
-			// Le type "string" ne supporte pas la concatenation à la Java
+			// Le type "string" ne supporte pas la concatenation comme Java
 			// => Debug.Log("m_Text = " + m_Text); provoque des erreurs
 			Debug.Log(string.Concat("m_Text = ", m_Text));
 			
@@ -509,7 +509,7 @@ public class ComplexSliderScript : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Updte()	{ }
+	void Update()	{ }
 	
 	public void UpdateValueFromFloat(float value)
 	{
