@@ -35,7 +35,7 @@
 \renewcommand\footrulewidth{1pt}
 \fancyfoot[L]{Département d'Informatique}
 \fancyfoot[C]{\textbf{\thepage/\pageref{LastPage}}}
-\fancyfoot[R]{année 2024-2025}
+\fancyfoot[R]{année 2025-2026}
 %fin
 
 \usepackage{enumitem}
@@ -99,7 +99,7 @@
 
 \newboolean{versionenseignant}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%__     __            _
+%__     __            
 %\ \   / /__ _ __ ___(_) ___  _ __
 % \ \ / / _ \ '__/ __| |/ _ \| '_ \
 %  \ V /  __/ |  \__ \ | (_) | | | |
@@ -176,11 +176,19 @@ Voici les objectifs de ce sujet:
 %	\end{itemize}
 %\end{attention}
 
+\ifversionenseignant
+\begin{solution}
+\textbf{Attention (2026)} : Parfois, sur la version \textit{6000.3.7f1} de \texttt{Linux}, la sauvegarde avec \textit{Ctrl+S} ou  \texttt{File > Save} semble inactive : des fenêtres vides apparaissent mais la scène ne semble pas être sauvée. \\
+Mais en quittant avec \texttt{File > Exit}, un popup demande à sauver les données. Cela ne fonctionne malgré tout pas tout le temps...
+\end{solution}
+\fi 
+
+
 \section{Description générale du TP}
 
 La fois précédente, nous avons réalisé nos premiers widgets complexes en exploitant l'agrégation de plusieurs widgets de base. Nous avons en particulier manipulé le système d'ancre que propose \texttt{Unity} pour placer les objets de façon relative.
 
-Dans ce TP, nous allons employer une autre méthode un peu plus coûteuse mais offrant une plus grande puissance en terme de placement et qui reprend les points que vous avez étudié durant les années précédentes en IHM: les mises en page (\texttt{layouts}). La documentation est présente ici: \url{https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/UIAutoLayout.html}
+Dans ce TP, nous allons employer une autre méthode un peu plus coûteuse mais offrant une plus grande puissance en terme de placement et qui reprend les points que vous avez étudiés durant les années précédentes en IHM: les mises en page (\texttt{layouts}). La documentation est présente ici: \url{https://docs.unity3d.com/Packages/com.unity.ugui@2.5/manual/UIAutoLayout.html}.
 
 \ifversionenseignant
 \begin{solution}
@@ -196,7 +204,7 @@ Créer un nouveau projet de type \texttt{Universal 3D Core}.
 	  
 \ifversionenseignant
 \begin{solution}
-Source : \href{https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/script-ContentSizeFitter.html}{Doc. Content Size Fitter}.\\
+Source : \href{https://docs.unity3d.com/Packages/com.unity.ugui@2.5/manual/script-ContentSizeFitter.html}{Doc. Content Size Fitter}.\\
 
 Ce \texttt{Component} permet de gérer les dimensions du \texttt{Component} auquel il est rattaché (pas celui de ses enfants).
 
@@ -219,10 +227,10 @@ Ce \texttt{Component} permet de gérer les dimensions du \texttt{Component} auqu
 	  
 \ifversionenseignant
 \begin{solution}
-	Source : \href{https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/script-AspectRatioFitter.html}{Doc. Aspect Ratio Fitter}.
+	Source : \href{https://docs.unity3d.com/Packages/com.unity.ugui@2.5/manual/script-AspectRatioFitter.html}{Doc. Aspect Ratio Fitter}.
 	
 	\begin{itemize}
-		\item Retirer le composant \texttt{Content Size Fitter} du \texttt{Text} précédent.
+		\item Retirer le composant \texttt{Content Size Fitter} du \texttt{Text} précédent (ou bien créer un \texttt{Text} à part).
 		\item Ajouter le composant \texttt{Aspect Ratio Fitter} au \texttt{Text}.
 		\item Tester ses propriétés:
 		\begin{itemize}
@@ -240,7 +248,7 @@ Ce \texttt{Component} permet de gérer les dimensions du \texttt{Component} auqu
 
 \section{Présentation des outils de mise en pages en Unity UI}
 
-Il est conseillé de lire en détail la documentation citée plus haut pour bien comprendre les aspects des composants. Voici le résumé des points-clés:
+Il est conseillé de lire en détail la documentation  pour bien comprendre les aspects des composants. Voici le résumé des points-clés:
 \begin{itemize}
 	\item Il y a deux types de composants dédiés à la mise en page.
 	\item Les \textit{conteneurs} ou \texttt{Layout Group} contrôlent le comportement des widgets enfants (enchaînement horizontal, enchaînement vertical ou sous forme de grille\ldots)
@@ -253,7 +261,7 @@ Il est conseillé de lire en détail la documentation citée plus haut pour bien
 \end{center}
 \end{itemize}
 
-Ainsi, chaque conteneur peut avoir des paramétrages différents qui vont faire évoluer les éléments selon les contraintes. Vous ferez attention à certains paramètres qui peuvent forcer le redimensionnement des \texttt{widgets} éléments sans les consulter. Vous prendrez également garde aux éléments qui doivent activer la flexibilité des dimensions voulues pour agrandir dans cette direction (une valeur de 1 peut être suffisante pour indiquer un degré de liberté).
+Ainsi, chaque conteneur peut avoir des paramétrages différents qui vont faire évoluer les éléments selon les contraintes. Vous ferez attention à certains paramètres qui peuvent forcer le redimensionnement des \texttt{widgets} éléments sans les consulter. Vous prendrez également garde aux éléments qui doivent activer la \textit{flexibilité} des dimensions voulues pour agrandir dans cette direction (une valeur de 1 peut être suffisante pour indiquer un degré de liberté).
 
 \subsection*{Tests}
 
@@ -264,10 +272,10 @@ Ainsi, chaque conteneur peut avoir des paramétrages différents qui vont faire 
 \begin{solution}
 	\paragraph{Horizontal Layout Group}
 	
-	Source : \href{https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/script-HorizontalLayoutGroup.html}{Doc. Horizontal Layout Group}.
+	Source : \href{https://docs.unity3d.com/Packages/com.unity.ugui@2.5/manual/script-HorizontalLayoutGroup.html}.
 	
 	\begin{itemize}
-		\item Supprimer le \texttt{Text} précédent et en ajouter un nouveau dans le \texttt{Panel}.
+		\item   Ajouter un nouveau \texttt{Text} dans le \texttt{Panel}.
 		\item Ajouter un \texttt{Slider} dans le \texttt{Panel} et le déplacer pour le mettre à côté de \texttt{Text}.
 		\item Ajouter au \texttt{Panel} le composant \texttt{Horizontal Layout Group} : les enfants sont automatiquement replacés dans le \texttt{Child Alignment} par défaut : \textit{Upper Left}.
 		\item Modifier les propriétés de ce composant:
@@ -290,7 +298,7 @@ Même procédure que pour le composant \texttt{Horizontal Layout Group}.
 
 \paragraph{Grid Layout Group}
 
-Source : \href{https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/script-GridLayoutGroup.html}{Doc. Grid Layout Group}.
+Source : \href{https://docs.unity3d.com/Packages/com.unity.ugui@2.5/manual/script-VerticalLayoutGroup.html}.
 
 	\begin{itemize}
 	\item Retirer le \texttt{Layout Group} précédent du \texttt{Panel}.
@@ -355,9 +363,9 @@ Le principe est de recréer un \texttt{Complex Slider} nommé \textit{ComplexSli
 
 Important: vérifier que le \texttt{Canvas} ne possède aucun \texttt{Group Layout}, pour éviter qu'il n'interfère avec les étapes suivantes.\\
 
-Commencer par insérer un \texttt{Panel} dans le \texttt{Canvas} avec \texttt{UI > Panel}.
+Commencer par insérer un \texttt{Panel} dans le \texttt{Canvas}.
 
-Dans ce \texttt{Panel}, créer un nouveau \texttt{Panel} nommé \textit{ComplexSliderJoli}, insérer
+Dans ce \texttt{Panel}, créer un nouveau \texttt{Panel} nommé \textit{ComplexSliderJoli} et y insérer
 un composant \texttt{Horizontal Layout Group} et
 des enfants \texttt{Text (Legacy)}, \texttt{Slider} et \texttt{InputField (Legacy)}.
 Noter que ces enfants sont automatiquement disposés en haut à gauche du \texttt{Panel} (réglage par défaut du Horizontal \texttt{Layout Group > ChildAlignment : Upper Left}).
@@ -572,14 +580,14 @@ Ce \texttt{widget} sera composé de deux parties principales : un \texttt{Input 
 				\item \texttt{Preferred Width} : cocher la case, valeur = $100$
 				\item \texttt{Layout Priority} : $1$
 			\end{itemize}	
-			\item Pour associer une image de flèche
+			\item Pour associer une image de flèche 
 			\begin{itemize}
 				\item récupérer une image de type PNG et dans l'onglet \texttt{Project}, clic droit et \texttt{Import New Asset...} puis sélectionner le fichier ;
-				\item dans \texttt{Project}, sélectionner l'image importée et modifier la propriété \texttt{Texture Type} : \textit{Sprite (2D and UI)} et \texttt{Sprite Mode} : \textit{Single};				
+				\item dans \texttt{Project}, sélectionner l'image importée et modifier la propriété \texttt{Texture Type} : \textit{Sprite (2D and UI)} et \texttt{Sprite Mode} (Remarque : \texttt{Unity} peut proposer d'installer le package \texttt{2D Sprite} : accepter, même si ne c'est pas indispensable pour le TP) : \textit{Single};				
 				\item valider le message de création de l'\texttt{Asset} avec le bouton \texttt{Apply} dans l'\texttt{Inspector}.
 				\item \textbf{ATTENTION} : les images récupérées doivent suivre un certain format ou bien le message d'erreur apparaît : "\textit{Only textures with width/height multiple of 4 can be compressed to DXT5|BC3 format}".
 			\end{itemize}	
-			\item dans le composant \texttt{Image}, modifier la propriété
+			\item dans le composant \texttt{Image} de \textit{ButtonUp}, modifier la propriété
 			\begin{itemize}
 				\item \texttt{Source Image} en sélectionnant le petit rond à droite du champ et en filtrant la liste avec le nom du fichier
 				\item si l'image est mal proportionnée par rapport au \texttt{Button}, on peut modifier la propriété\texttt{ Scale} de son composant \texttt{Rect Transform}
@@ -706,21 +714,23 @@ public void OnPointerClick(PointerEventData data) { }
 Pour ajouter une \texttt{Scene} à la \textit{SampleScene} actuelle :
 \begin{itemize}
 	\item Menu \texttt{File > New Scene > Basic (Built-in)} et cocher \texttt{Load additively} pour que la seconde \texttt{Scene} apparaisse dans la \texttt{Hierarchy}.
-	\item Dans la \texttt{Hierarchy}, le nom de la nouvelle \texttt{Scene} est \textit{Untitled}. Cliquer sur le symbole "\textit{3 points verticaux}" à droite de ce nom pour sauvegarder cette \texttt{Scene}, par exemple sous le nom \textit{MouseScene}.
+	\item Dans la \texttt{Hierarchy}, le nom de la nouvelle \texttt{Scene} est \textit{Untitled}. Cliquer sur le symbole "\textit{3 points verticaux}" à droite de ce nom pour sauvegarder cette \texttt{Scene} dans le dossier \textit{Asset > Scenes} du \texttt{Project}, par exemple sous le nom \textit{MouseScene}.
 	\item[$\rightarrow$] Les fichiers \textit{MouseScene.unity} et \textit{MouseScene.unity.meta} sont créés.
-	\item Dans le \texttt{Project}, double-cliquer sur \texttt{MouseScene} pour la sélectionner et ajouter un \texttt{UI > EventSystem}. \textbf{Attention}, si cette sélection n'est pas faite au préalable, ajouter un \texttt{EventSystem} n'a pas d'effet : on est renvoyé sur le premier ajouté par défaut dans la \texttt{Scene} initiale.
+	\item Dans le \texttt{Project} (\textbf{PAS dans la hiérarchie !}), double-cliquer sur \texttt{MouseScene} pour la sélectionner. Cette scène devrait remplacer la \texttt{SampleScene} dans la hiérarchie.
+	
+	\item Dans la hiérarchie, cliquer sur l'icone "3 points verticaux" à côté du du nom \texttt{MouseScene} et ajouter un \texttt{GameObject > UI (Canvas) > EventSystem}. \textbf{Attention}, si cette sélection n'est pas faite au préalable, ajouter un \texttt{EventSystem} n'a pas d'effet : on est renvoyé sur le premier ajouté par défaut dans la \texttt{Scene} initiale.
 	\item Si une seule des \texttt{Scenes} apparaît dans la \texttt{Hierarchy}, déplacer l'autre depuis le \texttt{Project} vers la \texttt{Hierarchy} pour la faire apparaître.
 \end{itemize}	
 		
 \textbf{Important}: Dans le menu \texttt{File > Build Profiles}, vérifier dans \texttt{Platforms > Scene List} que toutes les scènes sont bien cochées. Éventuellement, cliquer sur \texttt{Add Open Scenes} pour afficher les \texttt{Scenes} dans la listes "\textit{Scenes In Build}".\\
 
-Remarque : les deux \texttt{Cameras} ont la même valeur de propriété \texttt{Camera > Depth = $-1$}. Dans le mode \texttt{Game}, c'est la \texttt{Camera} la plus récente (celle de \textit{MouseScene}) qui est affichée par défaut. Pour revenir à la vue sur \textit{SampleScene}, il faut augmenter la valeur de ce champ pour \textit{Main Camera}.
+Remarque : les deux \texttt{Cameras} ont la même valeur de propriété \texttt{Camera > Rendering > Priority = $-1$}. Dans le mode \texttt{Game}, c'est la \texttt{Camera} la plus récente (celle de \textit{MouseScene}) qui est affichée par défaut. Pour revenir à la vue sur \textit{SampleScene}, il faut augmenter la valeur de ce champ pour \textit{Main Camera}.
 
 Important: En complément de la remarque précédente, on peut spécifier la \texttt{Scene} active en cliquant sur le nom d'une \texttt{Scene}, puis \texttt{bouton droit > Set Active Scene}.
 
 \subsubsection{Peuplement de la nouvelle Scene}
 \begin{itemize}	
-	\item  Ajouter un bouton dans le \texttt{Canvas} de \textit{SampleScene} : \texttt{UI > Legacy > Button (Legacy)}
+	\item  Ajouter un bouton dans le \texttt{Canvas} de \textit{SampleScene} : \texttt{UI (Canvas) > Legacy > Button (Legacy)}
 	\begin{itemize}
 		\item nommer ce bouton \textit{ButtonSwitchToMouseScene}
 		\item modifier son enfant \texttt{Text (Legacy)}
@@ -826,7 +836,7 @@ On peut ouvrir chaque \texttt{Scene} indépendamment dans le menu \texttt{File >
 
 
 \subsection{Gestion de la souris}
-Associer le script  suivant dans un Panel ou l'un de ses enfants (peu importe la \texttt{Scene}, du moment qu'elle contienne un \texttt{EventSystem}).
+Associer le script  suivant dans un \texttt{Panel} (ou l'un de ses enfants, si ces derniers cachent recouvrent l'intégralité du \texttt{Panel}). Peu importe la \texttt{Scene}, du moment qu'elle contienne un \texttt{EventSystem}.
 
 \begin{boxcode}
 \begin{csharpsansbord}
