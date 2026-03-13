@@ -1,0 +1,17 @@
+Consigne pour la soutenance finale:
+
+**Objectif général:**
+L'objectif global est de présenter son travail en terme d'IHM avec une prise de recul sur les technologies utilisés pour montrer une compréhension globale des outils pour réaliser des interfaces.
+
+
+**Cadre de la présentation:**
+La présentation doit être présentée avec les groupes Unity et se focalise principalement sur le travail réalisé en Unity. La présentation prend en compte, les aspects de forme d'une soutenance (posture, clarté du discours, ton assuré, ...)
+
+**Eléments à présenter:**
+Les éléments suivants doivent être traités, sans nécessairement respecter cet ordre : 
+- présentation du périmètre de votre application de valorisation.
+- présentation de widgets importants: contexte, fonctionnement, réalisation, limitation.
+- réalisation d'une démo: privilégier une démonstration en direct sinon adapté. 
+- ressentits sur les outils utilisés (Unity et Android): points positifs, points négatifs, difficultés rencontrées, ...
+- discours d'éloquence pour vendre une partie ou l'intégralité de votre travail (sous forme de flash de pub)
+- conclusion: bilan de votre travail, ce que vous avez appris, ce que vous auriez fait différemment, ...
