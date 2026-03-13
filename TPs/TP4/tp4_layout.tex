@@ -113,7 +113,7 @@
 %% modifiez le booleen ci-dessous pour generer la version enseignant ou etudiant
 %% ===> true = version enseignant
 %% ===> false = version etudiant
-\setboolean{versionenseignant}{false}
+\setboolean{versionenseignant}{true}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \includeversion{ensnote}
 %\excludeversion{ensnote}
@@ -692,7 +692,7 @@ public class SpinnerPannelScript : MonoBehaviour
 %Le système événementiel est en cours de modification, mais 
 Nous présentons ici une mécanique pour interagir avec des événements particuliers. Pour cela, consultez le lien suivant qui donne les événements supportés \url{https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/SupportedEvents.html}. Nous vous proposons un petit exercice sous forme de tutoriel:
 \begin{itemize}
-	\item dans un nouveau projet ou une nouvelle \texttt{Scene}\footnote{Dans ce dernier cas, ajouter dans chaque scène un bouton pour permuter entre les scènes.}, ajoutez un \texttt{Panel} occupant l'entièreté du \texttt{Canvas};
+	\item dans un nouveau projet ou une nouvelle \texttt{Scene}\footnote{Dans ce dernier cas, ajouter dans chaque scène un bouton pour permuter entre les scènes : voir la documentation \href{https://docs.unity3d.com/6000.3/Documentation/ScriptReference/SceneManagement.SceneManager.html}{https://docs.unity3d.com/6000.3/Documentation/ScriptReference/SceneManagement.SceneManager.html}}, ajoutez un \texttt{Panel} occupant l'entièreté du \texttt{Canvas};
 	\item modifiez la couleur du \texttt{Panel} pour qu'il soit entièrement transparent;
 	\item créez un nouveau script;
 	\item au début de ce script, ajoutez la ligne
